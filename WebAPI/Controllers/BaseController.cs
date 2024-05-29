@@ -9,5 +9,10 @@ namespace WebAPI.Controllers
     {
         protected IMediator _mediator => HttpContext.RequestServices.GetService<IMediator>() ??
             throw new NotImplementedException("IMediator servisini kontrol ediniz!");
+
+        public async Task<IActionResult> Test()
+        {
+            return null;
+        }
     }
 }
