@@ -1,10 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Persistence.Contexts;
 
 namespace Persistence
 {
@@ -14,10 +11,10 @@ namespace Persistence
         {
             // Db
 
-            //services.AddDbContext<TaskManagerContext>(opt =>
-            //{
-            //    opt.UseSqlServer(configuration.GetConnectionString("SqlServer"));
-            //});
+            services.AddDbContext<AppointmentSystemContext>(opt =>
+            {
+                opt.UseSqlServer(configuration.GetConnectionString("SqlServer"));
+            });
 
             //Repositories & Services
             return services;

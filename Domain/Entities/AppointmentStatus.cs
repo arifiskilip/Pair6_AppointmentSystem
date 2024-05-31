@@ -5,5 +5,7 @@ namespace Domain.Entities
     public class AppointmentStatus : Entity<short>
     {
         public string Name { get; set; }
+
+        public virtual ICollection<AppointmentInterval> AppointmentIntervals { get; set; }
     }
 }
