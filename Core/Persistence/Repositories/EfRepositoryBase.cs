@@ -20,11 +20,26 @@ namespace Core.Persistence.Repositories
 
         public IQueryable<TEntity> Query() => Context.Set<TEntity>();
 
-        public async Task<TEntity> AddAsync(TEntity entity)
+        public async Task<TEntity> AddAsync(TEntity entity, params Expression<Func<TEntity, object>>[]? includes)
         {
             await Context.AddAsync(entity);
             await Context.SaveChangesAsync();
-            return entity;
+
+            var entry = Context.Entry(entity);
+            var navigationProperties = entry.Metadata.GetNavigations();
+
+            foreach (var navigation in navigationProperties)
+            {
+                if (!navigation.IsCollection)
+                {
+                    await entry.Reference(navigation.Name).LoadAsync();
+                }
+                else
+                {
+                    await entry.Collection(navigation.Name).LoadAsync();
+                }
+            }
+            return entry.Entity;
         }
 
         public async Task<IList<TEntity>> AddRangeAsync(IList<TEntity> entities)

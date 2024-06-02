@@ -8,6 +8,8 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using System;
 using Application.Repositories;
 using Persistence.Repositories;
+using Application.Services;
+using Persistence.Services;
 
 namespace Persistence
 {
@@ -24,8 +26,16 @@ namespace Persistence
 
             //IoC Inversion Of Control
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<ITitleRepository, Titlerepository>();
+
+
+            services.AddScoped<ITitleRepository, TitleRepository>();
+
+
             services.AddScoped<IDoctorRepository, DoctorRepository>();
+
+            services.AddScoped<IUserOperationClaimRepository, UserOperationClaimRepository>();
+            services.AddScoped<IUserOperationClaimService, UserOperationClaimService>();
+
             //Repositories & Services
             return services;
         }

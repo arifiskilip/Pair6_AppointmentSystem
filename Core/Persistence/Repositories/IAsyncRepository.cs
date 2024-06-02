@@ -39,7 +39,7 @@ namespace Core.Persistence.Repositories
             CancellationToken cancellationToken = default
         );
 
-        Task<TEntity> AddAsync(TEntity entity);
+        Task<TEntity> AddAsync(TEntity entity, params Expression<Func<TEntity, object>>[]? includes);
 
         Task<IList<TEntity>> AddRangeAsync(IList<TEntity> entity);
 
