@@ -22,10 +22,10 @@ namespace Persistence.Configurations
                    .IsRequired();
 
             // Feedback ve User arasındaki ilişki
-            builder.HasOne(x => x.User)
-                   .WithMany(x => x.Feedbacks)
-                   .HasForeignKey(x => x.UserId)
-                   .OnDelete(DeleteBehavior.Restrict);
+              builder.HasOne(x => x.Patient)
+               .WithMany(x => x.Feedbacks)
+               .HasForeignKey(x => x.PatientId)
+               .OnDelete(DeleteBehavior.Restrict);
 
             // Feedback ve Appointment arasındaki ilişki
             builder.HasOne(x => x.Appointment)

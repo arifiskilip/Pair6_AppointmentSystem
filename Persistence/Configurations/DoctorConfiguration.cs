@@ -15,8 +15,8 @@ namespace Persistence.Configurations
         {
             builder.HasKey(x => x.Id);
 
-            builder.Property(x => x.UserId)
-                   .IsRequired();
+            //builder.Property(x => x.UserId)
+            //       .IsRequired();
 
             builder.Property(x => x.TitleId)
                    .IsRequired();
@@ -35,9 +35,9 @@ namespace Persistence.Configurations
                    .HasForeignKey(x => x.BranchId);
 
             // Doctor ve User arasındaki ilişki
-            builder.HasOne(x => x.User)
-                   .WithOne(x => x.Doctor)
-                   .HasForeignKey<Doctor>(x => x.UserId);
+            //builder.HasOne(x => x.User)
+            //       .WithOne(x => x.Doctor)
+            //       .HasForeignKey<Doctor>(x => x.UserId);
 
             // Doctor ve AppointmentInterval arasındaki ilişki
             builder.HasMany(x => x.AppointmentIntervals)

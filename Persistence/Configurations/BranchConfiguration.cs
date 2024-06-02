@@ -22,6 +22,7 @@ namespace Persistence.Configurations
             builder.HasMany(x => x.Doctors)
                    .WithOne(x => x.Branch)
                    .HasForeignKey(x => x.BranchId);
+                    
 
             builder.ToTable("Branches");
         }

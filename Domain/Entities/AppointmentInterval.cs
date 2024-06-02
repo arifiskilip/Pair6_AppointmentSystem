@@ -13,7 +13,8 @@ namespace Domain.Entities
 
         public DateTime Day { get; set; }
 
-        public TimeSpan Interval { get; set; }
+        public TimeSpan IntervalStart { get; set; }
+        public TimeSpan IntervalEnd { get; set; }
 
         public short AppointmentStatusId { get; set; }
 

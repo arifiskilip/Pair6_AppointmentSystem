@@ -15,12 +15,11 @@ namespace Persistence.Configurations
         {
             builder.HasKey(x => x.Id);
 
-            // Appointment ve User arasındaki bire çok ilişki
-            builder.HasOne(x => x.User)
+            // Appointment ve Patient arasındaki ilişki
+            builder.HasOne(x => x.Patient)
                    .WithMany(x => x.Appointments)
-                   .HasForeignKey(x => x.UserId)
+                   .HasForeignKey(x => x.PatientId)
                    .OnDelete(DeleteBehavior.Restrict);
-
 
             // Appointment ve AppointmentInterval arasındaki bire çok ilişki
             builder.HasOne(x => x.AppointmentInterval)

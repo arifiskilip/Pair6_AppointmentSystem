@@ -15,6 +15,6 @@ namespace Domain.Entities
 
         public string ReportFile { get; set; }
 
-        public virtual Appointment Appointment { get; set; }
+        public virtual Appointment? Appointment { get; set; }
     }
 }

@@ -18,17 +18,23 @@ namespace Persistence.Configurations
             builder.Property(x => x.Day)
                    .IsRequired();
 
-            builder.Property(x => x.Interval)
+            builder.Property(x => x.IntervalStart)
                    .IsRequired();
+
+            builder.Property(x => x.IntervalEnd)
+                  .IsRequired();
+
             // AppointmentInterval ve AppointmentStatus arasındaki ilişki
             builder.HasOne(x => x.AppointmentStatus)
                    .WithMany(x => x.AppointmentIntervals)
-                   .HasForeignKey(x => x.AppointmentStatusId);
+                   .HasForeignKey(x => x.AppointmentStatusId)
+                   .OnDelete(DeleteBehavior.Restrict);
 
             // AppointmentInterval ve Doctor arasındaki bire çok ilişki
             builder.HasOne(x => x.Doctor)
                    .WithMany(x => x.AppointmentIntervals)
-                   .HasForeignKey(x => x.DoctorId);
+                   .HasForeignKey(x => x.DoctorId)
+                    .OnDelete(DeleteBehavior.Restrict);
 
             // AppointmentInterval ve Appointment arasındaki bire bir ilişki
             builder.HasOne(x => x.Appointment)
