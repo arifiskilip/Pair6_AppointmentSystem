@@ -3,21 +3,15 @@ using AutoMapper;
 using Core.Persistence.Paging;
 using Domain.Entities;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Application.Features.Titles.Queries.GetList
+namespace Application.Features.Titles.Queries.GetAllByPaginated
 {
-    public class GetListTitleQuery : IRequest<GetListTitleResponse>
+    public class GetAllByPaginatedTitleQuery : IRequest<GetAllByPaginatedTitleResponse>
     {
         public int Index { get; set; } = 1;
         public int Size { get; set; } = 10;
 
-        public class GetListTitleQueryHandler : IRequestHandler<GetListTitleQuery, GetListTitleResponse>
+        public class GetListTitleQueryHandler : IRequestHandler<GetAllByPaginatedTitleQuery, GetAllByPaginatedTitleResponse>
         {
             private readonly ITitleRepository _titleRepository;
             private readonly IMapper _mapper;
@@ -28,7 +22,7 @@ namespace Application.Features.Titles.Queries.GetList
                 _mapper = mapper;
             }
 
-            public async Task<GetListTitleResponse> Handle(GetListTitleQuery request, CancellationToken cancellationToken)
+            public async Task<GetAllByPaginatedTitleResponse> Handle(GetAllByPaginatedTitleQuery request, CancellationToken cancellationToken)
             {
                 IPaginate<Title> titles = await _titleRepository.GetListAsync(
                     //predicate: null,
@@ -36,15 +30,14 @@ namespace Application.Features.Titles.Queries.GetList
                     //include: null,
                     index: request.Index,
                     size: request.Size,
-                    enableTracking: false,
-                    cancellationToken: cancellationToken
+                    enableTracking: false
                 );
 
-                List<GetListTitleResponse.TitleDto> titleDtos = _mapper.Map<List<GetListTitleResponse.TitleDto>>(titles.Items.ToList());
+                List<TitleDto> titleDtos = _mapper.Map<List<TitleDto>>(titles.Items);
 
-                return new GetListTitleResponse
+                return new GetAllByPaginatedTitleResponse
                 {
-                    Titles = new Paginate<GetListTitleResponse.TitleDto>(
+                    Titles = new Paginate<TitleDto>(
                         titleDtos.AsQueryable(),
                         titles.Pagination
                     )

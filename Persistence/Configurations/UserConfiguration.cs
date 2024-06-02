@@ -26,9 +26,9 @@ namespace Persistence.Configurations
                    .WithOne(x => x.User)
                    .HasForeignKey(x => x.UserId);
 
-            builder.HasOne(x => x.Patient)
-               .WithOne(x => x.User)
-               .HasForeignKey<Patient>(x => x.UserId);
+            //builder.HasOne(x => x.Patient)
+            //   .WithOne(x => x.User)
+            //   .HasForeignKey<Patient>(x => x.UserId);
 
             //// User ve Appointment arasındaki bire çok ilişki
             //builder.HasMany(x => x.Appointments)

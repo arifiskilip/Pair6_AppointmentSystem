@@ -21,9 +21,11 @@ namespace Persistence
             {
                 opt.UseSqlServer(configuration.GetConnectionString("SqlServer"));
             });
+
+            //IoC Inversion Of Control
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ITitleRepository, Titlerepository>();
-
+            services.AddScoped<IDoctorRepository, DoctorRepository>();
             //Repositories & Services
             return services;
         }

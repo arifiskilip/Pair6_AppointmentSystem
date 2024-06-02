@@ -18,11 +18,8 @@ namespace Persistence.Configurations
             builder.Property(x => x.Day)
                    .IsRequired();
 
-            builder.Property(x => x.IntervalStart)
+            builder.Property(x => x.Interval)
                    .IsRequired();
-
-            builder.Property(x => x.IntervalEnd)
-                  .IsRequired();
 
             // AppointmentInterval ve AppointmentStatus arasındaki ilişki
             builder.HasOne(x => x.AppointmentStatus)

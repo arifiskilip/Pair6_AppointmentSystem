@@ -26,9 +26,9 @@ namespace Persistence.Configurations
                    .WithOne(x => x.Patient)
                    .HasForeignKey(x => x.PatientId);
 
-            builder.HasOne(x => x.User)
-                  .WithOne(x => x.Patient)
-                  .HasForeignKey<Patient>(x => x.UserId);
+            //builder.HasOne(x => x.User)
+            //      .WithOne(x => x.Patient)
+            //      .HasForeignKey<Patient>(x => x.UserId);
 
             builder.ToTable("Patients");
         }

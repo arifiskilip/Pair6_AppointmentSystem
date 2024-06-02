@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Auth\Command\DoctorRegister\" />
+    <Folder Include="Features\Auth\Constant\" />
+    <Folder Include="Features\Auth\Validations\" />
+    <Folder Include="Features\Auth\Rules\" />
+    <Folder Include="Features\Auth\Profiles\" />
     <Folder Include="Services\" />
   </ItemGroup>
 

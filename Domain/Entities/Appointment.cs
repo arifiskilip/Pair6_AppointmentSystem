@@ -1,9 +1,4 @@
 ﻿using Core.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
@@ -16,10 +11,8 @@ namespace Domain.Entities
 
         // Navigation properties
         public virtual Patient Patient { get; set; }
-
         public virtual AppointmentInterval AppointmentInterval { get; set; }
-
-        public virtual Feedback Feedback { get; set; }
+        public virtual Feedback? Feedback { get; set; }
         public virtual Report? Report { get; set; }
 
     }

@@ -1,38 +1,50 @@
-﻿using Application.Features.Titles.Commands.Create;
-using Application.Features.Titles.Queries.GetList;
-using MediatR;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
+﻿using Application.Features.Titles.Commands.Add;
+using Application.Features.Titles.Commands.Delete;
+using Application.Features.Titles.Commands.Update;
+using Application.Features.Titles.Queries.GetAllByPaginated;
+using Application.Features.Titles.Queries.GetById;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class TitleController : BaseController
     {
-        private readonly IMediator _mediator;
-
-        public TitleController(IMediator mediator, IHttpContextAccessor httpContextAccessor)
-        {
-            _mediator = mediator;
-        }
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] CreateTitleCommand command)
+        public async Task<IActionResult> Add([FromBody] AddTitleCommand command)
         {
-           var result =  await _mediator.Send(command);
+            var result = await _mediator.Send(command);
             return Created(string.Empty, result);
-            //return Created();
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetList([FromQuery] GetListTitleQuery query)
+        public async Task<IActionResult> GetAllByPaginated([FromQuery] GetAllByPaginatedTitleQuery query)
         {
-            
             var result = await _mediator.Send(query);
             return Ok(result);
         }
 
-       
+        [HttpGet]
+        public async Task<IActionResult> GetById([FromQuery] GetByIdTitleQuery query)
+        {
+
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateTitleCommand command)
+        {
+
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromQuery] DeleteTitleCommand command)
+        {
+
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
     }
 }

@@ -1,9 +1,4 @@
 ﻿using Core.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
@@ -14,9 +9,7 @@ namespace Domain.Entities
         public int AppointmentId { get; set; }
         public bool Status { get; set; }
 
-       public virtual Patient Patient { get;}
-       public virtual Appointment Appointment { get; }
-
-
+        public virtual Patient Patient { get; set; }
+        public virtual Appointment Appointment { get; set; }
     }
 }

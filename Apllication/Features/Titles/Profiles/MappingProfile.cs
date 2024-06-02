@@ -1,5 +1,7 @@
-﻿using Application.Features.Titles.Commands.Create;
-using Application.Features.Titles.Queries.GetList;
+﻿using Application.Features.Titles.Commands.Add;
+using Application.Features.Titles.Commands.Update;
+using Application.Features.Titles.Queries.GetAllByPaginated;
+using Application.Features.Titles.Queries.GetById;
 using AutoMapper;
 using Domain.Entities;
 
@@ -9,9 +11,15 @@ namespace Application.Features.Titles.Profiles
     {
         public MappingProfile()
         {
-            CreateMap<Title, CreateTitleCommand>().ReverseMap();
-            CreateMap<Title, CreateTitleResponse>().ReverseMap();
-            CreateMap<Title, GetListTitleResponse.TitleDto>().ReverseMap();
+            CreateMap<Title, AddTitleCommand>().ReverseMap();
+            CreateMap<Title, AddTitleResponse>().ReverseMap();
+
+            CreateMap<Title, UpdateTitleCommand>().ReverseMap();
+            CreateMap<Title, UpdateTitleResponse>().ReverseMap();
+
+            CreateMap<Title, TitleDto>().ReverseMap();
+
+            CreateMap<Title, GetByIdTitleReponse>().ReverseMap();
 
         }
     }

@@ -1,6 +1,5 @@
 using Application;
 using Core;
-using Core.CrossCuttingConcers.Exceptions.Extensions;
 using Core.Security.Encryption;
 using Core.Security.JWT;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -42,7 +41,10 @@ builder.Services.AddCors(opt =>
         p.WithOrigins("https://localhost:4200").AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
     });
 });
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson(opt =>
+
+    opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
