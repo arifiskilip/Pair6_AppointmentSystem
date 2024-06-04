@@ -32,6 +32,8 @@ namespace Persistence
 
 
             services.AddScoped<IDoctorRepository, DoctorRepository>();
+            services.AddScoped<IBranchRepository, BranchRepository>();
+
 
             services.AddScoped<IUserOperationClaimRepository, UserOperationClaimRepository>();
             services.AddScoped<IUserOperationClaimService, UserOperationClaimService>();
