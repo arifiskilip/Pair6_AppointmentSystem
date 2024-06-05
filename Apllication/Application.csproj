@@ -21,6 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Appointment\Constants\" />
+    <Folder Include="Features\Appointment\Queries\" />
     <Folder Include="Features\Branchs\Queries\" />
     <Folder Include="Features\DoctorSchedule\Constatnts\" />
     <Folder Include="Features\DoctorSchedule\Validations\" />
