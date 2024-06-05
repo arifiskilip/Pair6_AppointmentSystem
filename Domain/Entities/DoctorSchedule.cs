@@ -8,7 +8,7 @@ namespace Domain.Entities
         public DateTime Day { get; set; }
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
-        public TimeSpan PatientInterval { get; set; } // in minutes
+        public int PatientInterval { get; set; } // in minutes
 
         // Navigation properties
         public virtual Doctor Doctor { get; set; }

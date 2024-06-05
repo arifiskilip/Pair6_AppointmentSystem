@@ -1,14 +1,10 @@
-﻿using Domain.Entities;
+﻿using Application.Repositories;
+using Application.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Org.BouncyCastle.Tls;
 using Persistence.Contexts;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System;
-using Application.Repositories;
 using Persistence.Repositories;
-using Application.Services;
 using Persistence.Services;
 
 namespace Persistence
@@ -34,9 +30,15 @@ namespace Persistence
             services.AddScoped<IDoctorRepository, DoctorRepository>();
             services.AddScoped<IBranchRepository, BranchRepository>();
 
+            services.AddScoped<IDoctorScheduleRepository, DoctorScheduleRepository>();
 
             services.AddScoped<IUserOperationClaimRepository, UserOperationClaimRepository>();
             services.AddScoped<IUserOperationClaimService, UserOperationClaimService>();
+            services.AddScoped<IUserService, UserService>();
+
+            services.AddScoped<IAppointmentIntervalRepository, AppointmentIntervalRepository>();
+            services.AddScoped<IAppointmentIntervalService, AppointmentIntervalService>();
+
 
             //Repositories & Services
             return services;
