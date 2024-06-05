@@ -22,6 +22,10 @@
 
   <ItemGroup>
     <Folder Include="Features\Branchs\Queries\" />
+    <Folder Include="Features\DoctorSchedule\Constatnts\" />
+    <Folder Include="Features\DoctorSchedule\Validations\" />
+    <Folder Include="Features\DoctorSchedule\Rules\" />
+    <Folder Include="Features\DoctorSchedule\Queries\" />
     <Folder Include="Features\Doctors\Constants\" />
     <Folder Include="Features\Doctors\Rules\" />
   </ItemGroup>
