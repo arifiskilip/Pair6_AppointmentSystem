@@ -39,6 +39,8 @@ namespace Persistence
             services.AddScoped<IAppointmentIntervalRepository, AppointmentIntervalRepository>();
             services.AddScoped<IAppointmentIntervalService, AppointmentIntervalService>();
 
+            services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+
 
             //Repositories & Services
             return services;
