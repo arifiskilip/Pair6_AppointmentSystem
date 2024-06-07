@@ -20,5 +20,13 @@ namespace Application.Features.AppointmentInterval.Rules
                 throw new BusinessException("Branş alanı zorunlu");
             }
         }
+
+        public void SelectedEntityIsAvaible(Domain.Entities.AppointmentInterval appointment)
+        {
+            if (appointment is null)
+            {
+                throw new BusinessException("Böyle bir randevu mevcut değil!");
+            }
+        }
     }
 }

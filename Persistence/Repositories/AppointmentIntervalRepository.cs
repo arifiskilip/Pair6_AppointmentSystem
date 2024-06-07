@@ -2,6 +2,7 @@
 using Core.Persistence.Paging;
 using Core.Persistence.Repositories;
 using Domain.Entities;
+using Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
 
@@ -19,7 +20,8 @@ namespace Persistence.Repositories
                 .AsQueryable()
                 .Include(i => i.Doctor).ThenInclude(i => i.Branch)
                 .Include(i => i.Doctor).ThenInclude(i => i.Title)
-                .Where(x => x.Doctor.BranchId == branchId);
+                .Where(x => x.Doctor.BranchId == branchId && 
+                (x.AppointmentStatusId == (int)AppointmentStatusEnum.Available || x.AppointmentStatusId == (int)AppointmentStatusEnum.Canceled));
             if (doctorId.HasValue)
             {
                 query = query.Where(ai => ai.DoctorId == doctorId.Value);
