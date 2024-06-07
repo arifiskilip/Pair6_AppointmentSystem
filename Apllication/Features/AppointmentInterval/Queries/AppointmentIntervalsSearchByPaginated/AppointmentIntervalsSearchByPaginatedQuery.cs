@@ -2,6 +2,7 @@
 using Application.Repositories;
 using AutoMapper;
 using Core.Persistence.Paging;
+using Domain.Dtos;
 using MediatR;
 
 namespace Application.Features.AppointmentInterval.Queries.AppointmentIntervalsSearchByPaginated

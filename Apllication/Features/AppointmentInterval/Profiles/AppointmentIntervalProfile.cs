@@ -1,6 +1,7 @@
 ﻿using Application.Features.AppointmentInterval.Queries.AppointmentIntervalsSearchByPaginated;
 using Application.Features.AppointmentInterval.Queries.GetById;
 using AutoMapper;
+using Domain.Dtos;
 
 namespace Application.Features.AppointmentInterval.Profiles
 {
