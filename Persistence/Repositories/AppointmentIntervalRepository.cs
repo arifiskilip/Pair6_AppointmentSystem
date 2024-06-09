@@ -55,9 +55,12 @@ namespace Persistence.Repositories
                 {
                     query = query.Where(ai => ai.IntervalDate >= DateTime.Now);
                 }
-            } 
+            }
+
+            var result = query.GroupBy(a => a.DoctorId)
+               .Select(g => g.OrderBy(a => a.IntervalDate).FirstOrDefault());
             return Paginate<AppointmentInterval>.Create(
-                source:query,
+                source: result,
                 pageIndex:index,
                 pageSize:size);
         }

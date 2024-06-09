@@ -14,8 +14,8 @@ namespace Application.Features.AppointmentInterval.Profiles
            .ForMember(dest => dest.TitleId, opt => opt.MapFrom(src => src.Doctor.TitleId))
            .ForMember(dest => dest.TitleName, opt => opt.MapFrom(src => src.Doctor.Title.Name))
            .ForMember(dest => dest.BranchId, opt => opt.MapFrom(src => src.Doctor.BranchId))
-           .ForMember(dest => dest.BranchName, opt => opt.MapFrom(src => src.Doctor.Branch.Name));
-
+           .ForMember(dest => dest.BranchName, opt => opt.MapFrom(src => src.Doctor.Branch.Name))
+           .ForMember(dest => dest.IntervalDateMessage, opt => opt.MapFrom(src => Math.Floor((src.IntervalDate - DateTime.Now).TotalDays) + " Gün Kaldı."));
             CreateMap<Domain.Entities.AppointmentInterval, AppointmentIntervalsSearchByPaginatedResponse>().ReverseMap();
             CreateMap<Domain.Entities.AppointmentInterval, AppointmentIntervalsSearchByPaginatedQuery>().ReverseMap();
 
