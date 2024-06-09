@@ -1,11 +1,9 @@
 ﻿using Application.Features.Branchs.Commands.Add;
+using Application.Features.Branchs.Queries.GetAll;
+using Application.Features.Branchs.Queries.GetAllByPaginated;
 using AutoMapper;
+using Domain.Dtos;
 using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Branchs.Profiles
 {
@@ -15,6 +13,12 @@ namespace Application.Features.Branchs.Profiles
         {
             CreateMap<Branch,AddBranchCommand>().ReverseMap();
             CreateMap<Branch, AddBranchResponse>().ReverseMap();
+
+            CreateMap<Branch, BranchDto>().ReverseMap();
+
+            CreateMap<Branch, GetAllBranchResponse>().ReverseMap();
+
+            CreateMap<Branch, GetAllByPaginatedBranchResponse>().ReverseMap();
         }
     }
 }
