@@ -1,4 +1,5 @@
 ﻿using Application.Features.Branchs.Commands.Add;
+using Application.Features.Branchs.Queries.GetById;
 using AutoMapper;
 using Domain.Entities;
 using System;
@@ -15,6 +16,8 @@ namespace Application.Features.Branchs.Profiles
         {
             CreateMap<Branch,AddBranchCommand>().ReverseMap();
             CreateMap<Branch, AddBranchResponse>().ReverseMap();
+
+            CreateMap<Branch, GetByIdBranchResponse>().ReverseMap();
         }
     }
 }

@@ -1,15 +1,8 @@
-﻿using Application.Features.Branchs.Constants;
-using Application.Features.Branchs.Rules;
+﻿using Application.Features.Branchs.Rules;
 using Application.Repositories;
 using AutoMapper;
-using Core.Application.Pipelines.Authorization;
 using Domain.Entities;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Branchs.Commands.Add
 {

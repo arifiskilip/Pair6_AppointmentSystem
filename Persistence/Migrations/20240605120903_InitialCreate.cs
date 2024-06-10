@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -179,8 +179,7 @@ namespace Persistence.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DoctorId = table.Column<int>(type: "int", nullable: false),
                     Day = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IntervalStart = table.Column<TimeSpan>(type: "time", nullable: false),
-                    IntervalEnd = table.Column<TimeSpan>(type: "time", nullable: false),
+                    Interval = table.Column<TimeSpan>(type: "time", nullable: false),
                     AppointmentStatusId = table.Column<short>(type: "smallint", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)

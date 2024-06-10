@@ -21,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Branchs\Queries\" />
     <Folder Include="Features\Doctors\Commands\" />
     <Folder Include="Features\Doctors\Constants\" />
     <Folder Include="Features\Doctors\Queries\" />
