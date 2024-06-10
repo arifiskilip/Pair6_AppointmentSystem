@@ -1,18 +1,12 @@
 ﻿using Application.Features.Auth.Rules;
 using Application.Repositories;
 using Core.Application.Pipelines.Authorization;
+using Core.CrossCuttingConcers.Exceptions.Types;
 using Core.Security.Hashing;
 using Core.Security.JWT;
-using Domain.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Auth.Command.UpdatePassword
 {
@@ -46,7 +40,7 @@ namespace Application.Features.Auth.Command.UpdatePassword
 
                 if (userId == null)
                 {
-                    throw new Exception("Kullanıcı kimliği bulunamadı.");
+                    throw new BusinessException("Kullanıcı kimliği bulunamadı.");
                 }
 
                 var user = await _userRepository.GetAsync(u => u.Id == int.Parse(userId));

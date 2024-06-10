@@ -6,7 +6,6 @@ namespace Domain.Entities
     {
         public DateTime BirthDate { get; set; }
         public string? IdentityNumber { get; set; }
-
         public virtual ICollection<UserOperationClaim> UserOperationClaims { get; set; }
 
     }
