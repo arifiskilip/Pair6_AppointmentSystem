@@ -1,5 +1,6 @@
 ﻿using Application.Features.Doctors.Commands.Update;
-using Application.Features.Doctors.Queries;
+using Application.Features.Doctors.Queries.GetAllPaginated;
+using Application.Features.Doctors.Queries.GetById;
 using AutoMapper;
 using Domain.Entities;
 using System;
@@ -39,7 +40,7 @@ namespace Application.Features.Doctors.Profiles
                 .ForMember(dest => dest.TitleName, opt => opt.MapFrom(src => src.Title.Name))
                 .ForMember(dest => dest.BranchName, opt => opt.MapFrom(src => src.Branch.Name));
 
-
+            CreateMap<Doctor, GetByIdDoctorResponse>().ReverseMap();
         }
     }
 }

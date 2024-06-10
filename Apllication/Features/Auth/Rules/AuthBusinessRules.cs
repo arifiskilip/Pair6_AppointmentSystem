@@ -2,6 +2,8 @@
 using Application.Repositories;
 using Core.Application.Rules;
 using Core.CrossCuttingConcers.Exceptions.Types;
+using Core.Security.Hashing;
+using Domain.Entities;
 
 namespace Application.Features.Auth.Rules
 {
@@ -20,6 +22,36 @@ namespace Application.Features.Auth.Rules
                 predicate: x => x.Email.ToLower() == email.ToLower(),
                 enableTracking: false);
             if (check) throw new BusinessException(AuthMessages.DuplicateEmail);
+        }
+
+        public async Task<User> UserEmailCheck(string email)
+        {
+            User? user = await _userRepository.GetAsync(x => x.Email.ToLower() == email.ToLower());
+            if (user is null) throw new BusinessException(AuthMessages.UserEmailNotFound);
+            return user;
+        }
+        public void IsPasswordCorrectWhenLogin(User user, string password)
+        {
+            var check = HashingHelper.VerifyPasswordHash(password: password, passwordHash: user.PasswordHash, passwordSalt: user.PasswordSalt);
+            if (!check) throw new BusinessException(AuthMessages.UserEmailNotFound);
+        }
+
+        public void CheckNewPasswordsMatch(string newPassword, string newPasswordAgain)
+        {
+            if (newPassword != newPasswordAgain)
+            {
+                throw new BusinessException(AuthMessages.PasswordsDontMatch);
+            }
+        }
+
+        public void IsSelectedEntityAvailable(User? user)
+        {
+            if (user == null) throw new BusinessException(AuthMessages.UserNotFound);
+        }
+        public void IsCurrentPasswordCorrect(User user, string currentPassword)
+        {
+            var check = HashingHelper.VerifyPasswordHash(currentPassword, user.PasswordHash, user.PasswordSalt);
+            if (!check) throw new BusinessException(AuthMessages.CurrentPasswordWrong);
         }
     }
 }
