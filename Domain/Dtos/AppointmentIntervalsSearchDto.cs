@@ -6,6 +6,7 @@ namespace Domain.Dtos
     {
         public int Id { get; set; }
         public DateTime IntervalDate { get; set; }
+        public string IntervalDateMessage { get; set; }
         public int DoctorId { get; set; }
         public string DoctorName { get; set; }
         public short TitleId { get; set; }
