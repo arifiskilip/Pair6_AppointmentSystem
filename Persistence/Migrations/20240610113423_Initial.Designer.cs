@@ -12,8 +12,8 @@ using Persistence.Contexts;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(AppointmentSystemContext))]
-    [Migration("20240605172050_editAppointmentInterval")]
-    partial class editAppointmentInterval
+    [Migration("20240610113423_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -159,8 +159,8 @@ namespace Persistence.Migrations
                     b.Property<TimeSpan>("EndTime")
                         .HasColumnType("time");
 
-                    b.Property<TimeSpan>("PatientInterval")
-                        .HasColumnType("time");
+                    b.Property<int>("PatientInterval")
+                        .HasColumnType("int");
 
                     b.Property<TimeSpan>("StartTime")
                         .HasColumnType("time");

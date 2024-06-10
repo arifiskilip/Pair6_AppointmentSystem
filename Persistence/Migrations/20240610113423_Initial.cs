@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -178,9 +178,7 @@ namespace Persistence.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DoctorId = table.Column<int>(type: "int", nullable: false),
-                    Day = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IntervalStart = table.Column<TimeSpan>(type: "time", nullable: false),
-                    IntervalEnd = table.Column<TimeSpan>(type: "time", nullable: false),
+                    IntervalDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     AppointmentStatusId = table.Column<short>(type: "smallint", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -212,7 +210,7 @@ namespace Persistence.Migrations
                     Day = table.Column<DateTime>(type: "datetime2", nullable: false),
                     StartTime = table.Column<TimeSpan>(type: "time", nullable: false),
                     EndTime = table.Column<TimeSpan>(type: "time", nullable: false),
-                    PatientInterval = table.Column<TimeSpan>(type: "time", nullable: false),
+                    PatientInterval = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },

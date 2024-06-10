@@ -22,8 +22,8 @@ namespace Application.Features.Branchs.Queries.GetAll
 
             public async Task<GetAllBranchResponse> Handle(GetAllBranchQuery request, CancellationToken cancellationToken)
             {
-                var branches = await _branchRespository.GetListAsync();
-                List<BranchDto> branchDtos = _mapper.Map<List<BranchDto>>(branches.Items);
+                var branches = await _branchRespository.GetListNotPagedAsync();
+                List<BranchDto> branchDtos = _mapper.Map<List<BranchDto>>(branches);
 
                 return new GetAllBranchResponse
                 {

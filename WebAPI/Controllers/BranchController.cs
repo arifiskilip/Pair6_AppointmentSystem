@@ -1,4 +1,5 @@
 ﻿using Application.Features.Branchs.Commands.Add;
+using Application.Features.Branchs.Commands.Update;
 using Application.Features.Branchs.Queries.GetAll;
 using Application.Features.Branchs.Queries.GetAllByPaginated;
 using Microsoft.AspNetCore.Mvc;
@@ -32,6 +33,13 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> GetAllByPaginated([FromQuery] GetAllByPaginatedBranchQuery query)
         {
             var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateBranchCommand command)
+        {
+            var result = await _mediator.Send(command);
             return Ok(result);
         }
 
