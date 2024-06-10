@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.Doctors.Queries
+namespace Application.Features.Doctors.Queries.GetAllPaginated
 {
     public class GetAllPaginatedDoctorResponse
     {

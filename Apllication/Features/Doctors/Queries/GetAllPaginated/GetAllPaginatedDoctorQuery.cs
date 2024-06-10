@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.Doctors.Queries
+namespace Application.Features.Doctors.Queries.GetAllPaginated
 {
     public class GetAllPaginatedDoctorQuery : IRequest<GetAllPaginatedDoctorResponse>
     {
@@ -20,13 +20,13 @@ namespace Application.Features.Doctors.Queries
         {
             private readonly IDoctorRepository _doctorRepository;
             private readonly IMapper _mapper;
-           
+
 
             public GetAllPaginatedDoctorQueryHandler(IDoctorRepository doctorRepository, IMapper mapper)
             {
                 _doctorRepository = doctorRepository;
                 _mapper = mapper;
-               
+
             }
 
             public async Task<GetAllPaginatedDoctorResponse> Handle(GetAllPaginatedDoctorQuery request, CancellationToken cancellationToken)
@@ -40,9 +40,9 @@ namespace Application.Features.Doctors.Queries
                size: request.Size,
                enableTracking: false,
                cancellationToken: cancellationToken
-       );
+            );
+                
 
-             
 
                 var doctorDtos = _mapper.Map<List<ListDoctorDto>>(doctors.Items);
 

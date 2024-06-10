@@ -9,11 +9,32 @@
                 return "Bu email adresi zaten mevcut!";
             }
         }
-        public static string CustomerEmailNotFound
+        public static string UserEmailNotFound
         {
             get
             {
                 return "Kullanıcı adı veye şifre hatalı!";
+            }
+        }
+        public static string PasswordsDontMatch
+        {
+            get
+            {
+                return "Şifreler eşleşmiyor";
+            }
+        }
+        public static string UserNotFound
+        {
+            get
+            {
+                return "Böyle bir kullanıcı bulunamadı";
+            }
+        }
+        public static string CurrentPasswordWrong
+        {
+            get
+            {
+                return "Mevcut şifreniz hatalı";
             }
         }
     }
