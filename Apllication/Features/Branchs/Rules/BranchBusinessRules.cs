@@ -40,9 +40,9 @@ namespace Application.Features.Branchs.Rules
             }
         }
 
-        public void IsSelectedEntityAvailable(Title? title)
-        {
-            if (title == null) throw new BusinessException(BranchMessages.BranchNameNotAvailable);
-        }
-    }
+		public void IsSelectedEntityAvailable(Branch? branch)
+		{
+			if (branch == null) throw new BusinessException(BranchMessages.BranchNameNotAvailable);
+		}
+	}
 }
