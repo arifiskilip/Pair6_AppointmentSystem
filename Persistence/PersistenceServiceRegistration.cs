@@ -21,6 +21,8 @@ namespace Persistence
             });
 
             //IoC Inversion Of Control
+            services.AddScoped<IAuthService, AuthService>();
+
             services.AddScoped<IUserRepository, UserRepository>();
 
 

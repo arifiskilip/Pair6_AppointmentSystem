@@ -1,12 +1,9 @@
 ﻿using Application.Features.Auth.Rules;
 using Application.Repositories;
+using Application.Services;
 using Core.Application.Pipelines.Authorization;
-using Core.CrossCuttingConcers.Exceptions.Types;
 using Core.Security.Hashing;
-using Core.Security.JWT;
 using MediatR;
-using Microsoft.AspNetCore.Http;
-using System.Security.Claims;
 
 namespace Application.Features.Auth.Command.UpdatePassword
 {
@@ -20,30 +17,23 @@ namespace Application.Features.Auth.Command.UpdatePassword
         public class UpdatePasswordCommandHandler : IRequestHandler<UpdatePasswordCommand, UpdatePasswordResponse>
         {
             private readonly IUserRepository _userRepository;
-            private readonly IHttpContextAccessor _httpContextAccessor;
-            private readonly ITokenHelper _tokenHelper;
             private readonly AuthBusinessRules _authBusinessRules;
+            private readonly IAuthService _authService;
 
-            public UpdatePasswordCommandHandler(IUserRepository userRepository, IHttpContextAccessor httpContextAccessor, ITokenHelper tokenHelper, AuthBusinessRules authBusinessRules)
+            public UpdatePasswordCommandHandler(IUserRepository userRepository, AuthBusinessRules authBusinessRules, IAuthService authService)
             {
                 _userRepository = userRepository;
-                _httpContextAccessor = httpContextAccessor;
-                _tokenHelper = tokenHelper;
                 _authBusinessRules = authBusinessRules;
+                _authService = authService;
             }
 
             public async Task<UpdatePasswordResponse> Handle(UpdatePasswordCommand request, CancellationToken cancellationToken)
             {
 
                 // Kullanıcı ID'sini HttpContext'ten al
-                var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                int userId = await _authService.GetAuthenticatedUserIdAsync();
 
-                if (userId == null)
-                {
-                    throw new BusinessException("Kullanıcı kimliği bulunamadı.");
-                }
-
-                var user = await _userRepository.GetAsync(u => u.Id == int.Parse(userId));
+                var user = await _userRepository.GetAsync(u => u.Id == userId);
 
                
                 _authBusinessRules.IsSelectedEntityAvailable(user);
@@ -51,7 +41,9 @@ namespace Application.Features.Auth.Command.UpdatePassword
                 _authBusinessRules.CheckNewPasswordsMatch(request.NewPassword, request.NewPasswordAgain);
 
                 byte[] passwordHash, passwordSalt;
+
                 HashingHelper.CreatePasswordHash(request.NewPassword, out passwordHash, out passwordSalt);
+
                 user.PasswordHash = passwordHash;
                 user.PasswordSalt = passwordSalt;
 
