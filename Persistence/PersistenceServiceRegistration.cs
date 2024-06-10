@@ -26,6 +26,7 @@ namespace Persistence
 
             services.AddScoped<ITitleRepository, TitleRepository>();
 
+            services.AddScoped<IPatientRepository, PatientRepository>();
 
             services.AddScoped<IDoctorRepository, DoctorRepository>();
             services.AddScoped<IBranchRepository, BranchRepository>();
