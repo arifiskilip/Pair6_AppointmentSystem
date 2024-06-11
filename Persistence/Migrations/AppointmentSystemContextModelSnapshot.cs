@@ -72,14 +72,11 @@ namespace Persistence.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("Day")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("DoctorId")
                         .HasColumnType("int");
 
-                    b.Property<TimeSpan>("Interval")
-                        .HasColumnType("time");
+                    b.Property<DateTime>("IntervalDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -159,8 +156,8 @@ namespace Persistence.Migrations
                     b.Property<TimeSpan>("EndTime")
                         .HasColumnType("time");
 
-                    b.Property<TimeSpan>("PatientInterval")
-                        .HasColumnType("time");
+                    b.Property<int>("PatientInterval")
+                        .HasColumnType("int");
 
                     b.Property<TimeSpan>("StartTime")
                         .HasColumnType("time");
