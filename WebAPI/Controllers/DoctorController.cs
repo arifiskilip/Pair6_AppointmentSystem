@@ -1,5 +1,6 @@
 ﻿using Application.Features.Doctors.Commands.Update;
-using Application.Features.Doctors.Queries;
+using Application.Features.Doctors.Queries.GetAllPaginated;
+using Application.Features.Doctors.Queries.GetById;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -20,6 +21,14 @@ namespace WebAPI.Controllers
         {
             var result = await _mediator.Send(command);
             
+            return Ok(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetByIdDoctor([FromQuery] GetByIdDoctorQuery query)
+        {
+            var result = await _mediator.Send(query);
+
             return Ok(result);
         }
     }

@@ -1,6 +1,9 @@
 ﻿using Application.Features.AppointmentInterval.Queries.AppointmentIntervalsSearchByPaginated;
 using Application.Features.AppointmentInterval.Queries.GetById;
+using Application.Features.AppointmentInterval.Queries.GetPaginatedGroupedIntervalsByDoctorId;
 using Application.Repositories;
+using Core.Domain;
+using Core.Persistence.Paging;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -29,10 +32,11 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Test()
+        public async Task<IActionResult> GetPaginatedGroupedIntervalsByDoctorId([FromQuery] GetPaginatedGroupedIntervalsByDoctorIdQuery query)
         {
-            var result = await _appointmentIntervalRepository.Test(1, null, DateTime.Parse("2024.06.06"), null, null, null);
+            var result = await _mediator.Send(query);
             return Ok(result);
         }
+
     }
 }

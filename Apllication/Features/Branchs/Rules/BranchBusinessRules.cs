@@ -1,14 +1,8 @@
 ﻿using Application.Features.Branchs.Constants;
-using Application.Features.Titles.Constants;
 using Application.Repositories;
 using Core.Application.Rules;
 using Core.CrossCuttingConcers.Exceptions.Types;
 using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Branchs.Rules
 {
@@ -40,9 +34,16 @@ namespace Application.Features.Branchs.Rules
             }
         }
 
-		public void IsSelectedEntityAvailable(Branch? branch)
-		{
-			if (branch == null) throw new BusinessException(BranchMessages.BranchNameNotAvailable);
-		}
-	}
+
+
+
+        public void IsSelectedEntityAvailable(Branch? checkEntity)
+        {
+            if (checkEntity == null) throw new BusinessException(BranchMessages.BranchNameNotAvailable);
+
+        }
+
+
+    }
 }
+

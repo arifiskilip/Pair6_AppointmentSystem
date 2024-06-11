@@ -10,7 +10,6 @@ namespace Application.Features.Titles.Queries.GetById
     {
         public int Id { get; set; }
 
-
         public class GetByIdTitleHandler : IRequestHandler<GetByIdTitleQuery, GetByIdTitleReponse>
         {
             private readonly ITitleRepository _titleRepository;
