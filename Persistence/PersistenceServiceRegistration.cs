@@ -21,12 +21,15 @@ namespace Persistence
             });
 
             //IoC Inversion Of Control
+            services.AddScoped<IAuthService, AuthService>();
+
             services.AddScoped<IUserRepository, UserRepository>();
 
 
             services.AddScoped<ITitleRepository, TitleRepository>();
 
             services.AddScoped<IPatientRepository, PatientRepository>();
+            services.AddScoped<IPatientService, PatientService>();
 
             services.AddScoped<IDoctorRepository, DoctorRepository>();
             services.AddScoped<IBranchRepository, BranchRepository>();

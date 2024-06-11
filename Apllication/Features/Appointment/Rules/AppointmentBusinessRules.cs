@@ -7,10 +7,12 @@ namespace Application.Features.Appointment.Rules
     public class AppointmentBusinessRules : BaseBusinessRules
     {
         private readonly IAppointmentIntervalService _appointmentIntervalService;
+        private readonly IPatientService _patientService;
 
-        public AppointmentBusinessRules(IAppointmentIntervalService appointmentIntervalService)
+        public AppointmentBusinessRules(IAppointmentIntervalService appointmentIntervalService, IPatientService patientService)
         {
             _appointmentIntervalService = appointmentIntervalService;
+            _patientService = patientService;
         }
 
         public async Task AppointmentIntervalAvailable(int appointmentIntervalId)
@@ -24,7 +26,11 @@ namespace Application.Features.Appointment.Rules
 
         public async Task PatientAvailable(int patientId)
         {
-
+            bool result = await _patientService.IsPatientAvailableAsync(patientId);
+            if (!result)
+            {
+                throw new BusinessException("Sistemde böyle bir hasta mevcut değil.");
+            }
         }
     }
 }

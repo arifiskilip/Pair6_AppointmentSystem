@@ -1,4 +1,5 @@
 ﻿using Application.Features.Auth.Command.DoctorRegister;
+using Application.Features.Auth.Command.Login;
 using Application.Features.Auth.Command.PatientRegister;
 using AutoMapper;
 using Domain.Entities;
@@ -17,6 +18,8 @@ namespace Application.Features.Auth.Profiles
             CreateMap<Doctor, DoctorRegisterResponse>()
                 .ForMember(x => x.BranchName, opt => opt.MapFrom(x => x.Branch.Name))
                 .ForMember(x => x.TitleName, opt => opt.MapFrom(x => x.Title.Name));
+
+            CreateMap<User, LoginResponse>().ReverseMap();
         }
     }
 }
