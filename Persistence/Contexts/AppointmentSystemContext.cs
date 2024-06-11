@@ -1,5 +1,4 @@
 ﻿using Core.Domain;
-using Core.Security.Entitites;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -25,6 +24,8 @@ namespace Persistence.Contexts
         public DbSet<Report> Reports { get; set; }
         public DbSet<Title> Titles { get; set; }
         public DbSet<Domain.Entities.UserOperationClaim> UserOperationClaims { get; set; }
+        public DbSet<VerificationCode> VerificationCodes { get; set; }
+        public DbSet<CodeType> CodeTypes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

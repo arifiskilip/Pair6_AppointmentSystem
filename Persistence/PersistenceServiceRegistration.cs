@@ -46,6 +46,8 @@ namespace Persistence
             services.AddScoped<IAppointmentRepository, AppointmentRepository>();
 
 
+            services.AddScoped<IVerificationCodeRepository, VerificationCodeRepository>();
+
             //Repositories & Services
             return services;
         }
