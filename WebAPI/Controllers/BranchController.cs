@@ -1,6 +1,8 @@
 ﻿using Application.Features.Branchs.Commands.Add;
-
 using Application.Features.Branchs.Queries.GetById;
+using Application.Features.Branchs.Commands.Update;
+using Application.Features.Branchs.Queries.GetAll;
+using Application.Features.Branchs.Queries.GetAllByPaginated;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,11 +25,36 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetById([FromQuery] GetByIdBranchQuery query)
+
+         public async Task<IActionResult> GetById([FromQuery] GetByIdBranchQuery query)
+        {
+           var result = await _mediator.Send(query);
+          return Ok(result);
+        }
+        
+         [HttpGet]
+        public async Task<IActionResult> GetAll([FromQuery] GetAllBranchQuery query)
+
         {
             var result = await _mediator.Send(query);
             return Ok(result);
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllByPaginated([FromQuery] GetAllByPaginatedBranchQuery query)
+        {
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateBranchCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+
 
     }
 }

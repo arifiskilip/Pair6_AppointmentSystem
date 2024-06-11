@@ -34,14 +34,17 @@ namespace Application.Features.Branchs.Rules
             }
         }
 
-        //public void IsSelectedEntityAvailable(Title? title)
-        //{
-        //    if (title == null) throw new BusinessException(BranchMessages.BranchNameNotAvailable);
-        //}
 
-        public void IsSelectedEntityAvailable(Branch? checkBranch)
+
+        public void IsSelectedEntityAvailable(Branch? checkEntity)
         {
-            if (checkBranch == null) throw new BusinessException(BranchMessages.BranchNameNotAvailable);
+            if (checkEntity == null) throw new BusinessException(BranchMessages.BranchNameNotAvailable);
+
         }
+
+        //internal void IsSelectedEntityAvailable(Branch? checkEntity)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
