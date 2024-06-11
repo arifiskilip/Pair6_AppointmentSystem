@@ -36,15 +36,14 @@ namespace Application.Features.Branchs.Rules
 
 
 
+
         public void IsSelectedEntityAvailable(Branch? checkEntity)
         {
             if (checkEntity == null) throw new BusinessException(BranchMessages.BranchNameNotAvailable);
 
         }
 
-        //internal void IsSelectedEntityAvailable(Branch? checkEntity)
-        //{
-        //    throw new NotImplementedException();
-        //}
+
     }
 }
+

@@ -1,8 +1,15 @@
 ﻿using Application.Features.Branchs.Commands.Add;
+using Application.Features.Branchs.Commands.Delete;
+using Application.Features.Titles.Commands.Add;
+using Application.Features.Titles.Commands.Delete;
+using Application.Features.Titles.Commands.Update;
+using Application.Features.Titles.Queries.GetAllByPaginated;
+using Application.Features.Titles.Queries.GetById;
 using Application.Features.Branchs.Queries.GetById;
 using Application.Features.Branchs.Commands.Update;
 using Application.Features.Branchs.Queries.GetAll;
 using Application.Features.Branchs.Queries.GetAllByPaginated;
+
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,6 +30,17 @@ namespace WebAPI.Controllers
             var result = await _mediator.Send(command);
             return Created(string.Empty, result);
         }
+
+
+      [HttpDelete]
+      public async Task<IActionResult> Delete([FromQuery] DeleteBranchCommand command)
+      {
+
+        var result = await _mediator.Send(command);
+        return Ok(result);
+      }
+
+
 
         [HttpGet]
 
@@ -58,3 +76,4 @@ namespace WebAPI.Controllers
 
     }
 }
+
