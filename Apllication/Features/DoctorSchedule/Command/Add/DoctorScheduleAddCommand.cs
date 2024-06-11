@@ -74,7 +74,7 @@ namespace Application.Features.DoctorSchedule.Command.Add
                     await _appointmentIntervalService.AddAsync(new()
                     {
                         AppointmentStatusId = (int)AppointmentStatusEnum.Available,
-                        DoctorId = 1,
+                        DoctorId = request.DoctorId,
                         IntervalDate = item,
                     });
                 }

@@ -21,6 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\AppointmentInterval\Commands\" />
+    <Folder Include="Features\AppointmentInterval\Constants\" />
+    <Folder Include="Features\AppointmentInterval\Validations\" />
     <Folder Include="Features\Appointment\Constants\" />
     <Folder Include="Features\Appointment\Queries\" />
     <Folder Include="Features\Branchs\Queries\" />
