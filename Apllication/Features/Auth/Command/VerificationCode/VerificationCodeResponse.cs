@@ -7,4 +7,5 @@
         public int CodeTypeId { get; set; }
         public int UserId { get; set; }
     }
+
 }
