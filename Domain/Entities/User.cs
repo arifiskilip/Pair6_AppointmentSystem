@@ -7,6 +7,7 @@ namespace Domain.Entities
         public DateTime BirthDate { get; set; }
         public bool IsEmailVerified { get; set; } = false;
         public string? IdentityNumber { get; set; }
+        public string? ImageUrl { get; set; }
         public virtual ICollection<UserOperationClaim> UserOperationClaims { get; set; }
 
     }
