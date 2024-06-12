@@ -2,6 +2,8 @@
 using Application.Repositories;
 using Core.Application.Rules;
 using Core.CrossCuttingConcers.Exceptions.Types;
+using Core.Security.Hashing;
+using Domain.Entities;
 using MailKit;
 
 namespace Application.Features.Auth.Rules
@@ -29,10 +31,17 @@ namespace Application.Features.Auth.Rules
             if (!check) throw new BusinessException(AuthMessages.UserNotFound);
         }
 
+        public void IsPasswordCorrectWhenLogin(User user, string password)
+        {
+            var check = HashingHelper.VerifyPasswordHash(password: password, passwordHash: user.PasswordHash, passwordSalt: user.PasswordSalt);
+            if (!check) throw new BusinessException(AuthMessages.UserEmailNotFound);
+        }
+
         public async Task<User> UserEmailCheck(string email)
         {
-            bool check = await _userRepository.AnyAsync(x=> x.Id == userId);
-            if (!check) throw new BusinessException(AuthMessages.UserNotFound);
+            var user = await _userRepository.GetAsync(x=> x.Email.ToLower() == email);
+            if (user is not null) throw new BusinessException(AuthMessages.UserNotFound);
+            return user;
         }
 
         public void CheckNewPasswordsMatch(string newPassword, string newPasswordAgain)
