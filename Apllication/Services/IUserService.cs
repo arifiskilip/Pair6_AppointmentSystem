@@ -5,6 +5,6 @@ namespace Application.Services
     public interface IUserService
     {
         Task<User> UpdateAsync(User user);
-        Task SetCustomerEmailVerified(string email);
+        Task SetCustomerEmailVerified(int userId);
     }
 }

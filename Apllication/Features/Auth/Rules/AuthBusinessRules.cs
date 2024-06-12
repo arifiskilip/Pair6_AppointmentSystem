@@ -25,8 +25,22 @@ namespace Application.Features.Auth.Rules
 
         public async Task CheckUserByIdAsync(int userId)
         {
+            bool check = await _userRepository.AnyAsync(x => x.Id == userId);
+            if (!check) throw new BusinessException(AuthMessages.UserNotFound);
+        }
+
+        public async Task<User> UserEmailCheck(string email)
+        {
             bool check = await _userRepository.AnyAsync(x=> x.Id == userId);
             if (!check) throw new BusinessException(AuthMessages.UserNotFound);
+        }
+
+        public void CheckNewPasswordsMatch(string newPassword, string newPasswordAgain)
+        {
+            if (newPassword != newPasswordAgain)
+            {
+                throw new BusinessException(AuthMessages.PasswordsDontMatch);
+            }
         }
 
         public async Task<string> GetUserEmailAsync(int userId)
@@ -37,6 +51,16 @@ namespace Application.Features.Auth.Rules
                 return user.Email;
             }
             throw new BusinessException(AuthMessages.UserNotFound);
+        }
+
+        public void IsSelectedEntityAvailable(User? user)
+        {
+            if (user == null) throw new BusinessException(AuthMessages.UserNotFound);
+        }
+        public void IsCurrentPasswordCorrect(User user, string currentPassword)
+        {
+            var check = HashingHelper.VerifyPasswordHash(currentPassword, user.PasswordHash, user.PasswordSalt);
+            if (!check) throw new BusinessException(AuthMessages.CurrentPasswordWrong);
         }
     }
 }

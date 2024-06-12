@@ -1,4 +1,5 @@
-﻿using Application.Features.Auth.Rules;
+﻿using Application.Features.Auth.Constant;
+using Application.Features.Auth.Rules;
 using Application.Repositories;
 using Application.Services;
 using AutoMapper;
@@ -49,14 +50,14 @@ namespace Application.Features.Auth.Command.VerificationCode
                         ExpirationDate = DateTime.Now.AddMinutes(1),
                         Code = code
                     });
-                    await _emailService.SendEmailAsync(userEmail, "Doğrulama kodu", code);
+                    await _emailService.SendEmailAsync(userEmail, AuthMessages.VerificationCode, code);
                     return _mapper.Map<VerificationCodeResponse>(verificationCode);
                 }
 
                 code = GenerateVerificationCode();
                 check.Code = code;
                 check.ExpirationDate = DateTime.Now.AddMinutes(1);
-                await _emailService.SendEmailAsync(userEmail, "Doğrulama kodu", code);
+                await _emailService.SendEmailAsync(userEmail, AuthMessages.VerificationCode, code);
                 await _verificationCodeRepository.UpdateAsync(check);
                 return _mapper.Map<VerificationCodeResponse>(check);
             }
