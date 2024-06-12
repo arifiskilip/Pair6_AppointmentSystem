@@ -2,8 +2,6 @@
 using Application.Features.AppointmentInterval.Queries.GetById;
 using Application.Features.AppointmentInterval.Queries.GetPaginatedGroupedIntervalsByDoctorId;
 using Application.Repositories;
-using Core.Domain;
-using Core.Persistence.Paging;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers

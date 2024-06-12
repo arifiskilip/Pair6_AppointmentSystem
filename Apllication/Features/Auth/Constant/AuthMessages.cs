@@ -37,5 +37,33 @@
                 return "Mevcut şifreniz hatalı";
             }
         }
+        public static string VerificationCode
+        {
+            get
+            {
+                return "Doğrulama Kodu";
+            }
+        }
+        public static string VerificationCodeTimeout
+        {
+            get
+            {
+                return "Doğrulama kodun süresi dolmuş. Lütfen yeni bir kod talep edip tekrar deneyin.";
+            }
+        }
+        public static string IncorrectVerificationCode
+        {
+            get
+            {
+                return "Eksik veya hatalı bir kod denediniz. Lütfen doğrulama kodunu kontrol edip tekrar deneyiniz.";
+            }
+        }
+        public static string SuccessVerificationCode
+        {
+            get
+            {
+                return "Başarılı bir şekilde aktivasyon sağlandı.";
+            }
+        }
     }
 }

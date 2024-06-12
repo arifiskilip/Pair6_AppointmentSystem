@@ -24,6 +24,12 @@ namespace Application.Features.Auth.Rules
             if (check) throw new BusinessException(AuthMessages.DuplicateEmail);
         }
 
+        public async Task CheckUserByIdAsync(int userId)
+        {
+            bool check = await _userRepository.AnyAsync(x => x.Id == userId);
+            if (!check) throw new BusinessException(AuthMessages.UserNotFound);
+        }
+
         public async Task<User> UserEmailCheck(string email)
         {
             User? user = await _userRepository.GetAsync(x => x.Email.ToLower() == email.ToLower());
@@ -42,6 +48,16 @@ namespace Application.Features.Auth.Rules
             {
                 throw new BusinessException(AuthMessages.PasswordsDontMatch);
             }
+        }
+
+        public async Task<string> GetUserEmailAsync(int userId)
+        {
+            var user = await _userRepository.GetAsync(predicate: x => x.Id == userId);
+            if (user is not null)
+            {
+                return user.Email;
+            }
+            throw new BusinessException(AuthMessages.UserNotFound);
         }
 
         public void IsSelectedEntityAvailable(User? user)
