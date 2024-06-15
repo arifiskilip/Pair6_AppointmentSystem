@@ -8,7 +8,11 @@ namespace Domain.Entities
         public bool IsEmailVerified { get; set; } = false;
         public string? IdentityNumber { get; set; }
         public string? ImageUrl { get; set; }
+
+        public short GenderId { get; set; }
         public virtual ICollection<UserOperationClaim> UserOperationClaims { get; set; }
+
+        public virtual Gender Gender { get; set; }
 
     }
 }

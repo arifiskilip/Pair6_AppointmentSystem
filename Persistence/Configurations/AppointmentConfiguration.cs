@@ -22,9 +22,9 @@ namespace Persistence.Configurations
                    .OnDelete(DeleteBehavior.Restrict);
 
             // Appointment ve AppointmentInterval arasındaki bire çok ilişki
-            builder.HasOne(x => x.AppointmentInterval)
-               .WithOne(x => x.Appointment)
-               .HasForeignKey<Appointment>(x => x.AppointmentIntervalId);
+            //builder.HasOne(x => x.AppointmentInterval)
+            //   .WithOne(x => x.Appointment)
+            //   .HasForeignKey<Appointment>(x => x.AppointmentIntervalId);
 
 
             // Appointment ve Feedback arasındaki bire bir ilişki
