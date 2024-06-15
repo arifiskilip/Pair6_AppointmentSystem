@@ -7,5 +7,7 @@ namespace Domain.Entities
         public string Name { get; set; }
 
         public virtual ICollection<AppointmentInterval> AppointmentIntervals { get; set; }
+
+        public virtual ICollection<Appointment> Appointments { get; set; }
     }
 }

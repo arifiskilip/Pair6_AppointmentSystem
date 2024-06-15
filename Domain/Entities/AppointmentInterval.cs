@@ -10,6 +10,6 @@ namespace Domain.Entities
 
         public virtual AppointmentStatus AppointmentStatus { get; set; }
         public virtual Doctor Doctor { get; set; }
-        public virtual Appointment? Appointment { get; set; }
+        public virtual ICollection<Appointment> Appointments { get; set; }
     }
 }
