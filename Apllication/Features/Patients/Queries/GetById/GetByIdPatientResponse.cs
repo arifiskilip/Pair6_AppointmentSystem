@@ -13,7 +13,10 @@ namespace Application.Features.Patients.Queries.GetById
         public string LastName { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-        public string BloodType { get; set; }
+        public short GenderId { get; set; }
+        public string GenderName { get; set; }
+        public short BloodTypeId { get; set; }
+        public string BloodTypeName { get; set; }
         public string IdentityNumber { get; set; }
         public DateTime BirthDate { get; set; }
         public DateTime CreatedDate { get; set; }

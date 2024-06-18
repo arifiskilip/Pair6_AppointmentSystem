@@ -22,7 +22,7 @@ namespace Application.Features.Auth.Command.DoctorRegister
         public string Password { get; set; }
         public DateTime BirthDate { get; set; }
         public string? IdentityNumber { get; set; }
-
+        public short GenderId { get; set; }
         public class DoctorRegisterHandler : IRequestHandler<DoctorRegisterCommand, DoctorRegisterResponse>
         {
             private readonly ITokenHelper _tokenHelper;

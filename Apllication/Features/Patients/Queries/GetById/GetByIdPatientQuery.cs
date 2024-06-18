@@ -2,6 +2,7 @@
 using Application.Repositories;
 using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,9 @@ namespace Application.Features.Patients.Queries.GetById
             {
                 var patient = await _patientRepository.GetAsync(
                     predicate: x => x.Id == request.Id,
+                     include: query => query
+                    .Include(d => d.Gender)
+                    .Include(d => d.BloodType),
                     enableTracking: false
                     );
 

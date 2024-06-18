@@ -17,7 +17,8 @@ namespace Application.Features.Auth.Profiles
             CreateMap<Doctor, DoctorRegisterResponse>().ReverseMap();
             CreateMap<Doctor, DoctorRegisterResponse>()
                 .ForMember(x => x.BranchName, opt => opt.MapFrom(x => x.Branch.Name))
-                .ForMember(x => x.TitleName, opt => opt.MapFrom(x => x.Title.Name));
+                .ForMember(x => x.TitleName, opt => opt.MapFrom(x => x.Title.Name))
+                .ForMember(x => x.GenderName, opt => opt.MapFrom(x => x.Gender.Name));
 
             CreateMap<User, LoginResponse>().ReverseMap();
         }

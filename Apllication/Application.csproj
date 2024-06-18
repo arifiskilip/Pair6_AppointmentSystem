@@ -31,7 +31,6 @@
     <Folder Include="Features\AppointmentInterval\Constants\" />
     <Folder Include="Features\AppointmentInterval\Validations\" />
     <Folder Include="Features\Appointment\Constants\" />
-    <Folder Include="Features\Appointment\Queries\" />
     <Folder Include="Features\DoctorSchedule\Constatnts\" />
     <Folder Include="Features\DoctorSchedule\Validations\" />
     <Folder Include="Features\DoctorSchedule\Rules\" />
