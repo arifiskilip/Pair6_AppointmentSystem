@@ -32,9 +32,11 @@ namespace Application.Features.Auth.Validations
                 .Length(11)
                 .Must(BeAValidIdentityNumber).WithMessage("Geçersiz kimlik numarası.");
 
-            RuleFor(user => user.BloodType)
-                .NotEmpty()
-                .Must(BeAValidBloodType).WithMessage("Geçersiz kan grubu.");
+            RuleFor(user => user.BloodTypeId)
+                 .NotEmpty();
+
+            RuleFor(user => user.GenderId)
+                .NotEmpty();
 
             RuleFor(user => user.Password)
                 .NotEmpty()

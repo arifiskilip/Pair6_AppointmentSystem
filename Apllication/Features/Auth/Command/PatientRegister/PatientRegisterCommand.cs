@@ -22,6 +22,9 @@ namespace Application.Features.Auth.Command.PatientRegister
         public string BloodType { get; set; }
         public string Password { get; set; }
 
+        public short BloodTypeId { get; set; }
+        public short GenderId { get; set; }
+
 
         public class PatientRegisterHandler : IRequestHandler<PatientRegisterCommand, PatientRegisterResponse>
         {

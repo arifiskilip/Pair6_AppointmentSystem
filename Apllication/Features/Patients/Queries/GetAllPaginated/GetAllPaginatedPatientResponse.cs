@@ -25,6 +25,9 @@ namespace Application.Features.Patients.Queries.GetAllPaginated
         public string IdentityNumber { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
-        public string BloodType { get; set; }
+        public short GenderId { get; set; }
+        public string GenderName { get; set; }
+        public short BloodTypeId { get; set; }
+        public string BloodTypeName { get; set; }
     }
 }

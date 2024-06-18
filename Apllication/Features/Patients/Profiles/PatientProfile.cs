@@ -16,11 +16,16 @@ namespace Application.Features.Patients.Profiles
     {
         public PatientProfile()
         {
-            CreateMap<Patient, ListPatientDto>().ReverseMap();
-            CreateMap<Patient, GetByIdPatientResponse>().ReverseMap();
+            CreateMap<Patient, ListPatientDto>()
+           .ForMember(dest => dest.GenderName, opt => opt.MapFrom(src => src.Gender.Name))
+           .ForMember(dest => dest.BloodTypeName, opt => opt.MapFrom(src => src.BloodType.Name))
+           .ReverseMap();
+            CreateMap<Patient, GetByIdPatientResponse>()
+           .ForMember(dest => dest.GenderName, opt => opt.MapFrom(src => src.Gender.Name))
+           .ForMember(dest => dest.BloodTypeName, opt => opt.MapFrom(src => src.BloodType.Name))
+           .ReverseMap();
             CreateMap<Patient, UpdatePatientCommand>().ReverseMap();
             CreateMap<Patient, UpdatePatientResponse>().ReverseMap();
-
 
         }
     }

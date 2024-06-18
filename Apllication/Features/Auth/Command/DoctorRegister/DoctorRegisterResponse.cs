@@ -13,5 +13,6 @@
         public string Password { get; set; }
         public DateTime BirthDate { get; set; }
         public string? IdentityNumber { get; set; }
+        public string GenderName { get; set; }
     }
 }

@@ -34,6 +34,9 @@ namespace Application.Features.Patients.Queries.GetAllPaginated
             public async Task<GetAllPaginatedPatientResponse> Handle(GetAllPaginatedPatientQuery request, CancellationToken cancellationToken)
             {
                 var patients = await _patientRepository.GetListAsync(
+                include: query => query
+               .Include(p => p.BloodType)
+               .Include(p => p.Gender),
                 index: request.Index,
                 size: request.Size,
                 enableTracking: false,
