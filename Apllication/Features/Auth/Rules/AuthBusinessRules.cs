@@ -4,7 +4,7 @@ using Core.Application.Rules;
 using Core.CrossCuttingConcers.Exceptions.Types;
 using Core.Security.Hashing;
 using Domain.Entities;
-using System.Threading.Tasks;
+using MailKit;
 
 namespace Application.Features.Auth.Rules
 {
