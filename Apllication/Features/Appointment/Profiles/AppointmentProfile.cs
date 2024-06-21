@@ -1,6 +1,7 @@
 ﻿using Application.Features.Appointment.Commands.Add;
 using Application.Features.Appointment.Queries.GetPaginatedAppointmentsByDoctor;
 using Application.Features.Appointment.Queries.GetPaginatedAppointmentsByPatient;
+using Application.Features.Appointment.Queries.GetPaginatedDoctorAppointments;
 using AutoMapper;
 
 namespace Application.Features.Appointment.Profiles
