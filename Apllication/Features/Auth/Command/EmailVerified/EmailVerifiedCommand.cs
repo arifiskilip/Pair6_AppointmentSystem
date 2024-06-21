@@ -43,7 +43,7 @@ namespace Application.Features.Auth.Command.EmailVerified
                 {
                     throw new BusinessException(AuthMessages.IncorrectVerificationCode);
                 }
-                await _userService.SetCustomerEmailVerified(userId:userId);
+                await _userService.SetUserEmailVerified(userId:userId);
                 return new()
                 {
                     Message = AuthMessages.SuccessVerificationCode

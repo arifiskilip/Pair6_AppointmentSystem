@@ -19,9 +19,7 @@ namespace Application.Features.Auth.Command.PatientRegister
         public string PhoneNumber { get; set; }
         public DateTime BirthDate { get; set; }
         public string IdentityNumber { get; set; }
-        public string BloodType { get; set; }
         public string Password { get; set; }
-
         public short BloodTypeId { get; set; }
         public short GenderId { get; set; }
 

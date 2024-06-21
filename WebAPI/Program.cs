@@ -1,5 +1,6 @@
 using Application;
 using Core;
+using Core.CrossCuttingConcers.Exceptions.Extensions;
 using Core.Security.Encryption;
 using Core.Security.JWT;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -91,7 +92,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-//app.ConfigureCustomExceptionMiddleware();
+app.ConfigureCustomExceptionMiddleware();
 app.UseHttpsRedirection();
 app.UseCors();
 app.UseAuthentication();
