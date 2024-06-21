@@ -65,5 +65,13 @@
                 return "Başarılı bir şekilde aktivasyon sağlandı.";
             }
         }
+
+        public static string PasswordReset
+        {
+            get
+            {
+                return "Şifre sıfırlama";
+            }
+        }
     }
 }

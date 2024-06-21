@@ -12,10 +12,5 @@ namespace Core.CrossCuttingConcers.Exceptions.HttpProblemDetails
             Status = StatusCodes.Status400BadRequest;
             Type = "https://example.com/probs/business";
         }
-
-        internal string AsJson()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

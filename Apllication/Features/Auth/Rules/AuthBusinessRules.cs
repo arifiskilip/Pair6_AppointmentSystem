@@ -39,8 +39,8 @@ namespace Application.Features.Auth.Rules
 
         public async Task<User> UserEmailCheck(string email)
         {
-            var user = await _userRepository.GetAsync(x=> x.Email.ToLower() == email);
-            if (user is not null) throw new BusinessException(AuthMessages.UserNotFound);
+            var user = await _userRepository.GetAsync(x=> x.Email.ToLower() == email.ToLower());
+            if (user is null) throw new BusinessException(AuthMessages.UserNotFound);
             return user;
         }
 

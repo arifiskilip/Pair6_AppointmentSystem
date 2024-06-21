@@ -149,8 +149,8 @@ namespace Persistence.Contexts
             );
 
             modelBuilder.Entity<Gender>().HasData(
-                new Gender { Id = 1, Name = "Bayan" },
-                new Gender { Id = 2, Name = "Bay" }
+                new Gender { Id = 1, Name = "Women" },
+                new Gender { Id = 2, Name = "Man" }
             );
 
             modelBuilder.Entity<Domain.Entities.OperationClaim>().HasData(
@@ -167,6 +167,9 @@ namespace Persistence.Contexts
                 new Title { Id = 5, Name = "OprDr" }
             );
 
+            modelBuilder.Entity<CodeType>().HasData(
+                new CodeType { Id = 1, Name = "EmailConfirm" },
+                new CodeType { Id = 2, Name = "PasswordReset" });
             base.OnModelCreating(modelBuilder);
         }
 
