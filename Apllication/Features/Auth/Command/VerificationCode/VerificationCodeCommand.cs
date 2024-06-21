@@ -1,10 +1,12 @@
 ﻿using Application.Features.Auth.Constant;
 using Application.Features.Auth.Rules;
+using Application.Helpers;
 using Application.Repositories;
 using Application.Services;
 using AutoMapper;
 using Core.Application.Pipelines.Authorization;
 using Core.Mailing;
+using Core.Mailing.Constant;
 using Domain.Enums;
 using MediatR;
 
@@ -39,10 +41,9 @@ namespace Application.Features.Auth.Command.VerificationCode
                 string userEmail = await _authBusinessRules.GetUserEmailAsync(userId:userId);
                 var check = await _verificationCodeRepository.GetAsync(
                     predicate: x => x.UserId == userId && x.CodeTypeId == codeTypeId);
-                string code = string.Empty;
+                string code = VerificationCodeHelper.GenerateVerificationCode();
                 if (check is null)
                 {
-                    code = GenerateVerificationCode();
                     var verificationCode = await _verificationCodeRepository.AddAsync(new()
                     {
                         CodeTypeId = codeTypeId,
@@ -50,24 +51,19 @@ namespace Application.Features.Auth.Command.VerificationCode
                         ExpirationDate = DateTime.Now.AddMinutes(1),
                         Code = code
                     });
-                    await _emailService.SendEmailAsync(userEmail, AuthMessages.VerificationCode, code);
+                    await _emailService.SendEmailAsync(userEmail, AuthMessages.VerificationCode, HtmlBody.OtpVerified(code));
                     return _mapper.Map<VerificationCodeResponse>(verificationCode);
                 }
-
-                code = GenerateVerificationCode();
-                check.Code = code;
-                check.ExpirationDate = DateTime.Now.AddMinutes(1);
-                await _emailService.SendEmailAsync(userEmail, AuthMessages.VerificationCode, code);
-                await _verificationCodeRepository.UpdateAsync(check);
+                else
+                {
+                    check.Code = code;
+                    check.ExpirationDate = DateTime.Now.AddMinutes(1);
+                    await _emailService.SendEmailAsync(userEmail, AuthMessages.VerificationCode, HtmlBody.OtpVerified(code));
+                    await _verificationCodeRepository.UpdateAsync(check);
+                }
                 return _mapper.Map<VerificationCodeResponse>(check);
             }
-            private string GenerateVerificationCode()
-            {
-                Random random = new Random();
-                const string chars = "0123456789";
-                return new string(Enumerable.Repeat(chars, 6)
-                    .Select(s => s[random.Next(s.Length)]).ToArray());
-            }
+            
         }
     }
 }

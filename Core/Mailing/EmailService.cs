@@ -20,7 +20,7 @@ namespace Core.Mailing
             message.Subject = subject;
 
             var bodyBuilder = new BodyBuilder();
-            bodyBuilder.HtmlBody = HtmlBody.OtpVerified(body);
+            bodyBuilder.HtmlBody = body;
             message.Body = bodyBuilder.ToMessageBody();
 
             using (var client = new SmtpClient())

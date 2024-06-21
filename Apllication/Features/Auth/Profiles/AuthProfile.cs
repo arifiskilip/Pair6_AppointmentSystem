@@ -1,6 +1,7 @@
 ﻿using Application.Features.Auth.Command.DoctorRegister;
 using Application.Features.Auth.Command.Login;
 using Application.Features.Auth.Command.PatientRegister;
+using Application.Features.Auth.Command.VerificationCode;
 using AutoMapper;
 using Domain.Entities;
 
@@ -12,6 +13,9 @@ namespace Application.Features.Auth.Profiles
         {
             CreateMap<Patient, PatientRegisterCommand>().ReverseMap();
             CreateMap<Patient, PatientRegisterResponse>().ReverseMap();
+
+            CreateMap<VerificationCode,VerificationCodeCommand>().ReverseMap();
+            CreateMap<VerificationCode,VerificationCodeResponse>().ReverseMap();
 
             CreateMap<Doctor, DoctorRegisterCommand>().ReverseMap();
             CreateMap<Doctor, DoctorRegisterResponse>().ReverseMap();
