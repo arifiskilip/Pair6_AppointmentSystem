@@ -1,4 +1,5 @@
 ﻿using Application.Features.Doctors.Commands.Update;
+using Application.Features.Doctors.Queries.GetAllByBranchId;
 using Application.Features.Doctors.Queries.GetAllPaginated;
 using Application.Features.Doctors.Queries.GetById;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +27,14 @@ namespace WebAPI.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetByIdDoctor([FromQuery] GetByIdDoctorQuery query)
+        {
+            var result = await _mediator.Send(query);
+
+            return Ok(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllByBranchId([FromQuery] GetAllByBranchIdQuery query)
         {
             var result = await _mediator.Send(query);
 
