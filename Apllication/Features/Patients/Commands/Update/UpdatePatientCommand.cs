@@ -1,14 +1,7 @@
 ﻿using Application.Features.Patients.Rules;
 using Application.Repositories;
 using AutoMapper;
-using Core.CrossCuttingConcers.Exceptions.Types;
-using Domain.Entities;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Patients.Commands.Update
 {
@@ -20,7 +13,7 @@ namespace Application.Features.Patients.Commands.Update
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public DateTime BirthDate { get; set; }
-        public string BloodType { get; set; }
+        public short BloodTypeId { get; set; }
         public class UpdatePatientCommandHandler : IRequestHandler<UpdatePatientCommand, UpdatePatientResponse>
         {
             private readonly IPatientRepository _patientRepository;
@@ -51,10 +44,10 @@ namespace Application.Features.Patients.Commands.Update
 
                 var existingPatient = await _patientRepository.GetAsync(
                 predicate: x => x.Id == request.Id,
-                enableTracking: false
+                enableTracking: true
                 );
                 // Duplicate mail check
-                await _patientBusinessRules.DuplicateMailCheckAsync(request.Email);
+                await _patientBusinessRules.UpdateDuplicateNameCheckAsync(request.Email,request.Id);
 
                 // Mapper kullanarak sadece gerekli alanları kopyalayın
                 var updatedPatient = _mapper.Map(request, existingPatient);

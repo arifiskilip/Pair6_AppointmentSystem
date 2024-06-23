@@ -23,6 +23,8 @@ namespace Application.Features.Auth.Command.DoctorRegister
         public DateTime BirthDate { get; set; }
         public string? IdentityNumber { get; set; }
         public short GenderId { get; set; }
+        public bool IsEmailVerified { get; set; } = true;
+
         public class DoctorRegisterHandler : IRequestHandler<DoctorRegisterCommand, DoctorRegisterResponse>
         {
             private readonly ITokenHelper _tokenHelper;

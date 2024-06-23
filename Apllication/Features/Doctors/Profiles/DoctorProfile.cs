@@ -1,13 +1,9 @@
 ﻿using Application.Features.Doctors.Commands.Update;
+using Application.Features.Doctors.Queries.GetAllByBranchId;
 using Application.Features.Doctors.Queries.GetAllPaginated;
 using Application.Features.Doctors.Queries.GetById;
 using AutoMapper;
 using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Doctors.Profiles
 {
@@ -41,6 +37,12 @@ namespace Application.Features.Doctors.Profiles
                 .ForMember(dest => dest.BranchName, opt => opt.MapFrom(src => src.Branch.Name));
 
             CreateMap<Doctor, GetByIdDoctorResponse>().ReverseMap();
+
+            CreateMap<Doctor, GetAllByBranchIdQuery>().ReverseMap();
+            CreateMap<Doctor, GetAllByBranchIdResponse>()
+                .ForMember(dest => dest.GenderName, opt => opt.MapFrom(src => src.Gender.Name))
+                .ForMember(dest => dest.TitleName, opt => opt.MapFrom(src => src.Title.Name))
+                .ForMember(dest => dest.BranchName, opt => opt.MapFrom(src => src.Branch.Name));
         }
     }
 }

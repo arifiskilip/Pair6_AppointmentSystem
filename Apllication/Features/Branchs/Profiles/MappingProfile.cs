@@ -1,12 +1,11 @@
 ﻿using Application.Features.Branchs.Commands.Add;
-using Application.Features.Branchs.Queries.GetById;
 using Application.Features.Branchs.Commands.Update;
 using Application.Features.Branchs.Queries.GetAll;
 using Application.Features.Branchs.Queries.GetAllByPaginated;
+using Application.Features.Branchs.Queries.GetById;
 using AutoMapper;
 using Domain.Dtos;
 using Domain.Entities;
-using Microsoft.EntityFrameworkCore.Query.Internal;
 
 namespace Application.Features.Branchs.Profiles
 {

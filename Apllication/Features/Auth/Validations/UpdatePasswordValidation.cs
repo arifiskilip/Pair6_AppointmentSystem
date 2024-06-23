@@ -12,10 +12,10 @@ namespace Application.Features.Auth.Validations
     {
         public UpdatePasswordValidation()
         {
-            RuleFor(command => command.CurrentPassword)
+            RuleFor(command => command.OldPassword)
             .NotEmpty().WithMessage("Current password is required.");
 
-            RuleFor(command => command.NewPassword)
+            RuleFor(command => command.Password)
                 .NotEmpty().WithMessage("New password is required.")
                 .MinimumLength(6).WithMessage("New password must be at least 6 characters long.")
                 .Matches("[A-Z]").WithMessage("New password must contain at least one uppercase letter.")

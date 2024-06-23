@@ -23,7 +23,6 @@
 
     <Folder Include="Features\Doctors\Commands\" />
     <Folder Include="Features\Doctors\Constants\" />
-    <Folder Include="Features\Doctors\Queries\" />
     <Folder Include="Features\Doctors\Rules\" />
     <Folder Include="Features\Doctors\Profiles\" />
 
@@ -35,6 +34,7 @@
     <Folder Include="Features\DoctorSchedule\Validations\" />
     <Folder Include="Features\DoctorSchedule\Rules\" />
     <Folder Include="Features\DoctorSchedule\Queries\" />
+    <Folder Include="Features\Patients\Commands\DeleteImage\" />
     <Folder Include="Features\Patients\Validations\" />
 
   </ItemGroup>

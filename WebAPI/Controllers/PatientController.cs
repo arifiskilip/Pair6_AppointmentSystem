@@ -1,4 +1,5 @@
 ﻿using Application.Features.Branchs.Commands.Add;
+using Application.Features.Patients.Commands.AddImage;
 using Application.Features.Patients.Commands.Update;
 using Application.Features.Patients.Queries.GetAllPaginated;
 using Application.Features.Patients.Queries.GetById;
@@ -28,6 +29,13 @@ namespace WebAPI.Controllers
 
         [HttpPut]
         public async Task<IActionResult> UpdatePatient([FromBody] UpdatePatientCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddImage([FromForm] PatientAddImageCommand command)
         {
             var result = await _mediator.Send(command);
             return Ok(result);

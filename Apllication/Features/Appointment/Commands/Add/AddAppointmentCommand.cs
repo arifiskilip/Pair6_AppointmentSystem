@@ -39,6 +39,7 @@ namespace Application.Features.Appointment.Commands.Add
 
                 //Add Appintment
                 var appointment = _mapper.Map<Domain.Entities.Appointment>(request);
+                appointment.AppointmentStatusId = (int)AppointmentStatusEnum.Created;
                 await _appointmentRepository.AddAsync(appointment);
                 //Update AppointmentInterval Status
                 var appointmentInterval = await _appointmentIntervalService.GetAsync(appointmentIntervalId: request.AppointmentIntervalId,
