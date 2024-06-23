@@ -9,9 +9,9 @@ namespace Application.Features.Auth.Command.UpdatePassword
 {
     public class UpdatePasswordCommand :IRequest<UpdatePasswordResponse> , ISecuredRequest
     {
-        public string CurrentPassword { get; set; }
-        public string NewPassword { get; set; }
-        public string NewPasswordAgain { get; set; }
+        public string OldPassword { get; set; }
+        public string Password { get; set; }
+        public string ConfirmPassword { get; set; }
 
         public string[] Roles => ["Patient", "Doctor","Admin"];
         public class UpdatePasswordCommandHandler : IRequestHandler<UpdatePasswordCommand, UpdatePasswordResponse>
@@ -37,12 +37,12 @@ namespace Application.Features.Auth.Command.UpdatePassword
 
                
                 _authBusinessRules.IsSelectedEntityAvailable(user);
-                _authBusinessRules.IsCurrentPasswordCorrect(user, request.CurrentPassword);
-                _authBusinessRules.CheckNewPasswordsMatch(request.NewPassword, request.NewPasswordAgain);
+                _authBusinessRules.IsCurrentPasswordCorrect(user, request.OldPassword);
+                _authBusinessRules.CheckNewPasswordsMatch(request.Password, request.ConfirmPassword);
 
                 byte[] passwordHash, passwordSalt;
 
-                HashingHelper.CreatePasswordHash(request.NewPassword, out passwordHash, out passwordSalt);
+                HashingHelper.CreatePasswordHash(request.Password, out passwordHash, out passwordSalt);
 
                 user.PasswordHash = passwordHash;
                 user.PasswordSalt = passwordSalt;

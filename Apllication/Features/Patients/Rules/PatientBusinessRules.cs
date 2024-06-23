@@ -1,15 +1,8 @@
-﻿using Application.Features.Branchs.Constants;
-using Application.Features.Doctors.Constants;
-using Application.Features.Patients.Constants;
+﻿using Application.Features.Patients.Constants;
 using Application.Repositories;
 using Core.Application.Rules;
 using Core.CrossCuttingConcers.Exceptions.Types;
 using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Patients.Rules
 {
@@ -35,6 +28,13 @@ namespace Application.Features.Patients.Rules
             {
                 throw new BusinessException(PatientMessages.DuplicateEmailName);
             }
+        }
+
+        public async Task UpdateDuplicateNameCheckAsync(string email, int id)
+        {
+            var check = await _patientRepository.GetAsync(
+                predicate: x => x.Email.ToLower() == email.ToLower());
+            if (check != null && check.Id != id) throw new BusinessException(PatientMessages.DuplicateEmailName);
         }
     }
 }

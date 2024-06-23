@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Core.CrossCuttingConcers.Exceptions.Types;
+using Microsoft.AspNetCore.Http;
 
 namespace Core.Utilities.FileHelper
 {
@@ -47,18 +48,18 @@ namespace Core.Utilities.FileHelper
         {
             if (file == null || file.Length == 0)
             {
-                throw new ArgumentException("File cannot be null or empty.");
+                throw new BusinessException("File cannot be null or empty.");
             }
 
             if (file.Length > MaxFileSize)
             {
-                throw new InvalidOperationException("File size exceeds the maximum limit of 5MB.");
+                throw new BusinessException("File size exceeds the maximum limit of 5MB.");
             }
 
             var fileExtension = Path.GetExtension(file.FileName);
             if (!IsValidFileType(fileExtension, fileType))
             {
-                throw new InvalidOperationException($"Invalid file type. Allowed types: {GetAllowedExtensions(fileType)}.");
+                throw new BusinessException($"Invalid file type. Allowed types: {GetAllowedExtensions(fileType)}.");
             }
         }
 
