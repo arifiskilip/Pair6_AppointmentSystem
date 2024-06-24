@@ -1,11 +1,5 @@
-﻿using Application.Features.Appointment.Queries.GetPaginatedDoctorAppointments;
-using Core.Domain;
+﻿using Core.Domain;
 using Core.Persistence.Paging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Appointment.Queries.GetPaginatedPatientAppoinments
 {

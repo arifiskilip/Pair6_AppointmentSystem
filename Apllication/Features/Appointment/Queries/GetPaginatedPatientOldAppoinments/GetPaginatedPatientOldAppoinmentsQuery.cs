@@ -1,45 +1,46 @@
-﻿using Application.Repositories;
+﻿using Application.Features.Appointment.Queries.GetPaginatedPatientAppoinments;
+using Application.Features.Appointment.Queries.GetPaginatedPatientNewAppoinments;
+using Application.Repositories;
+using Application.Services;
 using AutoMapper;
-using Core.Application.Pipelines.Authorization;
 using Core.Persistence.Paging;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Claims;
 
-namespace Application.Features.Appointment.Queries.GetPaginatedPatientAppoinments
+namespace Application.Features.Appointment.Queries.GetPaginatedPatientOldAppoinments
 {
-    public class GetPaginatedPatientAppointmentsQuery : IRequest<GetPaginatedPatientAppointmentsResponse>,ISecuredRequest
+    public class GetPaginatedPatientOldAppoinmentsQuery : IRequest<GetPaginatedPatientOldAppoinmentsResponse>
     {
         public int PageIndex { get; set; } = 1;
         public int PageSize { get; set; } = 10;
 
-        public string[] Roles => ["Patient","Admin","Doctor"];
+        public string[] Roles => ["Patient", "Admin", "Doctor"];
 
-        public class GetPaginatedPatientAppointmentsQueryHandler : IRequestHandler<GetPaginatedPatientAppointmentsQuery, GetPaginatedPatientAppointmentsResponse>
+
+
+        public class GetPaginatedPatientOldAppoinmentsQueryHandler : IRequestHandler<GetPaginatedPatientOldAppoinmentsQuery, GetPaginatedPatientOldAppoinmentsResponse>
         {
             private readonly IMapper _mapper;
-            private readonly IHttpContextAccessor _httpContextAccessor;
+            private readonly IAuthService _authService;
             private readonly IPatientRepository _patientRepository;
             private readonly IAppointmentRepository _appointmentRepository;
 
-            public GetPaginatedPatientAppointmentsQueryHandler(IMapper mapper, IHttpContextAccessor httpContextAccessor, IPatientRepository patientRepository, IAppointmentRepository appointmentRepository)
+            public GetPaginatedPatientOldAppoinmentsQueryHandler(IMapper mapper, IAuthService authService, IPatientRepository patientRepository, IAppointmentRepository appointmentRepository)
             {
                 _mapper = mapper;
-                _httpContextAccessor = httpContextAccessor;
+                _authService = authService;
                 _patientRepository = patientRepository;
                 _appointmentRepository = appointmentRepository;
             }
 
-            public async Task<GetPaginatedPatientAppointmentsResponse> Handle(GetPaginatedPatientAppointmentsQuery request, CancellationToken cancellationToken)
+            public async Task<GetPaginatedPatientOldAppoinmentsResponse> Handle(GetPaginatedPatientOldAppoinmentsQuery request, CancellationToken cancellationToken)
             {
-              
-                var patientId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                var patientId = await _authService.GetAuthenticatedUserIdAsync();
 
-                var patient = await _patientRepository.GetAsync(x => x.Id == int.Parse(patientId));
+                var patient = await _patientRepository.GetAsync(x => x.Id == patientId);
 
                 var appointments = await _appointmentRepository.GetListAsync(
-                    predicate: x => x.PatientId == int.Parse(patientId),
+                    predicate: x => x.PatientId == patientId && x.AppointmentInterval.IntervalDate < DateTime.Now,
                     include: query => query
                         .Include(a => a.Patient)
                         .Include(a => a.AppointmentStatus)
@@ -57,11 +58,10 @@ namespace Application.Features.Appointment.Queries.GetPaginatedPatientAppoinment
                     );
                 var appointmentDtos = _mapper.Map<List<PatientAppointmentDto>>(appointments.Items);
 
-                return new GetPaginatedPatientAppointmentsResponse
+                return new GetPaginatedPatientOldAppoinmentsResponse
                 {
                     PatientAppointments = new Paginate<PatientAppointmentDto>(appointmentDtos.AsQueryable(), appointments.Pagination)
                 };
-              
             }
         }
     }

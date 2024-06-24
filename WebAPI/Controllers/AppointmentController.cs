@@ -6,6 +6,8 @@ using Application.Features.Appointment.Queries.GetPaginatedAppointmentsByDoctor;
 using Application.Features.Appointment.Queries.GetPaginatedAppointmentsByPatient;
 using Application.Features.Appointment.Queries.GetPaginatedDoctorAppointments;
 using Application.Features.Appointment.Queries.GetPaginatedPatientAppoinments;
+using Application.Features.Appointment.Queries.GetPaginatedPatientNewAppoinments;
+using Application.Features.Appointment.Queries.GetPaginatedPatientOldAppoinments;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -20,14 +22,14 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetPaginatedAppointmentsByDoctor([FromBody] GetPaginatedAppointmentsByDoctorQuery query)
+        public async Task<IActionResult> GetPaginatedAppointmentsByDoctor([FromQuery] GetPaginatedAppointmentsByDoctorQuery query)
         {
             var result = await _mediator.Send(query);
             return Ok(result);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetPaginatedAppointmentsByPatient([FromBody] GetPaginatedAppointmentsByPatientQuery query)
+        public async Task<IActionResult> GetPaginatedAppointmentsByPatient([FromQuery] GetPaginatedAppointmentsByPatientQuery query)
         {
             var result = await _mediator.Send(query);
             return Ok(result);
@@ -64,6 +66,18 @@ namespace WebAPI.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetClosestAppointmentPatient([FromQuery] GetClosestAppointmentQuery query)
+        {
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetPaginatedPatientNewAppoinments([FromQuery] GetPaginatedPatientNewAppoinmentsQuery query)
+        {
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetPaginatedPatientOldAppoinments([FromQuery] GetPaginatedPatientOldAppoinmentsQuery query)
         {
             var result = await _mediator.Send(query);
             return Ok(result);
