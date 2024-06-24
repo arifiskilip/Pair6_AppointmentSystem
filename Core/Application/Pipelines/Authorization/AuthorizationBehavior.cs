@@ -29,7 +29,7 @@ namespace Core.Application.Pipelines.Authorization
                     userRoleClaim => userRoleClaim == GeneralOperationClaims.Admin || request.Roles.Any(role => role == userRoleClaim)
                 )
                 .IsNullOrEmpty();
-            if (!isNotMatchedAUserRoleClaimWithRequestRoles)
+            if (isNotMatchedAUserRoleClaimWithRequestRoles)
                 throw new AuthorizationException("You are not authorized.");
 
             TResponse response = await next();

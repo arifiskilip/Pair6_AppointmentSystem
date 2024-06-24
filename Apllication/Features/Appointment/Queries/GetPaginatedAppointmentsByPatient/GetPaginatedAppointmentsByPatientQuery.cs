@@ -35,18 +35,18 @@ namespace Application.Features.Appointment.Queries.GetPaginatedAppointmentsByPat
 
                 if (request.PatientId.HasValue && request.PatientId > 0)
                 {
-                    predicate = a => a.PatientId == request.PatientId;
+                    predicate = a => a.PatientId == request.PatientId && a.AppointmentStatusId == 4;
                 }
 
                 if (request.Date.HasValue)
                 {
                     if (request.PatientId.HasValue && request.PatientId > 0)
                     {
-                        predicate = a => a.PatientId == request.PatientId && a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date;
+                        predicate = a => a.PatientId == request.PatientId && a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date && a.AppointmentStatusId == 4;
                     }
                     else
                     {
-                        predicate = a => a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date;
+                        predicate = a => a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date && a.AppointmentStatusId == 4;
                     }
                 }
 
@@ -54,9 +54,12 @@ namespace Application.Features.Appointment.Queries.GetPaginatedAppointmentsByPat
                     predicate: predicate,
                     include: query => query
                         .Include(a => a.AppointmentInterval)
-                            .ThenInclude(ai => ai.AppointmentStatus)
+                        .ThenInclude(ai => ai.Doctor)
+                            .ThenInclude(d => d.Branch)
                         .Include(a => a.AppointmentInterval)
-                            .ThenInclude(ai => ai.Doctor),
+                            .ThenInclude(ai => ai.Doctor)
+                                .ThenInclude(d => d.Title)
+                        .Include(a => a.AppointmentStatus),
                     index: request.PageIndex,
                     size: request.PageSize,
                     enableTracking: false,

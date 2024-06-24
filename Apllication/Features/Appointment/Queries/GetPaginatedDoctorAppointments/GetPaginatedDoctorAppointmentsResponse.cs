@@ -20,5 +20,6 @@ namespace Application.Features.Appointment.Queries.GetPaginatedDoctorAppointment
         public string PatientName { get; set; }
         public DateTime IntervalDate { get; set; }
         public string AppointmentStatus { get; set; }
+
     }
 }

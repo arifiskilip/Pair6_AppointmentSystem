@@ -36,18 +36,18 @@ namespace Application.Features.Appointment.Queries.GetPaginatedAppointmentsByDoc
 
                 if (request.DoctorId > 0)
                 {
-                    predicate = a => a.AppointmentInterval.DoctorId == request.DoctorId;
+                    predicate = a => a.AppointmentInterval.DoctorId == request.DoctorId && a.AppointmentStatusId == 4; ;
                 }
 
                 if (request.Date.HasValue)
                 {
                     if (request.DoctorId > 0)
                     {
-                        predicate = a => a.AppointmentInterval.DoctorId == request.DoctorId && a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date;
+                        predicate = a => a.AppointmentInterval.DoctorId == request.DoctorId && a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date && a.AppointmentStatusId == 4;
                     }
                     else
                     {
-                        predicate = a => a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date;
+                        predicate = a => a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date && a.AppointmentStatusId == 4;
                     }
                 }
 
@@ -57,7 +57,7 @@ namespace Application.Features.Appointment.Queries.GetPaginatedAppointmentsByDoc
                     include: query => query
                         .Include(a => a.Patient)
                         .Include(a => a.AppointmentInterval)
-                            .ThenInclude(ai => ai.AppointmentStatus),
+                        .Include(a => a.AppointmentStatus),
                     index: request.PageIndex,
                     size: request.PageSize,
                     enableTracking: false,

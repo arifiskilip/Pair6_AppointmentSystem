@@ -17,7 +17,7 @@ namespace Application.Features.Appointment.Queries.GetPaginatedDoctorAppointment
 {
     public class GetPaginatedDoctorAppointmentsQuery : IRequest<GetPaginatedDoctorAppointmentsResponse>, ISecuredRequest
     {
-        public DateTime? Date { get; set; }
+      
         public int PageIndex { get; set; } = 1;
         public int PageSize { get; set; } = 10;
 
@@ -39,23 +39,19 @@ namespace Application.Features.Appointment.Queries.GetPaginatedDoctorAppointment
 
             public async Task<GetPaginatedDoctorAppointmentsResponse> Handle(GetPaginatedDoctorAppointmentsQuery request, CancellationToken cancellationToken)
             {
-                Expression<Func<Domain.Entities.Appointment, bool>> predicate = a => true;
+               
                 var doctorId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
                 var doctor = await _doctorRepository.GetAsync(x => x.Id == int.Parse(doctorId));
-
-
-                if (request.Date.HasValue)
-                {
-                    predicate = a => a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date;
-                }
+ 
 
                 var appointments = await _appointmentRepository.GetListAsync(
-                    predicate: predicate,
+                    predicate: x=> x.AppointmentInterval.DoctorId == int.Parse(doctorId),
                     include: query => query
                         .Include(a => a.Patient)
-                        .Include(a => a.AppointmentInterval)
-                            .ThenInclude(ai => ai.AppointmentStatus),
+                        .Include(a => a.AppointmentStatus)
+                        .Include(a => a.AppointmentInterval),
+                    orderBy: q => q.OrderByDescending(a => a.AppointmentInterval.IntervalDate),
                     index: request.PageIndex,
                     size: request.PageSize,
                     enableTracking: false,
