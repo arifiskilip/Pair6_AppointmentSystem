@@ -1,12 +1,13 @@
 ﻿using Application.Features.Auth.Rules;
 using Application.Services;
+using Core.Application.Pipelines.Authorization;
 using MediatR;
 
 namespace Application.Features.Auth.Command.IsEmailVerified
 {
-    public class IsEmailVerifiedCommand : IRequest<IsEmailVerifiedResponse>
+    public class IsEmailVerifiedCommand : IRequest<IsEmailVerifiedResponse>, ISecuredRequest
     {
-
+        public string[] Roles => ["Patient", "Admin", "Doctor"];
 
         public class IsEmailVerifiedHandler : IRequestHandler<IsEmailVerifiedCommand, IsEmailVerifiedResponse>
         {
