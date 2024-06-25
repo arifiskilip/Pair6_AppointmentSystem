@@ -1,4 +1,5 @@
 ﻿using Application.Features.AppointmentInterval.Queries.AppointmentIntervalsSearchByPaginated;
+using Application.Features.AppointmentInterval.Queries.GetAppoitmentIntervalByDoctor;
 using Application.Features.AppointmentInterval.Queries.GetById;
 using AutoMapper;
 using Domain.Dtos;
@@ -30,6 +31,10 @@ namespace Application.Features.AppointmentInterval.Profiles
             .ForMember(dest => dest.GenderName, opt => opt.MapFrom(src => src.Doctor.Gender.Name));
 
             CreateMap<Domain.Entities.AppointmentInterval, GetByIdAppointmentIntervalQuery>().ReverseMap();
+
+            CreateMap<Domain.Entities.AppointmentInterval, GetAppoitmentIntervalsByDoctorResponse>()
+                 .ForMember(dest => dest.DoctorName, opt => opt.MapFrom(src => src.Doctor.FirstName + " " + src.Doctor.LastName))
+                  .ForMember(dest => dest.AppointmentStatusName, opt => opt.MapFrom(src => src.AppointmentStatus.Name));
         }
     }
 }

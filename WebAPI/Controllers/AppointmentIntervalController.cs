@@ -1,4 +1,5 @@
 ﻿using Application.Features.AppointmentInterval.Queries.AppointmentIntervalsSearchByPaginated;
+using Application.Features.AppointmentInterval.Queries.GetAppoitmentIntervalByDoctor;
 using Application.Features.AppointmentInterval.Queries.GetById;
 using Application.Features.AppointmentInterval.Queries.GetPaginatedGroupedIntervalsByDoctorId;
 using Application.Repositories;
@@ -35,6 +36,11 @@ namespace WebAPI.Controllers
             var result = await _mediator.Send(query);
             return Ok(result);
         }
-
+        [HttpGet]
+        public async Task<IActionResult> GetAppoitmentIntervalsByDoctor([FromQuery]         GetAppoitmentIntervalsByDoctorQuery query)
+        {
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
     }
 }
