@@ -2,12 +2,14 @@
 using Application.Features.Appointment.Commands.CancelByDoctor;
 using Application.Features.Appointment.Commands.CancelByPatient;
 using Application.Features.Appointment.Queries.GetClosest;
+using Application.Features.Appointment.Queries.GetMonthlyAppointmentsByPatientId;
 using Application.Features.Appointment.Queries.GetPaginatedAppointmentsByDoctor;
 using Application.Features.Appointment.Queries.GetPaginatedAppointmentsByPatient;
 using Application.Features.Appointment.Queries.GetPaginatedDoctorAppointments;
 using Application.Features.Appointment.Queries.GetPaginatedPatientAppoinments;
 using Application.Features.Appointment.Queries.GetPaginatedPatientNewAppoinments;
 using Application.Features.Appointment.Queries.GetPaginatedPatientOldAppoinments;
+using Application.Features.Appointment.Queries.GetPatientDashboardModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -78,6 +80,18 @@ namespace WebAPI.Controllers
         }
         [HttpGet]
         public async Task<IActionResult> GetPaginatedPatientOldAppoinments([FromQuery] GetPaginatedPatientOldAppoinmentsQuery query)
+        {
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetMonthlyAppointmentsByPatient([FromQuery] GetMonthlyAppointmentsByPatientQuery query)
+        {
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetPatientDashboardModel([FromQuery] GetPatientDashboardModelQuery query)
         {
             var result = await _mediator.Send(query);
             return Ok(result);
