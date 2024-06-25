@@ -36,11 +36,24 @@ namespace Application.Features.Appointment.Commands.Add
                 //Ruless
                 await _businessRules.AppointmentIntervalAvailable(request.AppointmentIntervalId);
                 await _businessRules.PatientAvailable(request.PatientId);
+                var appointment = await _appointmentRepository.GetAsync(
+                    predicate: x => x.AppointmentIntervalId == request.AppointmentIntervalId && x.AppointmentStatusId == (int)AppointmentStatusEnum.Canceled || x.AppointmentStatusId == (int)AppointmentStatusEnum.Available);
+                if (appointment is not null)
+                {
+                    //Update Appointment
+                    appointment.PatientId = request.PatientId;
+                    appointment.AppointmentStatusId = (int)AppointmentStatusEnum.Created;
+                    await _appointmentRepository.UpdateAsync(appointment);
 
-                //Add Appintment
-                var appointment = _mapper.Map<Domain.Entities.Appointment>(request);
-                appointment.AppointmentStatusId = (int)AppointmentStatusEnum.Created;
-                await _appointmentRepository.AddAsync(appointment);
+                }
+                else
+                {
+                    //Add Appintment
+                    appointment = _mapper.Map<Domain.Entities.Appointment>(request);
+                    appointment.AppointmentStatusId = (int)AppointmentStatusEnum.Created;
+                    await _appointmentRepository.AddAsync(appointment);
+                }
+               
                 //Update AppointmentInterval Status
                 var appointmentInterval = await _appointmentIntervalService.GetAsync(appointmentIntervalId: request.AppointmentIntervalId,
                     include: x=> x.Include(a=> a.Doctor).Include(a=>a.AppointmentStatus));
