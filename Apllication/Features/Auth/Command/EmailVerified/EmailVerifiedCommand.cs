@@ -13,7 +13,7 @@ namespace Application.Features.Auth.Command.EmailVerified
     {
         public string Code { get; set; }
 
-        public string[] Roles => [];
+        public string[] Roles => ["Patient", "Admin", "Doctor"];
 
         public class EmailVerifiedHandler : IRequestHandler<EmailVerifiedCommand, EmailVerifiedResponse>
         {
