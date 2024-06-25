@@ -34,8 +34,12 @@
     <Folder Include="Features\DoctorSchedule\Validations\" />
     <Folder Include="Features\DoctorSchedule\Rules\" />
     <Folder Include="Features\DoctorSchedule\Queries\" />
+    <Folder Include="Features\Feedback\Constants\" />
+    <Folder Include="Features\Feedback\Validations\" />
     <Folder Include="Features\Patients\Commands\DeleteImage\" />
     <Folder Include="Features\Patients\Validations\" />
+    <Folder Include="Features\Reports\Constants\" />
+    <Folder Include="Features\Reports\Validations\" />
 
   </ItemGroup>
 

@@ -44,9 +44,13 @@ namespace Persistence
             services.AddScoped<IAppointmentIntervalService, AppointmentIntervalService>();
 
             services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+            services.AddScoped<IAppointmentService, AppointmentService>();
 
+            services.AddScoped<IFeedbackRepository,FeedbackRepository>();
 
             services.AddScoped<IVerificationCodeRepository, VerificationCodeRepository>();
+
+            services.AddScoped<IReportRepository,ReportRepository>();
 
             //Repositories & Services
             return services;
