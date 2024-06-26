@@ -1,4 +1,5 @@
 ﻿using Application.Features.Appointment.Commands.Add;
+using Application.Features.Appointment.Queries.GetAppointmentsForCurrentDayByDoctor;
 using Application.Features.Appointment.Queries.GetClosest;
 using Application.Features.Appointment.Queries.GetPaginatedAppointmentsByDoctor;
 using Application.Features.Appointment.Queries.GetPaginatedAppointmentsByPatient;
@@ -58,6 +59,11 @@ namespace Application.Features.Appointment.Profiles
             .ForMember(dest => dest.BranchName, opt => opt.MapFrom(src => src.AppointmentInterval.Doctor.Branch.Name))
             .ForMember(dest => dest.AppointmentStatus, opt => opt.MapFrom(src => src.AppointmentStatus.Name))
           .ForMember(dest => dest.IntervalDate, opt => opt.MapFrom(src => src.AppointmentInterval.IntervalDate));
+
+            CreateMap<Domain.Entities.Appointment, GetAppointmentsForCurrentDayByDoctorResponse>()
+                .ForMember(dest => dest.PatientName, opt => opt.MapFrom(src => src.Patient.FirstName + " " + src.Patient.LastName))
+                .ForMember(dest => dest.IntervalDate, opt => opt.MapFrom(src => src.AppointmentInterval.IntervalDate))
+                .ForMember(dest => dest.AppointmentStatusName, opt => opt.MapFrom(src => src.AppointmentStatus.Name));
         }
     }
 }

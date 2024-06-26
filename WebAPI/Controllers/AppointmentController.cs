@@ -1,6 +1,7 @@
 ﻿using Application.Features.Appointment.Commands.Add;
 using Application.Features.Appointment.Commands.CancelByDoctor;
 using Application.Features.Appointment.Commands.CancelByPatient;
+using Application.Features.Appointment.Queries.GetAppointmentsForCurrentDayByDoctor;
 using Application.Features.Appointment.Queries.GetClosest;
 using Application.Features.Appointment.Queries.GetMonthlyAppointmentsByPatientId;
 using Application.Features.Appointment.Queries.GetPaginatedAppointmentsByDoctor;
@@ -96,5 +97,12 @@ namespace WebAPI.Controllers
             var result = await _mediator.Send(query);
             return Ok(result);
         }
+        [HttpGet]
+        public async Task<IActionResult> GetAppointmentsForCurrentDayByDoctor([FromQuery] GetAppointmentsForCurrentDayByDoctorQuery query)
+        {
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+        
     }
 }
