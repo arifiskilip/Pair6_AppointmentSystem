@@ -1,8 +1,6 @@
 ﻿using Application.Features.Appointment.Commands.Add;
-using Application.Features.Appointment.Commands.AvailableByDoctor;
 using Application.Features.Appointment.Commands.CancelByDoctor;
 using Application.Features.Appointment.Commands.CancelByPatient;
-using Application.Features.Appointment.Commands.CompleteByDoctor;
 using Application.Features.Appointment.Queries.GetAppointmentsForCurrentDayByDoctor;
 using Application.Features.Appointment.Queries.GetClosest;
 using Application.Features.Appointment.Queries.GetMonthlyAppointmentsByPatientId;
@@ -42,26 +40,14 @@ namespace WebAPI.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> CancelAppointmentByPatient([FromBody] CancelAppointmentByPatientCommand command)
+        public async Task<IActionResult> CancelAppointmentByPatient([FromQuery] CancelAppointmentByPatientCommand command)
         {
             var result = await _mediator.Send(command);
             return Ok();
         }
 
         [HttpPost]
-        public async Task<IActionResult> AvailableAppointmentByDoctor([FromBody] AvailableAppointmentByDoctorCommand command)
-        {
-            var result = await _mediator.Send(command);
-            return Ok();
-        }
-        [HttpPost]
-        public async Task<IActionResult> CompleteAppointmentByDoctor([FromBody] CompleteAppointmentByDoctorCommand command)
-        {
-            var result = await _mediator.Send(command);
-            return Ok();
-        }
-        [HttpPost]
-        public async Task<IActionResult> CancelAppointmentByDoctor([FromBody] CancelAppointmentByDoctorCommand command)
+        public async Task<IActionResult> CancelAppointmentByDoctor([FromQuery] CancelAppointmentByDoctorCommand command)
         {
             var result = await _mediator.Send(command);
             return Ok();

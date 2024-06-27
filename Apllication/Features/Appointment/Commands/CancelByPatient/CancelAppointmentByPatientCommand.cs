@@ -2,7 +2,6 @@
 using Application.Services;
 using Core.Application.Pipelines.Authorization;
 using Core.CrossCuttingConcers.Exceptions.Types;
-using Domain.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -62,10 +61,10 @@ namespace Application.Features.Appointment.Commands.CancelByPatient
                 }
 
                 // Randevu durumunu iptal olarak güncelle (2 ID'si iptal için varsayılıyor)
-                appointment.AppointmentStatusId = (int)AppointmentStatusEnum.Canceled;
+                appointment.AppointmentStatusId = 2;
 
                 // Randevu aralığı durumunu tekrar uygun olarak güncelle (1 ID'si uygun için varsayılıyor)
-                appointmentInterval.AppointmentStatusId = (int)AppointmentStatusEnum.Available;
+                appointmentInterval.AppointmentStatusId = 1;
 
                 // Değişiklikleri depoya kaydet
                 await _appointmentRepository.UpdateAsync(appointment);
