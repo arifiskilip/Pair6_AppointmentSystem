@@ -1,14 +1,10 @@
 ﻿using Application.Repositories;
 using AutoMapper;
 using Core.Persistence.Paging;
+using Domain.Enums;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Appointment.Queries.GetPaginatedAppointmentsByPatient
 {
@@ -35,18 +31,18 @@ namespace Application.Features.Appointment.Queries.GetPaginatedAppointmentsByPat
 
                 if (request.PatientId.HasValue && request.PatientId > 0)
                 {
-                    predicate = a => a.PatientId == request.PatientId && a.AppointmentStatusId == 4;
+                    predicate = a => a.PatientId == request.PatientId && a.AppointmentStatusId == (int)AppointmentStatusEnum.Completed || a.AppointmentStatusId == (int)AppointmentStatusEnum.Canceled;
                 }
 
                 if (request.Date.HasValue)
                 {
                     if (request.PatientId.HasValue && request.PatientId > 0)
                     {
-                        predicate = a => a.PatientId == request.PatientId && a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date && a.AppointmentStatusId == 4;
+                        predicate = a => a.PatientId == request.PatientId && a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date && a.AppointmentStatusId == (int)AppointmentStatusEnum.Completed || a.AppointmentStatusId == (int)AppointmentStatusEnum.Canceled;
                     }
                     else
                     {
-                        predicate = a => a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date && a.AppointmentStatusId == 4;
+                        predicate = a => a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date && a.AppointmentStatusId == (int)AppointmentStatusEnum.Completed || a.AppointmentStatusId == (int)AppointmentStatusEnum.Canceled;
                     }
                 }
 
@@ -62,6 +58,7 @@ namespace Application.Features.Appointment.Queries.GetPaginatedAppointmentsByPat
                         .Include(a => a.AppointmentStatus),
                     index: request.PageIndex,
                     size: request.PageSize,
+                    orderBy: x => x.OrderByDescending(x => x.AppointmentInterval.IntervalDate),
                     enableTracking: false,
                     cancellationToken: cancellationToken
                 );

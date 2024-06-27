@@ -3,6 +3,7 @@ using Application.Features.Patients.Commands.AddImage;
 using Application.Features.Patients.Commands.Update;
 using Application.Features.Patients.Queries.GetAllPaginated;
 using Application.Features.Patients.Queries.GetById;
+using Application.Features.Patients.Queries.SearchPatients;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,7 +27,12 @@ namespace WebAPI.Controllers
             var result = await _mediator.Send(query);
             return Ok(result);
         }
-
+        [HttpGet]
+        public async Task<IActionResult> GetSearchPatients([FromQuery] SearchPatientsQuery query)
+        {
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
         [HttpPut]
         public async Task<IActionResult> UpdatePatient([FromBody] UpdatePatientCommand command)
         {
