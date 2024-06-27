@@ -13,6 +13,8 @@ namespace Application.Features.Titles.Commands.Update
 
 		public bool IsDeleted { get; set; }
 
+		
+
 
 		public class UpdateTitleCommandHandler : IRequestHandler<UpdateTitleCommand, UpdateTitleResponse>
 		{
@@ -35,6 +37,7 @@ namespace Application.Features.Titles.Commands.Update
 				_titleBusinessRules.IsSelectedEntityAvailable(checkEntity);
 				await _titleBusinessRules.UpdateDuplicateNameCheckAsync(request.Name, request.Id);
 
+				checkEntity.UpdatedDate = DateTime.Now;
 				await _titleRepository.UpdateAsync(_mapper.Map(request, checkEntity));
 
 				return _mapper.Map<UpdateTitleResponse>(checkEntity);
