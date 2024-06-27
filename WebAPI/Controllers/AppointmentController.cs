@@ -10,6 +10,7 @@ using Application.Features.Appointment.Queries.GetPaginatedAppointmentsByDoctor;
 using Application.Features.Appointment.Queries.GetPaginatedAppointmentsByPatient;
 using Application.Features.Appointment.Queries.GetPaginatedDoctorAppointments;
 using Application.Features.Appointment.Queries.GetPaginatedPatientAppoinments;
+using Application.Features.Appointment.Queries.GetPaginatedPatientByDoctorId;
 using Application.Features.Appointment.Queries.GetPaginatedPatientNewAppoinments;
 using Application.Features.Appointment.Queries.GetPaginatedPatientOldAppoinments;
 using Application.Features.Appointment.Queries.GetPatientDashboardModel;
@@ -39,8 +40,12 @@ namespace WebAPI.Controllers
             var result = await _mediator.Send(query);
             return Ok(result);
         }
-
-
+        [HttpGet]
+        public async Task<IActionResult> GetPaginatedAppointmentsByPatientAndAuthDoctor([FromQuery] GetPaginatedAppointmentsByPatientAndAuthDoctorQuery query)
+        {
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
         [HttpPost]
         public async Task<IActionResult> CancelAppointmentByPatient([FromBody] CancelAppointmentByPatientCommand command)
         {
