@@ -1,14 +1,8 @@
 ﻿using Core.Domain;
-using Core.Persistence.Paging;
 
-namespace Application.Features.Patients.Queries.GetAllPaginated
+namespace Application.Features.Patients.Queries.SearchPatients
 {
-    public class GetAllPaginatedPatientResponse
-    {
-        public IPaginate<ListPatientDto>? Patients { get; set; }
-    }
-
-    public class ListPatientDto : IEntity
+    public class SearchPatientsResponse : IEntity
     {
         public int Id { get; set; }
         public string FirstName { get; set; }

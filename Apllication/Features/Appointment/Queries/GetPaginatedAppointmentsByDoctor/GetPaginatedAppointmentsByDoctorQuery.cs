@@ -59,6 +59,7 @@ namespace Application.Features.Appointment.Queries.GetPaginatedAppointmentsByDoc
                         .Include(a => a.AppointmentInterval)
                         .Include(a => a.AppointmentStatus),
                     index: request.PageIndex,
+                    orderBy: x => x.OrderByDescending(x => x.AppointmentInterval.IntervalDate),
                     size: request.PageSize,
                     enableTracking: false,
                     cancellationToken: cancellationToken

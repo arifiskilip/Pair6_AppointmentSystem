@@ -1,15 +1,8 @@
-﻿using Application.Features.Doctors.Queries;
-using Application.Repositories;
+﻿using Application.Repositories;
 using AutoMapper;
 using Core.Persistence.Paging;
-using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Patients.Queries.GetAllPaginated
 {

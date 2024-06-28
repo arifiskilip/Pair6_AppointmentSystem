@@ -8,5 +8,6 @@ namespace Application.Features.Appointment.Commands.CancelByPatient
 {
     public class CancelAppointmentByPatientResponse
     {
+
     }
 }

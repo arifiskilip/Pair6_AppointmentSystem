@@ -1,6 +1,7 @@
 ﻿using Application.Repositories;
 using Application.Services;
 using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Core.Application.Pipelines.Transaction;
 using Core.CrossCuttingConcers.Exceptions.Types;
 using Domain.Enums;
@@ -8,31 +9,35 @@ using MediatR;
 
 namespace Application.Features.DoctorSchedule.Command.Add
 {
-    public class DoctorScheduleAddCommand : IRequest<DoctorScheduleAddResponse>, ITransactionalRequest
+    public class DoctorScheduleAddCommand : IRequest<DoctorScheduleAddResponse>, ITransactionalRequest, ISecuredRequest
     {
-        public int DoctorId { get; set; }
         public DateTime Day { get; set; }
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
         public int PatientInterval { get; set; }
 
+        public string[] Roles => ["Doctor"];
 
         public class DoctorScheduleAddHandler : IRequestHandler<DoctorScheduleAddCommand, DoctorScheduleAddResponse>
         {
             private readonly IDoctorScheduleRepository _doctorScheduleRepository;
             private readonly IMapper _mapper;
             private readonly IAppointmentIntervalService _appointmentIntervalService;
+            private readonly IAuthService _authService;
 
-            public DoctorScheduleAddHandler(IDoctorScheduleRepository doctorScheduleRepository, IMapper mapper, IAppointmentIntervalService appointmentIntervalService)
+            public DoctorScheduleAddHandler(IDoctorScheduleRepository doctorScheduleRepository, IMapper mapper, IAppointmentIntervalService appointmentIntervalService, IAuthService authService)
             {
                 _doctorScheduleRepository = doctorScheduleRepository;
                 _mapper = mapper;
                 _appointmentIntervalService = appointmentIntervalService;
+                _authService = authService;
             }
 
             public async Task<DoctorScheduleAddResponse> Handle(DoctorScheduleAddCommand request, CancellationToken cancellationToken)
             {
                 // Rules
+                var doctorId = await _authService.GetAuthenticatedUserIdAsync();
+
 
                 //Date Control
                 if (request.StartTime>= request.EndTime)
@@ -50,7 +55,7 @@ namespace Application.Features.DoctorSchedule.Command.Add
                 DateTime endDate = request.Day.Add(request.EndTime);
 
                 var result = await _doctorScheduleRepository.GetListNotPagedAsync(
-                    predicate: x => x.DoctorId == request.DoctorId && x.Day == request.Day);
+                    predicate: x => x.DoctorId == doctorId && x.Day == request.Day);
                 if (result is not null)
                 {
                     foreach (var interval in result)
@@ -65,6 +70,7 @@ namespace Application.Features.DoctorSchedule.Command.Add
                 }
 
                 Domain.Entities.DoctorSchedule schedule = _mapper.Map<Domain.Entities.DoctorSchedule>(request);
+                schedule.DoctorId = doctorId;
                 var addedSchedule = await _doctorScheduleRepository.AddAsync(schedule);
                 
                 var doctorSchedules = GenerateDoctorSchedules(request.Day.ToString("dd.MM.yyyy"),request.StartTime.ToString(@"hh\:mm"), request.EndTime.ToString(@"hh\:mm"), request.PatientInterval);
@@ -74,7 +80,7 @@ namespace Application.Features.DoctorSchedule.Command.Add
                     await _appointmentIntervalService.AddAsync(new()
                     {
                         AppointmentStatusId = (int)AppointmentStatusEnum.Available,
-                        DoctorId = request.DoctorId,
+                        DoctorId = doctorId,
                         IntervalDate = item,
                     });
                 }

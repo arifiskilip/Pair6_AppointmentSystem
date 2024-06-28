@@ -1,7 +1,9 @@
-﻿using Application.Features.Feedback.Commands.Add;
-using Application.Features.Reports.Commands.Add;
+﻿using Application.Features.Reports.Commands.Add;
 using Application.Features.Reports.Queries.GetAllReportsPatient;
 using Application.Features.Reports.Queries.GetByIdReportsPatient;
+using Application.Features.Reports.Queries.GetPaginatedReportsByPatientId;
+using Application.Features.Reports.Queries.GetPaginatedReportsByPatientIdAndDoctorId;
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -22,11 +24,27 @@ namespace WebAPI.Controllers
             return Created(string.Empty, result);
         }
 
+
         [HttpGet]
         public async Task<IActionResult> GetByIdReportsPatient([FromQuery] GetByIdReportsPatientQuery query)
         {
             var result = await _mediator.Send(query);
             return Created(string.Empty, result);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetPaginatedReportsByPatientId([FromQuery] GetPaginatedReportsByPatientIdQuery command)
+        {
+            var result = await _mediator.Send(command);
+            return Created(string.Empty, result);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetPaginatedReportsByPatientIdAndDoctorId([FromQuery] GetPaginatedReportsByPatientIdAndDoctorIdQuery command)
+        {
+            var result = await _mediator.Send(command);
+            return Created(string.Empty, result);
+        }
+        
+
     }
 }

@@ -14,7 +14,7 @@ namespace Application.Features.Auth.Command.VerificationCode
 {
     public class VerificationCodeCommand : IRequest<VerificationCodeResponse>, ISecuredRequest
     {
-        public string[] Roles => [];
+        public string[] Roles => ["Patient","Admin","Doctor"];
 
         public class VerificationCodeHandler : IRequestHandler<VerificationCodeCommand, VerificationCodeResponse>
         {

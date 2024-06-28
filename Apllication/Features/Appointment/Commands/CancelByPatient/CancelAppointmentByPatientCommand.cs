@@ -32,6 +32,7 @@ namespace Application.Features.Appointment.Commands.CancelByPatient
             }
             public async Task<CancelAppointmentByPatientResponse> Handle(CancelAppointmentByPatientCommand request, CancellationToken cancellationToken)
             {
+
                 //rules 
                 //1. iptal ettigi kendine ait olmali
                 //2. gecmise ait bir randevuyu iptal edemez
