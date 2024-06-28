@@ -12,9 +12,10 @@ namespace Application.Features.Appointment.Commands.AvailableByDoctor
     {
         public int AppointmentId { get; set; }
 
-        public string[] Roles => ["Doctor","Admim"];
+        public string[] Roles => ["Doctor"];
 
-
+         
+        //Test
 
         public class AvailableAppointmentByDoctorCommandHandler : IRequestHandler<AvailableAppointmentByDoctorCommand, AvailableAppointmentByDoctorResponse>
         {

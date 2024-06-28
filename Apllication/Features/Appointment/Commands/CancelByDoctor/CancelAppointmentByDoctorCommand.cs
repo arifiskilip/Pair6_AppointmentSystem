@@ -20,6 +20,7 @@ namespace Application.Features.Appointment.Commands.CancelByDoctor
 
         public string[] Roles => ["Doctor"];
 
+
         public class CancelAppointmentByDoctorCommandHandler : IRequestHandler<CancelAppointmentByDoctorCommand, CancelAppointmentByDoctorResponse>
         {
             private readonly IAppointmentRepository _appointmentRepository;

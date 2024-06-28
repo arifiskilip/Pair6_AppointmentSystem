@@ -15,6 +15,7 @@ namespace Application.Features.Appointment.Commands.CompleteByDoctor
         public string[] Roles => ["Doctor"];
 
 
+
         public class CompleteAppointmentByDoctorCommandHandler : IRequestHandler<CompleteAppointmentByDoctorCommand, CompleteAppointmentByDoctorResponse>
         {
             private readonly IAppointmentRepository _appointmentRepository;

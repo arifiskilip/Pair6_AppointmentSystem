@@ -49,25 +49,29 @@ namespace WebAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> CancelAppointmentByPatient([FromBody] CancelAppointmentByPatientCommand command)
         {
+
             var result = await _mediator.Send(command);
             return Ok();
         }
 
         [HttpPost]
         public async Task<IActionResult> AvailableAppointmentByDoctor([FromBody] AvailableAppointmentByDoctorCommand command)
-        {
+        { 
+
             var result = await _mediator.Send(command);
             return Ok();
         }
         [HttpPost]
         public async Task<IActionResult> CompleteAppointmentByDoctor([FromBody] CompleteAppointmentByDoctorCommand command)
         {
+
             var result = await _mediator.Send(command);
             return Ok();
         }
         [HttpPost]
         public async Task<IActionResult> CancelAppointmentByDoctor([FromBody] CancelAppointmentByDoctorCommand command)
         {
+
             var result = await _mediator.Send(command);
             return Ok();
         }
