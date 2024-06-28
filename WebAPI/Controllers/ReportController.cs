@@ -1,6 +1,7 @@
 ﻿using Application.Features.Feedback.Commands.Add;
 using Application.Features.Reports.Commands.Add;
 using Application.Features.Reports.Queries.GetAllReportsPatient;
+using Application.Features.Reports.Queries.GetByIdReportsPatient;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -18,6 +19,13 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> GetAllReportsPatient([FromQuery] GetAllReportsPatientCommand command)
         {
             var result = await _mediator.Send(command);
+            return Created(string.Empty, result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetByIdReportsPatient([FromQuery] GetByIdReportsPatientQuery query)
+        {
+            var result = await _mediator.Send(query);
             return Created(string.Empty, result);
         }
     }
