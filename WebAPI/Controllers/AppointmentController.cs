@@ -84,7 +84,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAuthDoctorAppointments([FromQuery] GetPaginatedDoctorAppointmentsQuery query)
+        public async Task<IActionResult> GetPaginatedDoctorAppointments([FromQuery] GetPaginatedDoctorAppointmentsQuery query)
         {
             var result = await _mediator.Send(query);
             return Ok(result);

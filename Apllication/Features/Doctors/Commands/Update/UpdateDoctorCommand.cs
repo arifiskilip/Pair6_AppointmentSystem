@@ -13,8 +13,8 @@ namespace Application.Features.Doctors.Commands.Update
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public DateTime BirthDate { get; set; }
-        public short TitleId { get; set; }
-        public short BranchId { get; set; }
+        public short? TitleId { get; set; }
+        public short? BranchId { get; set; }
 
         public class UpdateDoctorCommandHandler : IRequestHandler<UpdateDoctorCommand, UpdateDoctorResponse>
         {
@@ -36,6 +36,16 @@ namespace Application.Features.Doctors.Commands.Update
                     d => d.Id == request.Id,
                     include: query => query.Include(d => d.Title).Include(d => d.Branch)
                 );
+                // Null kontrolü yap ve mevcut değerleri koru
+                if (!request.TitleId.HasValue)
+                {
+                    request.TitleId = doctor.TitleId;
+                }
+
+                if (!request.BranchId.HasValue)
+                {
+                    request.BranchId = doctor.BranchId;
+                }
                 _mapper.Map(request, doctor);              
                 await _doctorRepository.UpdateAsync(doctor);
                 // Geri dönecek response'u oluştur

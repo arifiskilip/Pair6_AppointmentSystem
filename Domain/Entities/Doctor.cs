@@ -4,7 +4,6 @@
     {
         public short TitleId { get; set; }
         public short BranchId { get; set; }
-        public DateTime BirthDate { get; set; }
         public string? IdentityNumber { get; set; }
 
 

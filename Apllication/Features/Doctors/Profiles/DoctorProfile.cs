@@ -36,7 +36,14 @@ namespace Application.Features.Doctors.Profiles
                 .ForMember(dest => dest.TitleName, opt => opt.MapFrom(src => src.Title.Name))
                 .ForMember(dest => dest.BranchName, opt => opt.MapFrom(src => src.Branch.Name));
 
-            CreateMap<Doctor, GetByIdDoctorResponse>().ReverseMap();
+            CreateMap<Doctor, GetByIdDoctorResponse>()
+                 .ForMember(dest => dest.TitleName, opt => opt.MapFrom(src => src.Title.Name))
+                .ForMember(dest => dest.BranchName, opt => opt.MapFrom(src => src.Branch.Name))
+                .ForMember(dest => dest.TitleId, opt => opt.MapFrom(src => src.TitleId))
+                .ForMember(dest => dest.BranchId, opt => opt.MapFrom(src => src.BranchId))
+                .ForMember(dest => dest.GenderId, opt => opt.MapFrom(src => src.Gender.Id))
+                .ForMember(dest => dest.GenderName, opt => opt.MapFrom(src => src.Gender.Name));
+                
 
             CreateMap<Doctor, GetAllByBranchIdQuery>().ReverseMap();
             CreateMap<Doctor, GetAllByBranchIdResponse>()

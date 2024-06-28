@@ -1,7 +1,9 @@
-﻿using Application.Features.Doctors.Commands.Update;
+﻿using Application.Features.Doctors.Commands.AddImage;
+using Application.Features.Doctors.Commands.Update;
 using Application.Features.Doctors.Queries.GetAllByBranchId;
 using Application.Features.Doctors.Queries.GetAllPaginated;
 using Application.Features.Doctors.Queries.GetById;
+using Application.Features.Patients.Commands.AddImage;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -38,6 +40,12 @@ namespace WebAPI.Controllers
         {
             var result = await _mediator.Send(query);
 
+            return Ok(result);
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddImage([FromForm] DoctorAddImageCommand command)
+        {
+            var result = await _mediator.Send(command);
             return Ok(result);
         }
     }

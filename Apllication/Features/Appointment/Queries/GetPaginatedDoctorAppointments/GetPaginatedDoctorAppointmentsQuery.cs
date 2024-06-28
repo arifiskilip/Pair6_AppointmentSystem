@@ -2,6 +2,7 @@
 using AutoMapper;
 using Core.Application.Pipelines.Authorization;
 using Core.Persistence.Paging;
+using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +16,7 @@ namespace Application.Features.Appointment.Queries.GetPaginatedDoctorAppointment
         public int PageIndex { get; set; } = 1;
         public int PageSize { get; set; } = 10;
 
-        public string[] Roles => ["Doctor"];
+        public string[] Roles => ["Patient", "Admin", "Doctor"];
         public class GetPaginatedDoctorAppointmentsQueryHandler : IRequestHandler<GetPaginatedDoctorAppointmentsQuery, GetPaginatedDoctorAppointmentsResponse>
         {
             private readonly IMapper _mapper;
@@ -37,20 +38,25 @@ namespace Application.Features.Appointment.Queries.GetPaginatedDoctorAppointment
                 var doctorId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
                 var doctor = await _doctorRepository.GetAsync(x => x.Id == int.Parse(doctorId));
- 
+
 
                 var appointments = await _appointmentRepository.GetListAsync(
-                    predicate: x=> x.AppointmentInterval.DoctorId == int.Parse(doctorId),
-                    include: query => query
-                        .Include(a => a.Patient)
-                        .Include(a => a.AppointmentStatus)
-                        .Include(a => a.AppointmentInterval),
-                    orderBy: q => q.OrderByDescending(a => a.AppointmentInterval.IntervalDate),
-                    index: request.PageIndex,
-                    size: request.PageSize,
-                    enableTracking: false,
-                    cancellationToken: cancellationToken
-                );
+                     predicate: x => x.AppointmentInterval.DoctorId == int.Parse(doctorId),
+                     include: query => query
+                         .Include(a => a.Patient)
+                         .Include(a => a.AppointmentStatus)
+                         .Include(a => a.AppointmentInterval)
+                             .ThenInclude(a => a.Doctor)
+                                 .ThenInclude(a => a.Branch)
+                         .Include(a => a.AppointmentInterval)
+                             .ThenInclude(ai => ai.Doctor)
+                                 .ThenInclude(d => d.Title),
+                     orderBy: q => q.OrderByDescending(a => a.AppointmentInterval.IntervalDate),
+                     index: request.PageIndex,
+                     size: request.PageSize,
+                     enableTracking: false,
+                     cancellationToken: cancellationToken
+                     );
 
                 var appointmentDtos = _mapper.Map<List<DoctorAppointmentDto>>(appointments.Items);
 

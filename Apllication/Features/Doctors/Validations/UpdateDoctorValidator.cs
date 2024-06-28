@@ -32,11 +32,6 @@ namespace Application.Features.Doctors.Validations
             //    .NotEmpty().WithMessage("Birth date is required.")
             //    .LessThan(DateTime.Now).WithMessage("Birth date cannot be in the future.");
 
-            RuleFor(x => x.TitleId)
-                        .InclusiveBetween((short)1, short.MaxValue).WithMessage("Title ID must be greater than 0.");
-
-            RuleFor(x => x.BranchId)
-                .InclusiveBetween((short)1, short.MaxValue).WithMessage("Branch ID must be greater than 0.");
         }
     }
 }
