@@ -25,8 +25,6 @@
     <Folder Include="Features\Doctors\Constants\" />
     <Folder Include="Features\Doctors\Rules\" />
     <Folder Include="Features\Doctors\Profiles\" />
-
-    <Folder Include="Features\AppointmentInterval\Commands\" />
     <Folder Include="Features\AppointmentInterval\Constants\" />
     <Folder Include="Features\AppointmentInterval\Validations\" />
     <Folder Include="Features\Appointment\Constants\" />

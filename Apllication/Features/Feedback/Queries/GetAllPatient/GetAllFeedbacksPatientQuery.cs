@@ -1,13 +1,14 @@
 ﻿using Application.Repositories;
 using Application.Services;
 using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Core.Persistence.Paging;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Feedback.Queries.GetAll
 {
-    public class GetAllFeedbacksPatientQuery : IRequest<GetAllFeedbacksPatientResponse>
+    public class GetAllFeedbacksPatientQuery : IRequest<GetAllFeedbacksPatientResponse> , ISecuredRequest
     {
         public int PageIndex { get; set; } = 1;
         public int PageSize { get; set; } = 10;

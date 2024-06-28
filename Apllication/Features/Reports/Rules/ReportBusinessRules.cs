@@ -3,6 +3,7 @@ using Application.Services;
 using Core.Application.Rules;
 using Core.CrossCuttingConcers.Exceptions.Types;
 using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using Org.BouncyCastle.Asn1.Ocsp;
 using System;
 using System.Collections.Generic;
@@ -49,6 +50,30 @@ namespace Application.Features.Reports.Rules
             if (appointmentInterval.DoctorId != doctorId)
             {
                 throw new BusinessException("Sadece kendi randevuluarınızın hastalarına rapor oluşturabilirsiniz.");
+            }
+        }
+
+        public async Task IsReportExistbyReportId(int reportId)
+        {
+            var reportCheck = await _reportRepository.GetAsync(x => x.Id == reportId);
+
+            if (reportCheck is null)
+            {
+                throw new BusinessException("Böyle bir rapor bulunamadı");
+            }
+        }
+
+        public async Task IsReportBelongsToUser(int reportId, int userId)
+        {
+            var belonging = await _reportRepository.GetAsync(
+                predicate:x=> x.Id == reportId && x.Appointment.PatientId == userId,
+                include:query=> query
+                .Include(i=> i.Appointment)
+            );
+
+            if(belonging is null)
+            {
+                throw new BusinessException("Kendi randevuluariniza ait olmayan raporlari goruntuleyemezsiniz");
             }
         }
     }
