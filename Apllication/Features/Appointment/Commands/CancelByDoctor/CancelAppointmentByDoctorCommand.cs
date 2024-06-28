@@ -1,8 +1,6 @@
 ﻿using Application.Repositories;
 using Application.Services;
 using Core.Application.Pipelines.Authorization;
-using Core.CrossCuttingConcers.Exceptions.Types;
-using Domain.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -42,23 +40,23 @@ namespace Application.Features.Appointment.Commands.CancelByDoctor
                 var appointment = await _appointmentRepository.GetAsync(x => x.Id == request.AppointmentId);
                 if (appointment == null)
                 {
-                    throw new BusinessException("Randevu bulunamadı");
+                    throw new Exception("Randevu bulunamadı");
                 }
                 var appointmentInterval = await _appointmentIntervalService.GetAsync(appointment.AppointmentIntervalId);
                 if (appointmentInterval.DoctorId != parsedDoctorId)
                 {
-                    throw new BusinessException("You can only cancel your own appointments");
+                    throw new Exception("You can only cancel your own appointments");
                 }
                 if (appointmentInterval.IntervalDate < DateTime.Now)
                 {
-                    throw new BusinessException("Geçmişteki bir randevuyu iptal edemezsiniz");
+                    throw new Exception("Geçmişteki bir randevuyu iptal edemezsiniz");
                 }
 
                 // Randevu durumunu iptal olarak güncelle (2 ID'si iptal için varsayılıyor)
-                appointment.AppointmentStatusId = (int)AppointmentStatusEnum.Canceled;
+                appointment.AppointmentStatusId = 2;
 
                 // Randevu aralığı durumunu tekrar uygun olarak güncelle (1 ID'si uygun için varsayılıyor)
-                appointmentInterval.AppointmentStatusId = (int)AppointmentStatusEnum.Available;
+                appointmentInterval.AppointmentStatusId = 1;
 
                 // Değişiklikleri depoya kaydet
                 await _appointmentRepository.UpdateAsync(appointment);
