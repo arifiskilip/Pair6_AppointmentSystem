@@ -12,7 +12,7 @@ namespace Application.Features.Appointment.Commands.AvailableByDoctor
     {
         public int AppointmentId { get; set; }
 
-        public string[] Roles => ["Doctor"];
+        public string[] Roles => ["Doctor","Admim"];
 
 
 
