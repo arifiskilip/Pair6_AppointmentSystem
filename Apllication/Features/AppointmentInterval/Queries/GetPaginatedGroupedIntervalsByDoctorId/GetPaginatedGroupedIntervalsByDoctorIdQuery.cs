@@ -27,7 +27,7 @@ namespace Application.Features.AppointmentInterval.Queries.GetPaginatedGroupedIn
                 var query = await _appointmentIntervalRepository.GetListNotPagedAsync();
 
                 var filteredQuery = query
-                    .Where(x => x.DoctorId == request.DoctorId
+                    .Where(x => x.IsDeleted == false && x.DoctorId == request.DoctorId
                                 && x.IntervalDate >= DateTime.Now
                                 && (x.AppointmentStatusId == (int)AppointmentStatusEnum.Available
                                     || x.AppointmentStatusId == (int)AppointmentStatusEnum.Canceled))

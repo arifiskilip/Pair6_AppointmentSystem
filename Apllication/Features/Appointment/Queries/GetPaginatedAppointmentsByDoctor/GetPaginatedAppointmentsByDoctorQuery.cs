@@ -3,12 +3,7 @@ using AutoMapper;
 using Core.Persistence.Paging;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Appointment.Queries.GetPaginatedAppointmentsByDoctor
 {
@@ -36,18 +31,18 @@ namespace Application.Features.Appointment.Queries.GetPaginatedAppointmentsByDoc
 
                 if (request.DoctorId > 0)
                 {
-                    predicate = a => a.AppointmentInterval.DoctorId == request.DoctorId && a.AppointmentStatusId == 4; ;
+                    predicate = a => a.IsDeleted == false && a.AppointmentInterval.DoctorId == request.DoctorId && a.AppointmentStatusId == 4; ;
                 }
 
                 if (request.Date.HasValue)
                 {
                     if (request.DoctorId > 0)
                     {
-                        predicate = a => a.AppointmentInterval.DoctorId == request.DoctorId && a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date && a.AppointmentStatusId == 4;
+                        predicate = a => a.IsDeleted == false && a.AppointmentInterval.DoctorId == request.DoctorId && a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date && a.AppointmentStatusId == 4;
                     }
                     else
                     {
-                        predicate = a => a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date && a.AppointmentStatusId == 4;
+                        predicate =  a => a.IsDeleted == false && a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date && a.AppointmentStatusId == 4;
                     }
                 }
 

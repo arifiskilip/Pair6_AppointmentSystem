@@ -25,7 +25,7 @@ namespace Application.Features.Appointment.Queries.GetMonthlyAppointmentsByPatie
             {
                 var patientId = await _authService.GetAuthenticatedUserIdAsync();
                 var getAppointments = await _appointmentRepository.GetListNotPagedAsync(
-                    predicate: x => x.PatientId == patientId &&
+                    predicate: x => x.IsDeleted == false && x.PatientId == patientId &&
                                 x.AppointmentInterval.IntervalDate >= DateTime.Now.AddMonths(-6),
                     include: x => x.Include(a => a.AppointmentInterval),
                     enableTracking: false);

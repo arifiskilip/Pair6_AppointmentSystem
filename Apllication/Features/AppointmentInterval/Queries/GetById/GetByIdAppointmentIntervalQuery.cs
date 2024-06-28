@@ -28,7 +28,7 @@ namespace Application.Features.AppointmentInterval.Queries.GetById
             public async Task<GetByIdAppointmentIntervalResponse> Handle(GetByIdAppointmentIntervalQuery request, CancellationToken cancellationToken)
             {
                 Domain.Entities.AppointmentInterval? appointmentInterval = await _appointmentIntervalRepository.GetAsync(
-                    predicate: x => x.Id == request.AppointmentIntervalId,
+                    predicate: x => x.IsDeleted == false && x.Id == request.AppointmentIntervalId,
                     include: i => i.Include(x => x.Doctor).ThenInclude(x => x.Title)
                     .Include(x=>x.Doctor).ThenInclude(x => x.Branch));
 

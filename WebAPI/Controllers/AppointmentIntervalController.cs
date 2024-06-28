@@ -1,4 +1,5 @@
 ﻿using Application.Features.AppointmentInterval.Commands.Delete;
+using Application.Features.AppointmentInterval.Commands.UpdateDate;
 using Application.Features.AppointmentInterval.Queries.AppointmentIntervalsSearchByPaginated;
 ﻿using Application.Features.AppointmentInterval.Queries.AppointmentIntervalsSearchByPaginated;
 using Application.Features.AppointmentInterval.Queries.GetAppoitmentIntervalByDoctor;
@@ -46,7 +47,12 @@ namespace WebAPI.Controllers
             var result = await _mediator.Send(command);
             return Ok();
         }
-
+        [HttpPost]
+        public async Task<IActionResult> UpdateDate([FromBody] UpdateDateAppointmentIntervalCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
 
         [HttpGet]
         public async Task<IActionResult> GetAppoitmentIntervalsByDoctor([FromQuery]         GetAppoitmentIntervalsByDoctorQuery query)

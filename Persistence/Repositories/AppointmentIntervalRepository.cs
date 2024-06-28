@@ -21,7 +21,7 @@ namespace Persistence.Repositories
                 .Include(i => i.Doctor).ThenInclude(i => i.Branch)
                 .Include(i => i.Doctor).ThenInclude(i => i.Title)
                 .Include(i=> i.Doctor).ThenInclude(i=> i.Gender)
-                .Where(x => x.Doctor.BranchId == branchId &&
+                .Where(x => x.IsDeleted==false && x.Doctor.BranchId == branchId &&
                 (x.AppointmentStatusId == (int)AppointmentStatusEnum.Available || x.AppointmentStatusId == (int)AppointmentStatusEnum.Canceled));
             if (doctorId.HasValue)
             {

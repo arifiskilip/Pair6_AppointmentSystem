@@ -29,7 +29,7 @@ namespace Application.Features.Appointment.Queries.GetAppointmentsForCurrentDayB
             {
                 var doctorId = await _authService.GetAuthenticatedUserIdAsync();
                 var appointments = await _appointmentRepository.GetListNotPagedAsync(
-                    predicate: x => x.AppointmentInterval.DoctorId == doctorId &&
+                    predicate: x => x.IsDeleted == false && x.AppointmentInterval.DoctorId == doctorId &&
                             x.AppointmentInterval.IntervalDate.Date == DateTime.Now.Date,
                     orderBy: x => x.OrderBy(o => o.AppointmentInterval.IntervalDate),
                     include: x => x.Include(i => i.Patient).Include(i => i.AppointmentInterval).Include(i => i.AppointmentStatus),

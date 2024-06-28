@@ -40,18 +40,18 @@ namespace Application.Features.Appointment.Queries.GetPaginatedPatientByDoctorId
 
                 if (request.PatientId.HasValue && request.PatientId > 0)
                 {
-                    predicate = a => a.PatientId == request.PatientId && a.AppointmentStatusId == (int)AppointmentStatusEnum.Completed || a.AppointmentStatusId == (int)AppointmentStatusEnum.Canceled && a.AppointmentInterval.DoctorId == doctorId;
+                    predicate = a => a.IsDeleted == false && a.PatientId == request.PatientId && a.AppointmentStatusId == (int)AppointmentStatusEnum.Completed || a.AppointmentStatusId == (int)AppointmentStatusEnum.Canceled && a.AppointmentInterval.DoctorId == doctorId;
                 }
 
                 if (request.Date.HasValue)
                 {
                     if (request.PatientId.HasValue && request.PatientId > 0)
                     {
-                        predicate = a => a.PatientId == request.PatientId && a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date && a.AppointmentStatusId == (int)AppointmentStatusEnum.Completed || a.AppointmentStatusId == (int)AppointmentStatusEnum.Canceled && a.AppointmentInterval.DoctorId == doctorId;
+                        predicate = a => a.IsDeleted == false && a.PatientId == request.PatientId && a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date && a.AppointmentStatusId == (int)AppointmentStatusEnum.Completed || a.AppointmentStatusId == (int)AppointmentStatusEnum.Canceled && a.AppointmentInterval.DoctorId == doctorId;
                     }
                     else
                     {
-                        predicate = a => a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date && a.AppointmentStatusId == (int)AppointmentStatusEnum.Completed || a.AppointmentStatusId == (int)AppointmentStatusEnum.Canceled && a.AppointmentInterval.DoctorId == doctorId;
+                        predicate = a => a.IsDeleted == false && a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date && a.AppointmentStatusId == (int)AppointmentStatusEnum.Completed || a.AppointmentStatusId == (int)AppointmentStatusEnum.Canceled && a.AppointmentInterval.DoctorId == doctorId;
                     }
                 }
 

@@ -39,7 +39,7 @@ namespace Application.Features.Appointment.Queries.GetPaginatedPatientAppoinment
                 var patient = await _patientRepository.GetAsync(x => x.Id == int.Parse(patientId));
 
                 var appointments = await _appointmentRepository.GetListAsync(
-                    predicate: x => x.PatientId == int.Parse(patientId),
+                    predicate: x => x.IsDeleted == false && x.PatientId == int.Parse(patientId),
                     include: query => query
                         .Include(a => a.Patient)
                         .Include(a => a.AppointmentStatus)

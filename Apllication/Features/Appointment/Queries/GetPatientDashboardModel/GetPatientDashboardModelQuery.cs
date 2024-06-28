@@ -26,13 +26,13 @@ namespace Application.Features.Appointment.Queries.GetPatientDashboardModel
             {
                 var patientId = await _authService.GetAuthenticatedUserIdAsync();
                 int patientTotalAppointments = _appointmentRepository.GetListNotPagedAsync(
-                    predicate: x => x.PatientId == patientId).Result.Count();
+                    predicate: x => x.IsDeleted == false && x.PatientId == patientId).Result.Count();
                 int patientCompletedAppointments = _appointmentRepository.GetListNotPagedAsync(
-                    predicate: x => x.PatientId == patientId && x.AppointmentStatusId == (int)AppointmentStatusEnum.Completed).Result.Count();
+                    predicate: x => x.IsDeleted == false && x.PatientId == patientId && x.AppointmentStatusId == (int)AppointmentStatusEnum.Completed).Result.Count();
                 int patientCanceledAppointments = _appointmentRepository.GetListNotPagedAsync(
-                    predicate: x => x.PatientId == patientId && x.AppointmentStatusId == (int)AppointmentStatusEnum.Canceled).Result.Count();
+                    predicate: x => x.IsDeleted == false && x.PatientId == patientId && x.AppointmentStatusId == (int)AppointmentStatusEnum.Canceled).Result.Count();
                 int patientWaitingAppointments = _appointmentRepository.GetListNotPagedAsync(
-                    predicate: x => x.PatientId == patientId && x.AppointmentStatusId == (int)AppointmentStatusEnum.Created).Result.Count();
+                    predicate: x => x.IsDeleted == false && x.PatientId == patientId && x.AppointmentStatusId == (int)AppointmentStatusEnum.Created).Result.Count();
 
                 return new()
                 {

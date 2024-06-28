@@ -39,7 +39,7 @@ namespace Application.Features.Appointment.Queries.GetClosest
                 var patient = await _patientRepository.GetAsync(x => x.Id == int.Parse(patientId));
 
                 var upcomingAppointments = await _appointmentRepository.GetListNotPagedAsync(
-                    predicate: x => x.PatientId == int.Parse(patientId) &&
+                    predicate: x => x.IsDeleted == false && x.PatientId == int.Parse(patientId) &&
                                x.AppointmentStatus.Id == 4 &&
                                x.AppointmentInterval.IntervalDate > DateTime.Now,
                     include: query => query
