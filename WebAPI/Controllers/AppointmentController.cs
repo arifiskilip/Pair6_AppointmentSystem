@@ -1,6 +1,8 @@
 ﻿using Application.Features.Appointment.Commands.Add;
+using Application.Features.Appointment.Commands.AvailableByDoctor;
 using Application.Features.Appointment.Commands.CancelByDoctor;
 using Application.Features.Appointment.Commands.CancelByPatient;
+using Application.Features.Appointment.Commands.CompleteByDoctor;
 using Application.Features.Appointment.Queries.GetAppointmentsForCurrentDayByDoctor;
 using Application.Features.Appointment.Queries.GetClosest;
 using Application.Features.Appointment.Queries.GetMonthlyAppointmentsByPatientId;
