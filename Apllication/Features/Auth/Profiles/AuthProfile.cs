@@ -1,4 +1,5 @@
-﻿using Application.Features.Auth.Command.DoctorRegister;
+﻿using Application.Features.Auth.Command.AdminRegister;
+using Application.Features.Auth.Command.DoctorRegister;
 using Application.Features.Auth.Command.Login;
 using Application.Features.Auth.Command.PatientRegister;
 using Application.Features.Auth.Command.VerificationCode;
@@ -25,6 +26,10 @@ namespace Application.Features.Auth.Profiles
                 .ForMember(x => x.GenderName, opt => opt.MapFrom(x => x.Gender.Name));
 
             CreateMap<User, LoginResponse>().ReverseMap();
+
+            CreateMap<User,AdminRegisterResponse>()
+            .ForMember(x => x.GenderName, opt => opt.MapFrom(x => x.Gender.Name));
+            CreateMap<User, AdminRegisterCommand>().ReverseMap();
         }
     }
 }
