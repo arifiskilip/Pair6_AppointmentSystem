@@ -5,6 +5,8 @@ using Application.Features.Appointment.Commands.CancelByPatient;
 using Application.Features.Appointment.Commands.CompleteByDoctor;
 using Application.Features.Appointment.Queries.GetAppointmentsForCurrentDayByDoctor;
 using Application.Features.Appointment.Queries.GetClosest;
+using Application.Features.Appointment.Queries.GetDoctorDashboardModel;
+using Application.Features.Appointment.Queries.GetMonthlyAppointmentsByDoctor;
 using Application.Features.Appointment.Queries.GetMonthlyAppointmentsByPatientId;
 using Application.Features.Appointment.Queries.GetPaginatedAppointmentsByDoctor;
 using Application.Features.Appointment.Queries.GetPaginatedAppointmentsByPatient;
@@ -115,7 +117,19 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
         [HttpGet]
+        public async Task<IActionResult> GetMonthlyAppointmentsByDoctor([FromQuery] GetMonthlyAppointmentsByDoctorQuery query)
+        {
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+        [HttpGet]
         public async Task<IActionResult> GetPatientDashboardModel([FromQuery] GetPatientDashboardModelQuery query)
+        {
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetDoctorDashboardModel([FromQuery] GetDoctorDashboardModelQuery query)
         {
             var result = await _mediator.Send(query);
             return Ok(result);
