@@ -1,4 +1,5 @@
-﻿using Application.Features.Auth.Command.DoctorRegister;
+﻿using Application.Features.Auth.Command.AdminRegister;
+using Application.Features.Auth.Command.DoctorRegister;
 using Application.Features.Auth.Command.EmailVerified;
 using Application.Features.Auth.Command.IsEmailVerified;
 using Application.Features.Auth.Command.Login;
@@ -26,6 +27,14 @@ namespace WebAPI.Controllers
             var result = await _mediator.Send(command);
             return Ok(result);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> AdminRegister([FromBody] AdminRegisterCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Login([FromBody] LoginCommand command)
         {
