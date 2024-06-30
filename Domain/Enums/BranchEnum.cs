@@ -18,10 +18,10 @@
         Otorhinolaryngology = 14, // Kulak Burun Boğaz (KBB)
         Neurology = 15, // Nöroloji
         Neurosurgery = 16, // Nöroşirurji (Beyin ve Sinir Cerrahisi)
-        OrthopedicsAndTraumatology = 15, // Ortopedi ve Travmatoloji
-        PlasticReconstructiveAndAestheticSurgery = 17, // Plastik, Rekonstrüktif ve Estetik Cerrahi
-        Psychiatry = 18, // Psikiyatri
-        Radiology = 19, // Radyoloji
-        Urology = 20 // Üroloji
+        OrthopedicsAndTraumatology = 17, // Ortopedi ve Travmatoloji
+        PlasticReconstructiveAndAestheticSurgery = 18, // Plastik, Rekonstrüktif ve Estetik Cerrahi
+        Psychiatry = 19, // Psikiyatri
+        Radiology = 20, // Radyoloji
+        Urology = 21 // Üroloji
     }
 }

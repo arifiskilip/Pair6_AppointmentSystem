@@ -60,5 +60,14 @@ namespace Application.Features.Feedback.Rules
                 throw new BusinessException("Randevunuza ait geribildiriminiz zaten mevcut");
             }
         }
+
+        public async Task IsFeedbackExistbyId(int feedBackId)
+        {
+            var feedBack = await _feedbackRepository.GetAsync(predicate: x => x.Id == feedBackId);
+            if (feedBack is null)
+            {
+                throw new BusinessException("Böyle bir geri bildirim bulunamadı.");
+            }
+        }
     }
 }
