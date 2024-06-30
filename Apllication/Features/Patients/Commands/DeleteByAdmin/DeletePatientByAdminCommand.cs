@@ -30,7 +30,7 @@ namespace Application.Features.Patients.Commands.DeleteByAdmin
 
                 _patientBusinessRules.IsSelectedEntityAvailable(patient);
 
-                patient.IsDeleted = true;
+                patient.IsDeleted = !patient.IsDeleted;
 
                 await _patientRepository.UpdateAsync(patient);
                 return new();

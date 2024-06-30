@@ -1,4 +1,5 @@
 ﻿using Application.Features.Feedback.Commands.Add;
+using Application.Features.Feedback.Commands.DeleteFeedbackByAdmin;
 using Application.Features.Feedback.Queries.GetAll;
 using Application.Features.Feedback.Queries.GetAllAdmin;
 using Application.Features.Feedback.Queries.GetById;
@@ -35,6 +36,13 @@ namespace WebAPI.Controllers
         {
             var result = await _mediator.Send(query);
             return Created(string.Empty, result);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteFeedbackById([FromQuery] DeleteFeedbackByAdminCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
         }
     }
 }
