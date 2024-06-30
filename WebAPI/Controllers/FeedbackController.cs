@@ -18,7 +18,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll([FromQuery] GetAllFeedbacksPatientQuery query)
+        public async Task<IActionResult> GetAllByPatient([FromQuery] GetAllFeedbacksPatientQuery query)
         {
             var result = await _mediator.Send(query);
             return Created(string.Empty, result);

@@ -3,9 +3,8 @@ using Application.Repositories;
 using Application.Services;
 using AutoMapper;
 using Core.Application.Pipelines.Authorization;
+using Domain.Entities;
 using MediatR;
-using Microsoft.AspNetCore.Http;
-using System.Security.Claims;
 
 namespace Application.Features.Feedback.Commands.Add
 {
@@ -22,15 +21,17 @@ namespace Application.Features.Feedback.Commands.Add
             
             private readonly IAuthService _authService;
             private readonly IFeedbackRepository _feedbackRepository;
+            private readonly IAppointmentService _appointmentService;
             private readonly FeedbackBusinessRules _feedBackBusinessRules;
             private readonly IMapper _mapper;
 
-            public AddFeedbackCommandHandler(IFeedbackRepository feedbackRepository, FeedbackBusinessRules feedBackBusinessRules, IMapper mapper, IAuthService authService)
+            public AddFeedbackCommandHandler(IFeedbackRepository feedbackRepository, FeedbackBusinessRules feedBackBusinessRules, IMapper mapper, IAuthService authService, IAppointmentService appointmentService)
             {
                 _feedbackRepository = feedbackRepository;
                 _feedBackBusinessRules = feedBackBusinessRules;
                 _mapper = mapper;
                 _authService = authService;
+                _appointmentService = appointmentService;
             }
 
             public async Task<AddFeedBackResponse> Handle(AddFeedbackCommand request, CancellationToken cancellationToken)
@@ -43,12 +44,15 @@ namespace Application.Features.Feedback.Commands.Add
                 await _feedBackBusinessRules.IsAppointmentBelongsToPatient(request.AppointmentId, patientId);
                 await _feedBackBusinessRules.IsAppointmentStatusCompleted(request.AppointmentId);
                 await _feedBackBusinessRules.IsFeedbackExist(request.AppointmentId);
-                
+
                 
 
                 var feedBack = _mapper.Map<Domain.Entities.Feedback>(request);
                 feedBack.PatientId =patientId;
                 await _feedbackRepository.AddAsync(feedBack);
+                var appointment = await _appointmentService.GetAsync(request.AppointmentId);
+                appointment.FeedbackId = feedBack.Id;
+                await _appointmentService.UpdateAsunc(appointment);
                 return _mapper.Map<AddFeedBackResponse>(feedBack);
             }
         }

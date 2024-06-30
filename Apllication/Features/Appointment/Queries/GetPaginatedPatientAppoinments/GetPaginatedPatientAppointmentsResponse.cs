@@ -13,6 +13,7 @@ namespace Application.Features.Appointment.Queries.GetPaginatedPatientAppoinment
         public int DoctorId { get; set; }
         public string DoctorName { get; set; }
         public short BranchId { get; set; }
+        public int? FeedbackId { get; set; }
         public string BranchName { get; set; }
         public string AppointmentStatus { get; set; }
         public DateTime IntervalDate { get; set; }

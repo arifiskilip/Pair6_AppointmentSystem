@@ -33,7 +33,7 @@ namespace Application.Features.Feedback.Queries.GetAll
                 var patientId =await  _authService.GetAuthenticatedUserIdAsync();
 
                 var feedBacks = await _feedbackRepository.GetListAsync(
-                predicate:x=> x.PatientId == patientId,
+                predicate:x=> x.PatientId == patientId && x.IsDeleted==false,
                  include: query => query
                         .Include(i => i.Appointment),
                   orderBy: q => q.OrderByDescending(i => i.CreatedDate),

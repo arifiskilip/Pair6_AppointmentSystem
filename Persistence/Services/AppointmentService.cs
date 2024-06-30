@@ -30,5 +30,11 @@ namespace Persistence.Services
             }
             return appointment;
         }
+
+        public async Task<Appointment> UpdateAsunc(Appointment appointment)
+        {
+            await _appointmentRepository.UpdateAsync(appointment);
+            return appointment;
+        }
     }
 }
