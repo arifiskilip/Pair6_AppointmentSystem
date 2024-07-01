@@ -8,5 +8,6 @@ namespace Application.Features.Feedback.Commands.DeleteFeedbackByAdmin
 {
     public class DeleteFeedbackByAdminResponse
     {
-    }
+		public string Message { get; set; }
+	}
 }

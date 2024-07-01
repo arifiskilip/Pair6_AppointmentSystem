@@ -13,7 +13,7 @@ namespace Persistence.Repositories
         {
         }
 
-        public async Task<IPaginate<Feedback>> GetFeedbacksWithDynamicSearch(int pageIndex, int pageSize, string orderDate, int? doctorId, int? branchId, bool enableTracking = false)
+        public async Task<IPaginate<Feedback>> GetFeedbacksWithDynamicSearch(int pageIndex, int pageSize, string? orderDate, int? doctorId, int? branchId, bool enableTracking = false)
         {
              IQueryable<Feedback> query = Context.Feedbacks
             .Include(f => f.Patient)

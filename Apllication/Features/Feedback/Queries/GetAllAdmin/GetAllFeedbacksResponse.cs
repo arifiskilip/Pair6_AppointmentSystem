@@ -22,5 +22,7 @@ namespace Application.Features.Feedback.Queries.GetAllAdmin
         public string Gender { get; set; }
         public int AppointmentId { get; set; }
         public DateTime IntervalDate { get; set; }
-    }
+        public DateTime CreatedDate { get; set; }
+
+	}
 }
