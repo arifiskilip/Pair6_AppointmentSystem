@@ -1,4 +1,6 @@
-﻿using Application.Features.Doctors.Commands.AddImage;
+﻿using Application.Features.Doctors.Commands.ActivateDeleted;
+using Application.Features.Doctors.Commands.AddImage;
+using Application.Features.Doctors.Commands.SoftDelete;
 using Application.Features.Doctors.Commands.Update;
 using Application.Features.Doctors.Queries.GetAllByBranchId;
 using Application.Features.Doctors.Queries.GetAllPaginated;
@@ -48,5 +50,18 @@ namespace WebAPI.Controllers
             var result = await _mediator.Send(command);
             return Ok(result);
         }
+        [HttpPost]
+        public async Task<IActionResult> SoftDelete([FromBody] DoctorSoftDeleteCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+        [HttpPost]
+        public async Task<IActionResult> ActivateDeleted([FromBody] ActivateDeletedDoctorCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+        
     }
 }

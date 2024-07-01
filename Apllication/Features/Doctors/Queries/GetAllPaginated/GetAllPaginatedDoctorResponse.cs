@@ -22,7 +22,9 @@ namespace Application.Features.Doctors.Queries.GetAllPaginated
         public string PhoneNumber { get; set; }
         public DateTime BirthDate { get; set; }
         public string IdentityNumber { get; set; }
+        public string ImageUrl { get; set; }
         public DateTime CreatedDate { get; set; }
+        public bool IsDeleted { get; set; }
         public DateTime? UpdatedDate { get; set; }
         public int TitleId { get; set; }
         public int BranchId { get; set; }

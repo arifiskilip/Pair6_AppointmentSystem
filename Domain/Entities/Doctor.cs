@@ -4,7 +4,6 @@
     {
         public short TitleId { get; set; }
         public short BranchId { get; set; }
-        public string? IdentityNumber { get; set; }
 
 
         public virtual Title Title { get; set; }

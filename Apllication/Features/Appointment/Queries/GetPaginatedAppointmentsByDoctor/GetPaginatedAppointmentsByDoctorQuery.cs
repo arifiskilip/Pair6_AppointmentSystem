@@ -1,6 +1,7 @@
 ﻿using Application.Repositories;
 using AutoMapper;
 using Core.Persistence.Paging;
+using Domain.Enums;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
@@ -10,6 +11,7 @@ namespace Application.Features.Appointment.Queries.GetPaginatedAppointmentsByDoc
     public class GetPaginatedAppointmentsByDoctorQuery : IRequest<GetPaginatedAppointmentsByDoctorResponse>
     {
         public int? DoctorId { get; set; }
+        public int? AppointmentStatusId { get; set; }
         public DateTime? Date { get; set; }
         public int PageIndex { get; set; } = 1;
         public int PageSize { get; set; } = 10;
@@ -27,44 +29,13 @@ namespace Application.Features.Appointment.Queries.GetPaginatedAppointmentsByDoc
 
             public async Task<GetPaginatedAppointmentsByDoctorResponse> Handle(GetPaginatedAppointmentsByDoctorQuery request, CancellationToken cancellationToken)
             {
-                Expression<Func<Domain.Entities.Appointment, bool>> predicate = a => true;
+                var result = await _appointmentRepository.GetPaginatedFilteredByDoctorAsync(request.DoctorId, request.AppointmentStatusId, request.Date, request.PageIndex, request.PageSize);
 
-                if (request.DoctorId > 0)
-                {
-                    predicate = a => a.IsDeleted == false && a.AppointmentInterval.DoctorId == request.DoctorId && a.AppointmentStatusId == 4; ;
-                }
-
-                if (request.Date.HasValue)
-                {
-                    if (request.DoctorId > 0)
-                    {
-                        predicate = a => a.IsDeleted == false && a.AppointmentInterval.DoctorId == request.DoctorId && a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date && a.AppointmentStatusId == 4;
-                    }
-                    else
-                    {
-                        predicate =  a => a.IsDeleted == false && a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date && a.AppointmentStatusId == 4;
-                    }
-                }
-
-
-                var appointments = await _appointmentRepository.GetListAsync(
-                    predicate: predicate,
-                    include: query => query
-                        .Include(a => a.Patient)
-                        .Include(a => a.AppointmentInterval)
-                        .Include(a => a.AppointmentStatus),
-                    index: request.PageIndex,
-                    orderBy: x => x.OrderByDescending(x => x.AppointmentInterval.IntervalDate),
-                    size: request.PageSize,
-                    enableTracking: false,
-                    cancellationToken: cancellationToken
-                );
-
-                var appointmentDtos = _mapper.Map<List<AppointmentDto>>(appointments.Items);
+                var appointmentDtos = _mapper.Map<List<AppointmentDto>>(result.Items);
 
                 return new GetPaginatedAppointmentsByDoctorResponse
                 {
-                    Appointments = new Paginate<AppointmentDto>(appointmentDtos.AsQueryable(), appointments.Pagination)
+                    Appointments = new Paginate<AppointmentDto>(appointmentDtos.AsQueryable(), result.Pagination)
                 };
             }
         }
