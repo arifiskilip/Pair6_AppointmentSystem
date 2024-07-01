@@ -19,7 +19,7 @@ namespace Application.Features.Feedback.Queries.GetAllAdmin
     {
         public int PageIndex { get; set; } = 1;
         public int PageSize { get; set; } = 10;
-        public string OrderDate { get; set; }
+        public string? OrderDate { get; set; }
         public int? BranchId { get; set; }
         public int? DoctorId { get; set; }
         //public string[] Roles => ["Admin"];

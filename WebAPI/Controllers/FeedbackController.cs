@@ -24,7 +24,7 @@ namespace WebAPI.Controllers
             return Created(string.Empty, result);
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> GetAllFeedbacksAdmin([FromQuery] GetAllFeedbacksQuery query)
         {
             var result = await _mediator.Send(query);
