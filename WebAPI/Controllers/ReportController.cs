@@ -1,6 +1,7 @@
 ﻿using Application.Features.Reports.Commands.Add;
 using Application.Features.Reports.Queries.GetAllReportsPatient;
 using Application.Features.Reports.Queries.GetByIdReportsPatient;
+using Application.Features.Reports.Queries.GetPaginatedFilteredReportsByPatientId;
 using Application.Features.Reports.Queries.GetPaginatedReportsByPatientId;
 using Application.Features.Reports.Queries.GetPaginatedReportsByPatientIdAndDoctorId;
 
@@ -21,7 +22,7 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> GetAllReportsPatient([FromQuery] GetAllReportsPatientCommand command)
         {
             var result = await _mediator.Send(command);
-            return Created(string.Empty, result);
+            return Ok(result);
         }
 
 
@@ -29,7 +30,7 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> GetByIdReportsPatient([FromQuery] GetByIdReportsPatientQuery query)
         {
             var result = await _mediator.Send(query);
-            return Created(string.Empty, result);
+            return Ok(result);
         }
 
         [HttpGet]
@@ -42,7 +43,13 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> GetPaginatedReportsByPatientIdAndDoctorId([FromQuery] GetPaginatedReportsByPatientIdAndDoctorIdQuery command)
         {
             var result = await _mediator.Send(command);
-            return Created(string.Empty, result);
+            return Ok(result);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetPaginatedFilteredReportsByPatientId([FromQuery] GetPaginatedFilteredReportsByDoctorIdQuery command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
         }
         
 

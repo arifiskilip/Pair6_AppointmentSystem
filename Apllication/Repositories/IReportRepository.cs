@@ -1,14 +1,11 @@
-﻿using Core.Persistence.Repositories;
+﻿using Core.Persistence.Paging;
+using Core.Persistence.Repositories;
 using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Repositories
 {
     public interface IReportRepository : IAsyncRepository<Report, int>, IRepository<Report, int>
     {
+        Task<IPaginate<Report>> GetPaginatedFilteredReportsByPatientI(int patientId, string? OrderBy,DateTime? Date, int pageIndex, int pageSize);
     }
 }

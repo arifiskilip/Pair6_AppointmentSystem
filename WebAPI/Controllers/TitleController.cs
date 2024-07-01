@@ -1,6 +1,7 @@
 ﻿using Application.Features.Titles.Commands.Add;
 using Application.Features.Titles.Commands.Delete;
 using Application.Features.Titles.Commands.Update;
+using Application.Features.Titles.Queries.GetAll;
 using Application.Features.Titles.Queries.GetAllByPaginated;
 using Application.Features.Titles.Queries.GetById;
 using Microsoft.AspNetCore.Mvc;
@@ -18,6 +19,12 @@ namespace WebAPI.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetAllByPaginated([FromQuery] GetAllByPaginatedTitleQuery query)
+        {
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetAll([FromQuery] GetAllTitleQuery query)
         {
             var result = await _mediator.Send(query);
             return Ok(result);

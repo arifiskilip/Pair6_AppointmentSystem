@@ -1,5 +1,6 @@
 ﻿using Application.Features.Titles.Commands.Add;
 using Application.Features.Titles.Commands.Update;
+using Application.Features.Titles.Queries.GetAll;
 using Application.Features.Titles.Queries.GetAllByPaginated;
 using Application.Features.Titles.Queries.GetById;
 using AutoMapper;
@@ -20,6 +21,7 @@ namespace Application.Features.Titles.Profiles
             CreateMap<Title, TitleDto>().ReverseMap();
 
             CreateMap<Title, GetByIdTitleReponse>().ReverseMap();
+            CreateMap<Title, GetAllTitleResponse>().ReverseMap();
 
         }
     }
