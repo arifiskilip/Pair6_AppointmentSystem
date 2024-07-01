@@ -6,6 +6,7 @@ using Application.Features.Auth.Command.Login;
 using Application.Features.Auth.Command.PasswordResetCodeVerified;
 using Application.Features.Auth.Command.PasswordResetSendEmail;
 using Application.Features.Auth.Command.PatientRegister;
+using Application.Features.Auth.Command.ResetPasswordByAdmin;
 using Application.Features.Auth.Command.UpdatePassword;
 using Application.Features.Auth.Command.VerificationCode;
 using Microsoft.AspNetCore.Mvc;
@@ -73,6 +74,13 @@ namespace WebAPI.Controllers
         }
         [HttpPost]
         public async Task<IActionResult> PasswordResetCodeVerified([FromBody] PasswordResetCodeVerifiedCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ResetPasswordByAdmin([FromQuery] ResetPasswordByAdminCommand command)
         {
             var result = await _mediator.Send(command);
             return Ok(result);

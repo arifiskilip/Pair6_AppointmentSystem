@@ -1,6 +1,8 @@
-﻿using Application.Features.Auth.Rules;
+﻿using Application.Features.Auth.Constant;
+using Application.Features.Auth.Rules;
 using Application.Repositories;
 using AutoMapper;
+using Core.CrossCuttingConcers.Exceptions.Types;
 using Core.Security.JWT;
 using Domain.Entities;
 using MediatR;
@@ -32,6 +34,11 @@ namespace Application.Features.Auth.Command.Login
                 //Rules
                 User user = await _authBusinessRules.UserEmailCheck(request.Email);
                 _authBusinessRules.IsPasswordCorrectWhenLogin(user, request.Password);
+
+               if(user.IsDeleted == true)
+                {
+                    throw new BusinessException("Giriş Başarısız");
+                }
 
                 IList<Core.Security.Entitites.OperationClaim> operationClaims = await _userRepository.GetClaimsAsync(user);
                 AccessToken? accessToken = _tokenHelper.CreateToken(user, operationClaims);
