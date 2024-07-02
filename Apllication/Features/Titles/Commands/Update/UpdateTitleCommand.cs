@@ -10,7 +10,7 @@ namespace Application.Features.Titles.Commands.Update
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
+        public bool IsDeleted { get; set; }
 
         public class UpdateTitleCommandHandler : IRequestHandler<UpdateTitleCommand, UpdateTitleResponse>
         {

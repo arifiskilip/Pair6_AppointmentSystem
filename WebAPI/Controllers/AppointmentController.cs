@@ -3,6 +3,7 @@ using Application.Features.Appointment.Commands.AvailableByDoctor;
 using Application.Features.Appointment.Commands.CancelByDoctor;
 using Application.Features.Appointment.Commands.CancelByPatient;
 using Application.Features.Appointment.Commands.CompleteByDoctor;
+using Application.Features.Appointment.Queries.GetAdminDashboardModel;
 using Application.Features.Appointment.Queries.GetAppointmentsForCurrentDayByDoctor;
 using Application.Features.Appointment.Queries.GetClosest;
 using Application.Features.Appointment.Queries.GetDoctorDashboardModel;
@@ -124,6 +125,12 @@ namespace WebAPI.Controllers
         }
         [HttpGet]
         public async Task<IActionResult> GetPatientDashboardModel([FromQuery] GetPatientDashboardModelQuery query)
+        {
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetAdminDashboardModel([FromQuery] GetAdminDashboardModelQuery query)
         {
             var result = await _mediator.Send(query);
             return Ok(result);
