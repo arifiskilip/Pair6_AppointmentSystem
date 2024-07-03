@@ -33,7 +33,7 @@ namespace Persistence.Repositories
                 }
                 if (endDate.HasValue)
                 {
-                    query = query.Where(ai => ai.IntervalDate <= endDate.Value);
+                        query = query.Where(ai => ai.IntervalDate <= endDate.Value.Date.AddHours(23).AddMinutes(59));
                 }
                 if (!startDate.HasValue && !endDate.HasValue)
                 {
@@ -49,7 +49,7 @@ namespace Persistence.Repositories
                 }
                 if (endDate.HasValue)
                 {
-                    query = query.Where(ai => ai.IntervalDate <= endDate.Value);
+                    query = query.Where(ai => ai.IntervalDate <= endDate.Value.Date.AddHours(23).AddMinutes(59));
                 }
                 if (!startDate.HasValue && !endDate.HasValue)
                 {
