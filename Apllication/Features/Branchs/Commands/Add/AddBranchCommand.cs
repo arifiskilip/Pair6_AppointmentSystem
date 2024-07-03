@@ -9,8 +9,9 @@ namespace Application.Features.Branchs.Commands.Add
     public class AddBranchCommand :IRequest<AddBranchResponse> 
     {
         public string Name { get; set; }
+        public bool IsDeleted { get; set; }
 
-       
+
         public class AddBranchCommandHandler : IRequestHandler<AddBranchCommand, AddBranchResponse>
         {
             private readonly IBranchRepository _branchRepository;

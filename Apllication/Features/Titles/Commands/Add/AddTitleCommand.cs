@@ -9,6 +9,7 @@ namespace Application.Features.Titles.Commands.Add
     public class AddTitleCommand : IRequest<AddTitleResponse>
     {
         public string Name { get; set; }
+        public bool IsDeleted { get; set; }
 
         public class CreateTitleCommandHandler : IRequestHandler<AddTitleCommand, AddTitleResponse>
         {
