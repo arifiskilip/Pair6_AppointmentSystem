@@ -1,6 +1,7 @@
 ﻿using Application.Features.Feedback.Commands.Add;
 using Application.Features.Feedback.Queries.GetAll;
 using Application.Features.Feedback.Queries.GetAllAdmin;
+using Application.Features.Feedback.Queries.GetAllByPatientId;
 using Application.Features.Feedback.Queries.GetById;
 using AutoMapper;
 using Domain.Entities;
@@ -41,6 +42,14 @@ namespace Application.Features.Feedback.Profiles
             .ForMember(dest => dest.DoctorName, opt => opt.MapFrom(src => src.Appointment.AppointmentInterval.Doctor.FirstName + " " + src.Appointment.AppointmentInterval.Doctor.LastName))
             .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
             .ForMember(dest => dest.PatientId, opt => opt.MapFrom(src => src.Patient.Id));
+
+
+            CreateMap<Domain.Entities.Feedback, GetAllFeedbacksByPatientIdResponse>()
+                .ForMember(dest => dest.PatientName, opt => opt.MapFrom(src => src.Patient.FirstName + " " + src.Patient.LastName))
+           .ForMember(dest => dest.IdentityNumber, opt => opt.MapFrom(src => src.Patient.IdentityNumber))
+           .ForMember(dest => dest.Gender, opt => opt.MapFrom(src => src.Patient.Gender.Name))
+           .ForMember(dest => dest.IntervalDate, opt => opt.MapFrom(src => src.Appointment.AppointmentInterval.IntervalDate));
+
 
         }
     }
