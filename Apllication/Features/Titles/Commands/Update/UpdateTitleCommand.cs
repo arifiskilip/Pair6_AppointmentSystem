@@ -33,7 +33,8 @@ namespace Application.Features.Titles.Commands.Update
                 _titleBusinessRules.IsSelectedEntityAvailable(checkEntity);
                 await _titleBusinessRules.UpdateDuplicateNameCheckAsync(request.Name, request.Id);
 
-                await _titleRepository.UpdateAsync(_mapper.Map(request, checkEntity));
+				checkEntity.UpdatedDate = DateTime.Now;
+				await _titleRepository.UpdateAsync(_mapper.Map(request, checkEntity));
 
                 return _mapper.Map<UpdateTitleResponse>(checkEntity);
             }

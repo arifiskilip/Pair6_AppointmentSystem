@@ -34,7 +34,9 @@ namespace Application.Features.Branchs.Commands.Update
                 _branchBusinessRules.IsSelectedEntityAvailable(checkEntity);
                 await _branchBusinessRules.UpdateDuplicateNameCheckAsync(request.Name, request.Id);
 
-                await _branchRepository.UpdateAsync(_mapper.Map(request, checkEntity));
+				checkEntity.UpdatedDate = DateTime.Now;
+
+				await _branchRepository.UpdateAsync(_mapper.Map(request, checkEntity));
 
                 return _mapper.Map<UpdateBranchResponse>(checkEntity);
             }
