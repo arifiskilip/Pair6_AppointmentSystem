@@ -16,7 +16,7 @@ namespace Application.Features.Feedback.Queries.GetAllAdmin
     public class ListFeedbackDto : IEntity
     {
         public int PatientId { get; set; }
-        public int FeedbackId { get; set; }
+        public int Id { get; set; }
         public string PatientName { get; set; }
         public string IdentityNumber { get; set; }
         public string Gender { get; set; }

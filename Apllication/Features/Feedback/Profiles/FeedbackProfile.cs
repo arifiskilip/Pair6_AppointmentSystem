@@ -4,12 +4,6 @@ using Application.Features.Feedback.Queries.GetAllAdmin;
 using Application.Features.Feedback.Queries.GetAllByPatientId;
 using Application.Features.Feedback.Queries.GetById;
 using AutoMapper;
-using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Feedback.Profiles
 {
@@ -22,7 +16,6 @@ namespace Application.Features.Feedback.Profiles
             CreateMap<Domain.Entities.Feedback, FeedbackPatientDto>().ReverseMap();
 
             CreateMap<Domain.Entities.Feedback, ListFeedbackDto>()
-           .ForMember(dest => dest.FeedbackId, opt => opt.MapFrom(src => src.Id))
            .ForMember(dest => dest.PatientId, opt => opt.MapFrom(src => src.Patient.Id))
            .ForMember(dest => dest.PatientName, opt => opt.MapFrom(src => src.Patient.FirstName + " " + src.Patient.LastName))
            .ForMember(dest => dest.IdentityNumber, opt => opt.MapFrom(src => src.Patient.IdentityNumber))

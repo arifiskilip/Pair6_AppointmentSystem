@@ -11,6 +11,7 @@ namespace Application.Features.Appointment.Queries.GetPaginatedAppointmentsByPat
     public class GetPaginatedAppointmentsByPatientQuery : IRequest<GetPaginatedAppointmentsByPatientResponse>
     {
         public int? PatientId { get; set; }
+
         public DateTime? Date { get; set; }
         public int PageIndex { get; set; } = 1;
         public int PageSize { get; set; } = 10;
@@ -27,22 +28,23 @@ namespace Application.Features.Appointment.Queries.GetPaginatedAppointmentsByPat
 
             public async Task<GetPaginatedAppointmentsByPatientResponse> Handle(GetPaginatedAppointmentsByPatientQuery request, CancellationToken cancellationToken)
             {
-                Expression<Func<Domain.Entities.Appointment, bool>> predicate = a => true;
+                Expression<Func<Domain.Entities.Appointment, bool>> predicate = null;
+
 
                 if (request.PatientId.HasValue && request.PatientId > 0)
                 {
-                    predicate =  a => a.IsDeleted == false && a.PatientId == request.PatientId && a.AppointmentStatusId == (int)AppointmentStatusEnum.Completed || a.AppointmentStatusId == (int)AppointmentStatusEnum.Canceled;
+                    predicate =  a => a.IsDeleted == false && a.PatientId == request.PatientId && (a.AppointmentStatusId == (int)AppointmentStatusEnum.Completed || a.AppointmentStatusId == (int)AppointmentStatusEnum.Canceled || a.AppointmentStatusId == (int)AppointmentStatusEnum.Created);
                 }
 
                 if (request.Date.HasValue)
                 {
                     if (request.PatientId.HasValue && request.PatientId > 0)
                     {
-                        predicate = a => a.IsDeleted == false && a.PatientId == request.PatientId && a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date && a.AppointmentStatusId == (int)AppointmentStatusEnum.Completed || a.AppointmentStatusId == (int)AppointmentStatusEnum.Canceled;
+                        predicate = a => a.IsDeleted == false && a.PatientId == request.PatientId && a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date && (a.AppointmentStatusId == (int)AppointmentStatusEnum.Completed || a.AppointmentStatusId == (int)AppointmentStatusEnum.Canceled || a.AppointmentStatusId == (int)AppointmentStatusEnum.Created);
                     }
                     else
                     {
-                        predicate = a => a.IsDeleted == false && a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date && a.AppointmentStatusId == (int)AppointmentStatusEnum.Completed || a.AppointmentStatusId == (int)AppointmentStatusEnum.Canceled;
+                        predicate = a => a.IsDeleted == false && a.AppointmentInterval.IntervalDate.Date == request.Date.Value.Date && (a.AppointmentStatusId == (int)AppointmentStatusEnum.Completed || a.AppointmentStatusId == (int)AppointmentStatusEnum.Canceled || a.AppointmentStatusId == (int)AppointmentStatusEnum.Created);
                     }
                 }
 
