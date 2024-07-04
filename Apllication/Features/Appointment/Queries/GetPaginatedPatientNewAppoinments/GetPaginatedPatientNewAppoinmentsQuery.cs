@@ -4,9 +4,7 @@ using Application.Services;
 using AutoMapper;
 using Core.Persistence.Paging;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Claims;
 
 namespace Application.Features.Appointment.Queries.GetPaginatedPatientNewAppoinments
 {
