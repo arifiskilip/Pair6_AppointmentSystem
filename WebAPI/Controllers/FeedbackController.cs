@@ -2,6 +2,7 @@
 using Application.Features.Feedback.Commands.DeleteFeedbackByAdmin;
 using Application.Features.Feedback.Queries.GetAll;
 using Application.Features.Feedback.Queries.GetAllAdmin;
+using Application.Features.Feedback.Queries.GetAllByPatientId;
 using Application.Features.Feedback.Queries.GetById;
 using Application.Features.Titles.Commands.Add;
 using Microsoft.AspNetCore.Mvc;
@@ -42,6 +43,12 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> DeleteFeedbackById([FromQuery] DeleteFeedbackByAdminCommand command)
         {
             var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetAllFeedbacksByPatientId([FromQuery] GetAllFeedbacksByPatientIdQuery query)
+        {
+            var result = await _mediator.Send(query);
             return Ok(result);
         }
     }

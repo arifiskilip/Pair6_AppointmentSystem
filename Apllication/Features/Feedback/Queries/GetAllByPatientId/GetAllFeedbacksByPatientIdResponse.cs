@@ -1,19 +1,8 @@
 ﻿using Core.Domain;
-using Core.Persistence.Paging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Application.Features.Feedback.Queries.GetAllAdmin
+namespace Application.Features.Feedback.Queries.GetAllByPatientId
 {
-    public class GetAllFeedbacksResponse
-    {
-        public IPaginate<ListFeedbackDto> PatientFeedbacks { get; set; }
-    }
-
-    public class ListFeedbackDto : IEntity
+    public class GetAllFeedbacksByPatientIdResponse : IEntity
     {
         public int PatientId { get; set; }
         public int Id { get; set; }
@@ -23,6 +12,5 @@ namespace Application.Features.Feedback.Queries.GetAllAdmin
         public int AppointmentId { get; set; }
         public DateTime IntervalDate { get; set; }
         public DateTime CreatedDate { get; set; }
-
-	}
+    }
 }
