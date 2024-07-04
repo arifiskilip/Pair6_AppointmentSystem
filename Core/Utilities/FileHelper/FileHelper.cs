@@ -48,18 +48,18 @@ namespace Core.Utilities.FileHelper
         {
             if (file == null || file.Length == 0)
             {
-                throw new BusinessException("File cannot be null or empty.");
+                throw new BusinessException("Dosya boş gönderilemez.");
             }
 
             if (file.Length > MaxFileSize)
             {
-                throw new BusinessException("File size exceeds the maximum limit of 5MB.");
+                throw new BusinessException("Dosya boyutu maksimum 5 MB sınırını aşıyor.");
             }
 
             var fileExtension = Path.GetExtension(file.FileName);
             if (!IsValidFileType(fileExtension, fileType))
             {
-                throw new BusinessException($"Invalid file type. Allowed types: {GetAllowedExtensions(fileType)}.");
+                throw new BusinessException($"Geçersiz dosya türü. İzin verilen türler: {GetAllowedExtensions(fileType)}.");
             }
         }
 

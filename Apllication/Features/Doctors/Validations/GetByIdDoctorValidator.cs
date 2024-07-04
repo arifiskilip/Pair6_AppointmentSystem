@@ -14,7 +14,7 @@ namespace Application.Features.Doctors.Validations
         public GetByIdDoctorValidator()
         {
             RuleFor(x => x.Id)
-                  .NotEmpty().NotNull().WithMessage("Id cant be empty.");
+                  .NotEmpty().NotNull().WithMessage("Id boş olamaz");
                  
 
         }

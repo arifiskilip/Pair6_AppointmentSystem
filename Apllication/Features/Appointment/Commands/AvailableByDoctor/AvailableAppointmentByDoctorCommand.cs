@@ -42,7 +42,7 @@ namespace Application.Features.Appointment.Commands.AvailableByDoctor
                 var appointmentInterval = await _appointmentIntervalService.GetAsync(appointment.AppointmentIntervalId);
                 if (appointmentInterval.DoctorId != doctorId)
                 {
-                    throw new BusinessException("You can only cancel your own appointments");
+                    throw new BusinessException("Sadece kendinize ait randevuları iptal edebilirsiniz.");
                 }
                 if (appointmentInterval.IntervalDate < DateTime.Now)
                 {

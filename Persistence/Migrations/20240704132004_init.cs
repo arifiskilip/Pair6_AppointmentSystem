@@ -427,10 +427,10 @@ namespace Persistence.Migrations
                 columns: new[] { "Id", "CreatedDate", "IsDeleted", "Name", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { (short)1, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(305), false, "Available", null },
-                    { (short)2, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(307), false, "Canceled", null },
-                    { (short)3, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(308), false, "Completed", null },
-                    { (short)4, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(309), false, "Created", null }
+                    { (short)1, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3493), false, "Available", null },
+                    { (short)2, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3495), false, "Canceled", null },
+                    { (short)3, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3495), false, "Completed", null },
+                    { (short)4, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3496), false, "Created", null }
                 });
 
             migrationBuilder.InsertData(
@@ -438,14 +438,14 @@ namespace Persistence.Migrations
                 columns: new[] { "Id", "CreatedDate", "IsDeleted", "Name", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { (short)1, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(32), false, "A+", null },
-                    { (short)2, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(47), false, "A-", null },
-                    { (short)3, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(48), false, "B+", null },
-                    { (short)4, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(49), false, "B-", null },
-                    { (short)5, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(50), false, "AB+", null },
-                    { (short)6, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(51), false, "AB-", null },
-                    { (short)7, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(51), false, "O+", null },
-                    { (short)8, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(52), false, "O-", null }
+                    { (short)1, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3278), false, "A+", null },
+                    { (short)2, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3341), false, "A-", null },
+                    { (short)3, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3342), false, "B+", null },
+                    { (short)4, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3343), false, "B-", null },
+                    { (short)5, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3343), false, "AB+", null },
+                    { (short)6, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3344), false, "AB-", null },
+                    { (short)7, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3345), false, "O+", null },
+                    { (short)8, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3346), false, "O-", null }
                 });
 
             migrationBuilder.InsertData(
@@ -453,27 +453,36 @@ namespace Persistence.Migrations
                 columns: new[] { "Id", "CreatedDate", "IsDeleted", "Name", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { (short)1, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(336), false, "GeneralPractice", null },
-                    { (short)2, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(337), false, "AnesthesiologyAndReanimation", null },
-                    { (short)3, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(338), false, "Pediatrics", null },
-                    { (short)4, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(339), false, "InternalMedicine", null },
-                    { (short)5, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(339), false, "Dermatology", null },
-                    { (short)6, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(340), false, "InfectiousDiseases", null },
-                    { (short)7, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(341), false, "PhysicalMedicineAndRehabilitation", null },
-                    { (short)8, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(341), false, "Gastroenterology", null },
-                    { (short)9, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(342), false, "GeneralSurgery", null },
-                    { (short)10, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(343), false, "Ophthalmology", null },
-                    { (short)11, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(344), false, "ObstetricsAndGynecology", null },
-                    { (short)12, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(344), false, "CardiovascularSurgery", null },
-                    { (short)13, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(345), false, "Cardiology", null },
-                    { (short)14, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(346), false, "Otorhinolaryngology", null },
-                    { (short)15, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(346), false, "Neurology", null },
-                    { (short)16, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(347), false, "Neurosurgery", null },
-                    { (short)17, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(348), false, "OrthopedicsAndTraumatology", null },
-                    { (short)18, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(348), false, "PlasticReconstructiveAndAestheticSurgery", null },
-                    { (short)19, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(349), false, "Psychiatry", null },
-                    { (short)20, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(350), false, "Radiology", null },
-                    { (short)21, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(350), false, "Urology", null }
+                    { (short)1, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3521), false, "Aile Hekimliği", null },
+                    { (short)2, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3523), false, "Anesteziyoloji ve Reanimasyon", null },
+                    { (short)3, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3524), false, "Çocuk Sağlığı ve Hastalıkları", null },
+                    { (short)4, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3525), false, "Dahiliye", null },
+                    { (short)5, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3526), false, "Dermatoloji", null },
+                    { (short)6, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3526), false, "Enfeksiyon Hastalıkları", null },
+                    { (short)7, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3527), false, "Fiziksel Tıp ve Rehabilitasyon", null },
+                    { (short)8, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3528), false, "Gastroenteroloji", null },
+                    { (short)9, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3529), false, "Genel Cerrahi", null },
+                    { (short)10, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3529), false, "Göz Hastalıkları", null },
+                    { (short)11, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3530), false, "Kadın Hastalıkları ve Doğum", null },
+                    { (short)12, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3531), false, "Kalp ve Damar Cerrahisi", null },
+                    { (short)13, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3531), false, "Kardiyoloji", null },
+                    { (short)14, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3532), false, "Kulak Burun Boğaz", null },
+                    { (short)15, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3533), false, "Nöroloji", null },
+                    { (short)16, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3534), false, "Nöroşirurji", null },
+                    { (short)17, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3534), false, "Ortopedi ve Travmatoloji", null },
+                    { (short)18, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3535), false, "Plastik, Rekonstrüktif ve Estetik Cerrahi", null },
+                    { (short)19, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3536), false, "Psikiyatri", null },
+                    { (short)20, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3536), false, "Radyoloji", null },
+                    { (short)21, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3537), false, "Üroloji", null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "CodeTypes",
+                columns: new[] { "Id", "CreatedDate", "IsDeleted", "Name", "UpdatedDate" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3644), false, "EmailConfirm", null },
+                    { 2, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3646), false, "PasswordReset", null }
                 });
 
             migrationBuilder.InsertData(
@@ -481,8 +490,8 @@ namespace Persistence.Migrations
                 columns: new[] { "Id", "CreatedDate", "IsDeleted", "Name", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { (short)1, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(383), false, "Bayan", null },
-                    { (short)2, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(384), false, "Bay", null }
+                    { (short)1, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3569), false, "Women", null },
+                    { (short)2, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3571), false, "Man", null }
                 });
 
             migrationBuilder.InsertData(
@@ -490,9 +499,9 @@ namespace Persistence.Migrations
                 columns: new[] { "Id", "CreatedDate", "IsDeleted", "Name", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(403), false, "Admin", null },
-                    { 2, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(405), false, "Doctor", null },
-                    { 3, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(406), false, "Patient", null }
+                    { 1, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3593), false, "Admin", null },
+                    { 2, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3595), false, "Doctor", null },
+                    { 3, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3596), false, "Patient", null }
                 });
 
             migrationBuilder.InsertData(
@@ -500,11 +509,11 @@ namespace Persistence.Migrations
                 columns: new[] { "Id", "CreatedDate", "IsDeleted", "Name", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { (short)1, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(425), false, "UzmDr", null },
-                    { (short)2, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(426), false, "Doc", null },
-                    { (short)3, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(426), false, "YrdDoc", null },
-                    { (short)4, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(427), false, "Prof", null },
-                    { (short)5, new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(428), false, "OprDr", null }
+                    { (short)1, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3616), false, "UzmDr", null },
+                    { (short)2, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3617), false, "Doc", null },
+                    { (short)3, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3618), false, "YrdDoc", null },
+                    { (short)4, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3619), false, "Prof", null },
+                    { (short)5, new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3620), false, "OprDr", null }
                 });
 
             migrationBuilder.CreateIndex(

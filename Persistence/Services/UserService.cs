@@ -31,7 +31,7 @@ namespace Persistence.Services
             var checkUser = await _userRepository.GetAsync(x => x.Email.ToLower() == email.ToLower());
             if (checkUser is null)
             {
-                throw new BusinessException("User not found!");
+                throw new BusinessException("Kullanıcı bulunamadı!");
             }
             return checkUser;
         }
@@ -41,7 +41,7 @@ namespace Persistence.Services
             var checkUser = await _userRepository.GetAsync(x => x.Id == userId);
             if (checkUser is null)
             {
-                throw new BusinessException("User not found!");
+                throw new BusinessException("Kullanıcı bulunamadı!");
             }
             checkUser.IsEmailVerified = true;
             await _userRepository.UpdateAsync(checkUser);

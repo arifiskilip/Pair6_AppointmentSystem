@@ -7,7 +7,8 @@ namespace Application.Features.Branchs.Validations
     {
         public UpdateBranchValidator()
         {
-            RuleFor(x => x.Name).NotEmpty().NotNull();
+            RuleFor(x => x.Name).NotEmpty().WithMessage("Branş ismi boş olamaz.")
+                .NotNull();
         }
     }
 }
