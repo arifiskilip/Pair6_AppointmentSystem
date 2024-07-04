@@ -2,6 +2,7 @@
 using Application.Repositories;
 using Core.Application.Rules;
 using Core.CrossCuttingConcers.Exceptions.Types;
+using Core.Utilities.EncryptionHelper;
 using Domain.Entities;
 
 namespace Application.Features.Branchs.Rules
@@ -18,7 +19,7 @@ namespace Application.Features.Branchs.Rules
         public async Task DuplicateNameCheckAsync(string name)
         {
             var check = await _branchRepository
-                .AnyAsync(x => x.Name.ToLower() == name.ToLower());
+                .AnyAsync(x => x.Name == EncryptionHelper.Encrypt(name));
             if (check)
             {
                 throw new BusinessException(BranchMessages.DuplicateBranchName);
@@ -27,7 +28,7 @@ namespace Application.Features.Branchs.Rules
         public async Task UpdateDuplicateNameCheckAsync(string name, int id)
         {
             var check = await _branchRepository
-            .GetAsync(x => x.Name.ToLower() == name.ToLower());
+            .GetAsync(x => x.Name == EncryptionHelper.Encrypt(name));
             if (check != null && check.Id != id)
             {
                 throw new BusinessException(BranchMessages.DuplicateBranchName);

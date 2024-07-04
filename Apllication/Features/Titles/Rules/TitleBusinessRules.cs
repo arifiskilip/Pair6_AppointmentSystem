@@ -2,6 +2,7 @@
 using Application.Repositories;
 using Core.Application.Rules;
 using Core.CrossCuttingConcers.Exceptions.Types;
+using Core.Utilities.EncryptionHelper;
 using Domain.Entities;
 
 namespace Application.Features.Titles.Rules
@@ -18,7 +19,7 @@ namespace Application.Features.Titles.Rules
         public async Task DuplicateNameCheckAsync(string name)
         {
             var check = await _titleRepository
-                .AnyAsync(x => x.Name.ToLower() == name.ToLower());
+                .AnyAsync(x => x.Name == EncryptionHelper.Encrypt(name));
             if (check)
             {
                 throw new BusinessException(TitleMessages.DuplicateTitleName);
@@ -27,7 +28,7 @@ namespace Application.Features.Titles.Rules
         public async Task UpdateDuplicateNameCheckAsync(string name, int id)
         {
             var check = await _titleRepository
-            .GetAsync(x => x.Name.ToLower() == name.ToLower());
+            .GetAsync(x => x.Name == EncryptionHelper.Encrypt(name));
             if (check != null && check.Id != id)
             {
                 throw new BusinessException(TitleMessages.DuplicateTitleName);

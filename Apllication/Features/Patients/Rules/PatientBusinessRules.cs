@@ -2,7 +2,9 @@
 using Application.Repositories;
 using Core.Application.Rules;
 using Core.CrossCuttingConcers.Exceptions.Types;
+using Core.Utilities.EncryptionHelper;
 using Domain.Entities;
+using System.Xml.Linq;
 
 namespace Application.Features.Patients.Rules
 {
@@ -23,7 +25,7 @@ namespace Application.Features.Patients.Rules
         public async Task DuplicateMailCheckAsync(string mail)
         {
             var check = await _patientRepository
-            .GetAsync(x => x.Email == mail);
+            .GetAsync(x => x.Email == EncryptionHelper.Encrypt(mail));
             if (check != null )
             {
                 throw new BusinessException(PatientMessages.DuplicateEmailName);
@@ -33,7 +35,7 @@ namespace Application.Features.Patients.Rules
         public async Task UpdateDuplicateNameCheckAsync(string email, int id)
         {
             var check = await _patientRepository.GetAsync(
-                predicate: x => x.Email.ToLower() == email.ToLower());
+                predicate: x => x.Email == EncryptionHelper.Encrypt(email));
             if (check != null && check.Id != id) throw new BusinessException(PatientMessages.DuplicateEmailName);
         }
     }
