@@ -4,6 +4,7 @@ using Application.Repositories;
 using AutoMapper;
 using Core.CrossCuttingConcers.Exceptions.Types;
 using Core.Security.JWT;
+using Core.Utilities.EncryptionHelper;
 using Domain.Entities;
 using MediatR;
 

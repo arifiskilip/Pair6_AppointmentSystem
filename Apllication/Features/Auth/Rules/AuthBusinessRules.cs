@@ -3,6 +3,7 @@ using Application.Repositories;
 using Core.Application.Rules;
 using Core.CrossCuttingConcers.Exceptions.Types;
 using Core.Security.Hashing;
+using Core.Utilities.EncryptionHelper;
 using Domain.Entities;
 using System.Threading.Tasks;
 
@@ -20,7 +21,7 @@ namespace Application.Features.Auth.Rules
         public async Task DuplicateEmailChechAsync(string email)
         {
             bool check = await _userRepository.AnyAsync(
-                predicate: x => x.Email.ToLower() == email.ToLower(),
+                predicate: x => x.Email.ToLower() == EncryptionHelper.Encrypt(email).ToLower(),
                 enableTracking: false);
             if (check) throw new BusinessException(AuthMessages.DuplicateEmail);
         }
@@ -39,7 +40,7 @@ namespace Application.Features.Auth.Rules
 
         public async Task<User> UserEmailCheck(string email)
         {
-            var user = await _userRepository.GetAsync(x=> x.Email.ToLower() == email.ToLower());
+            var user = await _userRepository.GetAsync(x=> x.Email.ToLower() == EncryptionHelper.Encrypt(email).ToLower());
             if (user is null) throw new BusinessException(AuthMessages.UserNotFound);
             return user;
         }

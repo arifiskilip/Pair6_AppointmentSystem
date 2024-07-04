@@ -24,7 +24,6 @@ namespace Core.Persistence.Repositories
             bool enableTracking = true,
             CancellationToken cancellationToken = default
         );
-
         Task<IQueryable<TEntity>> GetListNotPagedAsync(
           Expression<Func<TEntity, bool>>? predicate = null,
           Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,

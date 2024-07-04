@@ -31,6 +31,7 @@ namespace Persistence.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             // TPT Configuration
             modelBuilder.Entity<User>().ToTable("Users");
             modelBuilder.Entity<Doctor>().ToTable("Doctors");
@@ -104,7 +105,6 @@ namespace Persistence.Contexts
             .HasForeignKey(p => p.GenderId)
             .OnDelete(DeleteBehavior.Restrict);
 
-
             // Seed data
             modelBuilder.Entity<BloodType>().HasData(
                 new BloodType { Id = 1, Name = "A+" },
@@ -170,7 +170,8 @@ namespace Persistence.Contexts
             modelBuilder.Entity<CodeType>().HasData(
                 new CodeType { Id = 1, Name = "EmailConfirm" },
                 new CodeType { Id = 2, Name = "PasswordReset" });
-            base.OnModelCreating(modelBuilder);
+
+           
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
