@@ -129,28 +129,28 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = (short)1,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(305),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3493),
                             IsDeleted = false,
                             Name = "Available"
                         },
                         new
                         {
                             Id = (short)2,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(307),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3495),
                             IsDeleted = false,
                             Name = "Canceled"
                         },
                         new
                         {
                             Id = (short)3,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(308),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3495),
                             IsDeleted = false,
                             Name = "Completed"
                         },
                         new
                         {
                             Id = (short)4,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(309),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3496),
                             IsDeleted = false,
                             Name = "Created"
                         });
@@ -185,56 +185,56 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = (short)1,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(32),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3278),
                             IsDeleted = false,
                             Name = "A+"
                         },
                         new
                         {
                             Id = (short)2,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(47),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3341),
                             IsDeleted = false,
                             Name = "A-"
                         },
                         new
                         {
                             Id = (short)3,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(48),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3342),
                             IsDeleted = false,
                             Name = "B+"
                         },
                         new
                         {
                             Id = (short)4,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(49),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3343),
                             IsDeleted = false,
                             Name = "B-"
                         },
                         new
                         {
                             Id = (short)5,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(50),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3343),
                             IsDeleted = false,
                             Name = "AB+"
                         },
                         new
                         {
                             Id = (short)6,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(51),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3344),
                             IsDeleted = false,
                             Name = "AB-"
                         },
                         new
                         {
                             Id = (short)7,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(51),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3345),
                             IsDeleted = false,
                             Name = "O+"
                         },
                         new
                         {
                             Id = (short)8,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(52),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3346),
                             IsDeleted = false,
                             Name = "O-"
                         });
@@ -269,149 +269,149 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = (short)1,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(336),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3521),
                             IsDeleted = false,
-                            Name = "GeneralPractice"
+                            Name = "Aile Hekimliği"
                         },
                         new
                         {
                             Id = (short)2,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(337),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3523),
                             IsDeleted = false,
-                            Name = "AnesthesiologyAndReanimation"
+                            Name = "Anesteziyoloji ve Reanimasyon"
                         },
                         new
                         {
                             Id = (short)3,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(338),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3524),
                             IsDeleted = false,
-                            Name = "Pediatrics"
+                            Name = "Çocuk Sağlığı ve Hastalıkları"
                         },
                         new
                         {
                             Id = (short)4,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(339),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3525),
                             IsDeleted = false,
-                            Name = "InternalMedicine"
+                            Name = "Dahiliye"
                         },
                         new
                         {
                             Id = (short)5,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(339),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3526),
                             IsDeleted = false,
-                            Name = "Dermatology"
+                            Name = "Dermatoloji"
                         },
                         new
                         {
                             Id = (short)6,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(340),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3526),
                             IsDeleted = false,
-                            Name = "InfectiousDiseases"
+                            Name = "Enfeksiyon Hastalıkları"
                         },
                         new
                         {
                             Id = (short)7,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(341),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3527),
                             IsDeleted = false,
-                            Name = "PhysicalMedicineAndRehabilitation"
+                            Name = "Fiziksel Tıp ve Rehabilitasyon"
                         },
                         new
                         {
                             Id = (short)8,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(341),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3528),
                             IsDeleted = false,
-                            Name = "Gastroenterology"
+                            Name = "Gastroenteroloji"
                         },
                         new
                         {
                             Id = (short)9,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(342),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3529),
                             IsDeleted = false,
-                            Name = "GeneralSurgery"
+                            Name = "Genel Cerrahi"
                         },
                         new
                         {
                             Id = (short)10,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(343),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3529),
                             IsDeleted = false,
-                            Name = "Ophthalmology"
+                            Name = "Göz Hastalıkları"
                         },
                         new
                         {
                             Id = (short)11,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(344),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3530),
                             IsDeleted = false,
-                            Name = "ObstetricsAndGynecology"
+                            Name = "Kadın Hastalıkları ve Doğum"
                         },
                         new
                         {
                             Id = (short)12,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(344),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3531),
                             IsDeleted = false,
-                            Name = "CardiovascularSurgery"
+                            Name = "Kalp ve Damar Cerrahisi"
                         },
                         new
                         {
                             Id = (short)13,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(345),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3531),
                             IsDeleted = false,
-                            Name = "Cardiology"
+                            Name = "Kardiyoloji"
                         },
                         new
                         {
                             Id = (short)14,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(346),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3532),
                             IsDeleted = false,
-                            Name = "Otorhinolaryngology"
+                            Name = "Kulak Burun Boğaz"
                         },
                         new
                         {
                             Id = (short)15,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(346),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3533),
                             IsDeleted = false,
-                            Name = "Neurology"
+                            Name = "Nöroloji"
                         },
                         new
                         {
                             Id = (short)16,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(347),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3534),
                             IsDeleted = false,
-                            Name = "Neurosurgery"
+                            Name = "Nöroşirurji"
                         },
                         new
                         {
                             Id = (short)17,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(348),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3534),
                             IsDeleted = false,
-                            Name = "OrthopedicsAndTraumatology"
+                            Name = "Ortopedi ve Travmatoloji"
                         },
                         new
                         {
                             Id = (short)18,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(348),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3535),
                             IsDeleted = false,
-                            Name = "PlasticReconstructiveAndAestheticSurgery"
+                            Name = "Plastik, Rekonstrüktif ve Estetik Cerrahi"
                         },
                         new
                         {
                             Id = (short)19,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(349),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3536),
                             IsDeleted = false,
-                            Name = "Psychiatry"
+                            Name = "Psikiyatri"
                         },
                         new
                         {
                             Id = (short)20,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(350),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3536),
                             IsDeleted = false,
-                            Name = "Radiology"
+                            Name = "Radyoloji"
                         },
                         new
                         {
                             Id = (short)21,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(350),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3537),
                             IsDeleted = false,
-                            Name = "Urology"
+                            Name = "Üroloji"
                         });
                 });
 
@@ -439,6 +439,22 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CodeTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3644),
+                            IsDeleted = false,
+                            Name = "EmailConfirm"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3646),
+                            IsDeleted = false,
+                            Name = "PasswordReset"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.DoctorSchedule", b =>
@@ -549,16 +565,16 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = (short)1,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(383),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3569),
                             IsDeleted = false,
-                            Name = "Bayan"
+                            Name = "Women"
                         },
                         new
                         {
                             Id = (short)2,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(384),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3571),
                             IsDeleted = false,
-                            Name = "Bay"
+                            Name = "Man"
                         });
                 });
 
@@ -591,21 +607,21 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(403),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3593),
                             IsDeleted = false,
                             Name = "Admin"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(405),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3595),
                             IsDeleted = false,
                             Name = "Doctor"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(406),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3596),
                             IsDeleted = false,
                             Name = "Patient"
                         });
@@ -676,35 +692,35 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = (short)1,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(425),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3616),
                             IsDeleted = false,
                             Name = "UzmDr"
                         },
                         new
                         {
                             Id = (short)2,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(426),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3617),
                             IsDeleted = false,
                             Name = "Doc"
                         },
                         new
                         {
                             Id = (short)3,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(426),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3618),
                             IsDeleted = false,
                             Name = "YrdDoc"
                         },
                         new
                         {
                             Id = (short)4,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(427),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3619),
                             IsDeleted = false,
                             Name = "Prof"
                         },
                         new
                         {
                             Id = (short)5,
-                            CreatedDate = new DateTime(2024, 6, 15, 18, 14, 40, 870, DateTimeKind.Local).AddTicks(428),
+                            CreatedDate = new DateTime(2024, 7, 4, 16, 20, 4, 103, DateTimeKind.Local).AddTicks(3620),
                             IsDeleted = false,
                             Name = "OprDr"
                         });

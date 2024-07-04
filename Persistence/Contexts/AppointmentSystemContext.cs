@@ -125,28 +125,28 @@ namespace Persistence.Contexts
             );
 
             modelBuilder.Entity<Branch>().HasData(
-                new Branch { Id = 1, Name = "GeneralPractice" },
-                new Branch { Id = 2, Name = "AnesthesiologyAndReanimation" },
-                new Branch { Id = 3, Name = "Pediatrics" },
-                new Branch { Id = 4, Name = "InternalMedicine" },
-                new Branch { Id = 5, Name = "Dermatology" },
-                new Branch { Id = 6, Name = "InfectiousDiseases" },
-                new Branch { Id = 7, Name = "PhysicalMedicineAndRehabilitation" },
-                new Branch { Id = 8, Name = "Gastroenterology" },
-                new Branch { Id = 9, Name = "GeneralSurgery" },
-                new Branch { Id = 10, Name = "Ophthalmology" },
-                new Branch { Id = 11, Name = "ObstetricsAndGynecology" },
-                new Branch { Id = 12, Name = "CardiovascularSurgery" },
-                new Branch { Id = 13, Name = "Cardiology" },
-                new Branch { Id = 14, Name = "Otorhinolaryngology" },
-                new Branch { Id = 15, Name = "Neurology" },
-                new Branch { Id = 16, Name = "Neurosurgery" },
-                new Branch { Id = 17, Name = "OrthopedicsAndTraumatology" },
-                new Branch { Id = 18, Name = "PlasticReconstructiveAndAestheticSurgery" },
-                new Branch { Id = 19, Name = "Psychiatry" },
-                new Branch { Id = 20, Name = "Radiology" },
-                new Branch { Id = 21, Name = "Urology" }
-            );
+                new Branch { Id = 1, Name = "Aile Hekimliği" },
+                new Branch { Id = 2, Name = "Anesteziyoloji ve Reanimasyon" },
+                new Branch { Id = 3, Name = "Çocuk Sağlığı ve Hastalıkları" },
+                new Branch { Id = 4, Name = "Dahiliye" },
+                new Branch { Id = 5, Name = "Dermatoloji" },
+                new Branch { Id = 6, Name = "Enfeksiyon Hastalıkları" },
+                new Branch { Id = 7, Name = "Fiziksel Tıp ve Rehabilitasyon" },
+                new Branch { Id = 8, Name = "Gastroenteroloji" },
+                new Branch { Id = 9, Name = "Genel Cerrahi" },
+                new Branch { Id = 10, Name = "Göz Hastalıkları" },
+                new Branch { Id = 11, Name = "Kadın Hastalıkları ve Doğum" },
+                new Branch { Id = 12, Name = "Kalp ve Damar Cerrahisi" },
+                new Branch { Id = 13, Name = "Kardiyoloji" },
+                new Branch { Id = 14, Name = "Kulak Burun Boğaz" },
+                new Branch { Id = 15, Name = "Nöroloji" },
+                new Branch { Id = 16, Name = "Nöroşirurji" },
+                new Branch { Id = 17, Name = "Ortopedi ve Travmatoloji" },
+                new Branch { Id = 18, Name = "Plastik, Rekonstrüktif ve Estetik Cerrahi" },
+                new Branch { Id = 19, Name = "Psikiyatri" },
+                new Branch { Id = 20, Name = "Radyoloji" },
+                new Branch { Id = 21, Name = "Üroloji" }
+);
 
             modelBuilder.Entity<Gender>().HasData(
                 new Gender { Id = 1, Name = "Women" },

@@ -20,8 +20,8 @@ namespace Application.Features.Auth.Validations
                 .EmailAddress();
 
             RuleFor(user => user.PhoneNumber)
-                .NotEmpty()
-                .Matches(@"^\+?\d{10,15}$").WithMessage("Phone number must be a valid phone number.");
+                .NotEmpty().WithMessage("Telefon numarası boş olamaz.")
+                .Matches(@"^\+?\d{10,15}$").WithMessage("Telefon numarası geçerli bir telefon numarası olmalıdır.");
 
             RuleFor(user => user.BirthDate)
                 .NotEmpty()
@@ -41,10 +41,10 @@ namespace Application.Features.Auth.Validations
             RuleFor(user => user.Password)
                 .NotEmpty()
                 .MinimumLength(6)
-                .Matches("[A-Z]").WithMessage("Password must contain at least one uppercase letter.")
-                .Matches("[a-z]").WithMessage("Password must contain at least one lowercase letter.")
-                .Matches("[0-9]").WithMessage("Password must contain at least one number.")
-                .Matches("[^a-zA-Z0-9]").WithMessage("Password must contain at least one special character.");
+                .Matches("[A-Z]").WithMessage("Şifre en az bir büyük harf içermelidir.")
+                .Matches("[a-z]").WithMessage("Şifre en az bir küçük harf içermelidir.")
+                .Matches("[0-9]").WithMessage("Şifre en az bir rakam içermelidir.")
+                .Matches("[^a-zA-Z0-9]").WithMessage("Şifre en az bir özel karakter içermelidir.");
         }
 
         private bool BeAValidAge(DateTime birthDate)

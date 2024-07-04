@@ -13,15 +13,15 @@ namespace Application.Features.Auth.Validations
         public UpdatePasswordValidation()
         {
             RuleFor(command => command.OldPassword)
-            .NotEmpty().WithMessage("Current password is required.");
+            .NotEmpty().WithMessage("Eski şifre boş olamaz");
 
             RuleFor(command => command.Password)
-                .NotEmpty().WithMessage("New password is required.")
-                .MinimumLength(6).WithMessage("New password must be at least 6 characters long.")
-                .Matches("[A-Z]").WithMessage("New password must contain at least one uppercase letter.")
-                .Matches("[a-z]").WithMessage("New password must contain at least one lowercase letter.")
-                .Matches("[0-9]").WithMessage("New password must contain at least one number.")
-                .Matches("[^a-zA-Z0-9]").WithMessage("New password must contain at least one special character.");
+                .NotEmpty().WithMessage("Yeni şifre boş olamaz")
+                .MinimumLength(6).WithMessage("Yeni Şifre en az 6 karakter uzunluğunda olmalıdır.")
+                .Matches("[A-Z]").WithMessage("Yeni Şifre en az bir büyük harf içermelidir.")
+                .Matches("[a-z]").WithMessage("Yeni en az bir küçük harf içermelidir.")
+                .Matches("[0-9]").WithMessage("Yeni en az bir rakam içermelidir.")
+                .Matches("[^a-zA-Z0-9]").WithMessage("Yeni Şifre en az bir özel karakter içermelidir.");
 
             //RuleFor(command => command.NewPasswordAgain)
             //    .NotEmpty().WithMessage("New password confirmation is required.")
