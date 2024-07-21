@@ -27,6 +27,8 @@ namespace Application.Features.Doctors.Queries.GetAllPaginated
         public bool IsDeleted { get; set; }
         public DateTime? UpdatedDate { get; set; }
         public int TitleId { get; set; }
+        public int GenderId { get; set; }
+        public string GenderName { get; set; }
         public int BranchId { get; set; }
         public string TitleName { get; set; }
         public string BranchName { get; set; }
