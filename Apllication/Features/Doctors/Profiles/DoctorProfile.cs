@@ -41,7 +41,6 @@ namespace Application.Features.Doctors.Profiles
                 .ForMember(dest => dest.BranchName, opt => opt.MapFrom(src => src.Branch.Name))
                 .ForMember(dest => dest.TitleId, opt => opt.MapFrom(src => src.TitleId))
                 .ForMember(dest => dest.BranchId, opt => opt.MapFrom(src => src.BranchId))
-                .ForMember(dest => dest.GenderId, opt => opt.MapFrom(src => src.Gender.Id))
                 .ForMember(dest => dest.GenderName, opt => opt.MapFrom(src => src.Gender.Name));
                 
 
