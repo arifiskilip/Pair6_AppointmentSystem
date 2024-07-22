@@ -5,6 +5,7 @@ using Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using Core.Security.Extensions;
+using Core.Utilities.EncryptionHelper;
 
 namespace Persistence.Services
 {
@@ -28,7 +29,7 @@ namespace Persistence.Services
 
         public async Task<User> GetUserByEmailAsync(string email)
         {
-            var checkUser = await _userRepository.GetAsync(x => x.Email.ToLower() == email.ToLower());
+            var checkUser = await _userRepository.GetAsync(x => x.Email == EncryptionHelper.Encrypt(email));
             if (checkUser is null)
             {
                 throw new BusinessException("Kullanıcı bulunamadı!");
